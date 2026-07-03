@@ -1,3 +1,7 @@
+/* =========================================
+   CUSTOMER DETAILS
+========================================= */
+
 const customer =
     JSON.parse(
         localStorage.getItem(
@@ -6,30 +10,42 @@ const customer =
     );
 
 document
-.getElementById(
-    "customerInfo"
-)
-.innerHTML =
+    .getElementById(
+        "custName"
+    )
+    .innerHTML =
+    customer.name;
 
-`
-<b>Name :</b>
-${customer.name}
+document
+    .getElementById(
+        "custPhone"
+    )
+    .innerHTML =
+    customer.phone;
 
-<br><br>
+document
+    .getElementById(
+        "custSession"
+    )
+    .innerHTML =
+    customer.category
+        .charAt(0)
+        .toUpperCase()
+    +
+    customer.category
+        .slice(1);
 
-<b>Phone :</b>
-${customer.phone}
+document
+    .getElementById(
+        "custDate"
+    )
+    .innerHTML =
+    customer.preferredDate;
 
-<br><br>
 
-<b>Session :</b>
-${customer.category}
-
-<br><br>
-
-<b>Date :</b>
-${customer.preferredDate}
-`;
+/* =========================================
+   DETERMINE FOLDER
+========================================= */
 
 let folder = "";
 
@@ -57,9 +73,7 @@ else{
         customer.category
         ===
         "outdoor"
-
         ||
-
         customer.category
         ===
         "mix"
@@ -75,57 +89,110 @@ else{
     }
 }
 
-const themes = themeData;
+
+/* =========================================
+   LOAD THEMES
+========================================= */
+
+const themes =
+    themeData;
 
 const container =
     document.getElementById(
         "themeContainer"
     );
 
-themes[folder]
-.forEach(
 
-    function(
-        theme
-    ){
+function formatTitle(
+    text
+){
 
-        container
-        .innerHTML +=
+    return text
+
+        .replace(
+            /[_-]/g,
+            " "
+        )
+
+        .replace(
+            /\b\w/g,
+            function(c){
+
+                return c
+                    .toUpperCase();
+
+            });
+}
+
+
+if(
+    themes[folder]
+){
+
+    themes[folder]
+    .forEach(
+
+        function(
+            theme
+        ){
+
+            container
+                .innerHTML +=
 
 `
 <div class="card">
 
-<img
-src=
-"images/${folder}/${theme}.jpeg">
+    <img
 
-<div class="cardBody">
+        src=
+        "images/${folder}/${theme}.jpeg"
 
-<h3>
-${theme}
-</h3>
+        onerror="
+            this.onerror=null;
+            this.src='images/${folder}/${theme}.jpg';
+        ">
 
-<label>
+    <div class="cardBody">
 
-<input
-type="checkbox"
-class="theme"
-value="${theme}">
+        <h3>
+            ${formatTitle(
+                theme
+            )}
+        </h3>
 
-Select Theme
+        <label>
 
-</label>
+            <input
+                type="checkbox"
+                class="theme"
+                value="${theme}">
 
-</div>
+            Select Theme
+
+        </label>
+
+    </div>
 
 </div>
 `;
 
-    }
+        }
 
-);
+    );
+}
 
-let selected = [];
+
+/* =========================================
+   CART
+========================================= */
+
+let selected =
+    [];
+
+
+/* =========================================
+   THEME SELECTION
+========================================= */
 
 document
 .addEventListener(
@@ -135,36 +202,73 @@ document
     function(e){
 
         if(
+
             e.target
             .classList
             .contains(
                 "theme"
             )
+
         ){
+
+            const card =
+
+                e.target
+                    .closest(
+                        ".card"
+                    );
 
             if(
                 e.target
                 .checked
             ){
 
-                selected
-                .push(
-                    e.target
-                    .value
-                );
+                card
+                    .classList
+                    .add(
+                        "selected"
+                    );
+
+                if(
+
+                    !selected
+                    .includes(
+                        e.target
+                            .value
+                    )
+
+                ){
+
+                    selected
+                        .push(
+
+                            e.target
+                                .value
+
+                        );
+                }
+
             }
             else{
 
+                card
+                    .classList
+                    .remove(
+                        "selected"
+                    );
+
                 selected =
+
                     selected
                     .filter(
 
-                        x=>
+                        x =>
 
                         x
                         !==
+
                         e.target
-                        .value
+                            .value
                     );
             }
 
@@ -172,93 +276,141 @@ document
         }
 
     }
+
 );
+
+
+/* =========================================
+   UPDATE CART
+========================================= */
 
 function updateCart(){
 
-    let base =
-        customer.category === "studio"
-        ? 3000
-        : 5000;
+    const base =
 
-    let additional =
-        customer.category === "studio"
-        ? 1500
-        : 2000;
+        customer
+        .category
+        ===
+        "studio"
 
-    let includedThemes = 2;
+        ?
 
-    let total = base;
+        3000
 
-    let html = `
+        :
 
-        Base Package :
-        ₹${base}
+        5000;
 
-        <br><br>
 
-        Included Themes :
-        ${includedThemes}
+    const additional =
 
-        <br><br>
+        customer
+        .category
+        ===
+        "studio"
 
-        Selected Themes :
-        ${selected.length}
+        ?
 
-    `;
+        1500
 
-    if(selected.length > includedThemes){
+        :
 
-        const extra =
-            selected.length
-            - includedThemes;
+        2000;
 
-        const extraCost =
-            extra
-            * additional;
 
-        total += extraCost;
+    const included =
+        2;
 
-        html += `
 
-            <br><br>
+    const extra =
 
-            Additional Themes :
-            ${extra}
+        Math.max(
 
-            <br><br>
+            0,
 
-            Additional Cost :
-            ₹${extraCost}
+            selected
+                .length
+            -
+            included
+        );
 
-        `;
-    }
 
-    html += `
+    const extraCost =
 
-        <br><br>
+        extra
+        *
+        additional;
 
-        Family Pictures :
-        2 Included
 
-        <br><br>
+    const total =
 
-        Edited Photos :
-        5 Included
+        base
+        +
+        extraCost;
 
-        <br><br>
-
-        Soft Copies :
-        Included
-
-    `;
 
     document
         .getElementById(
             "cartDetails"
         )
         .innerHTML =
-            html;
+
+`
+<div>
+
+<b>Package :</b>
+₹${base}
+
+&nbsp;&nbsp;&nbsp;
+
+<b>Included :</b>
+${included}
+
+</div>
+
+<br>
+
+<div>
+
+<b>Selected :</b>
+${selected.length}
+
+&nbsp;&nbsp;&nbsp;
+
+<b>Extra :</b>
+${extra}
+
+</div>
+
+<br>
+
+<div>
+
+<b>Extra Cost :</b>
+₹${extraCost}
+
+&nbsp;&nbsp;&nbsp;
+
+<b>Family :</b>
+2
+
+</div>
+
+<br>
+
+<div>
+
+<b>Edited :</b>
+5
+
+&nbsp;&nbsp;&nbsp;
+
+<b>Soft :</b>
+Included
+
+</div>
+`;
+
 
     document
         .getElementById(
@@ -267,5 +419,10 @@ function updateCart(){
         .innerHTML =
             total;
 }
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
 
 updateCart();

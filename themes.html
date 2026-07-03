@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -7,7 +7,7 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    content="width=device-width, initial-scale=1">
 
 <title>
     Avyuktaphotography
@@ -35,7 +35,28 @@
 
 <div class="customer">
 
-    <div id="customerInfo">
+    <div class="customerGrid">
+
+        <div>
+            <b>Name :</b>
+            <span id="custName"></span>
+        </div>
+
+        <div>
+            <b>Phone :</b>
+            <span id="custPhone"></span>
+        </div>
+
+        <div>
+            <b>Session :</b>
+            <span id="custSession"></span>
+        </div>
+
+        <div>
+            <b>Date :</b>
+            <span id="custDate"></span>
+        </div>
+
     </div>
 
 </div>
@@ -50,54 +71,54 @@
 
     <br><br>
 
-Studio:
-₹1500 per additional theme
+    Studio :
+    ₹1500 per additional theme
 
     <br>
 
-Home/Outdoor/Mix:
-₹2000 per additional theme
+    Home/Outdoor/Mix :
+    ₹2000 per additional theme
 
 </div>
 
-<div
-    id="themeContainer"
-    class="themeContainer">
-
-</div>
-
-<div class="cart">
-
-    <h2>
-        Package Summary
-    </h2>
+<div class="mainContainer">
 
     <div
-        id="cartDetails">
+        id="themeContainer"
+        class="themeContainer">
 
     </div>
 
-    <div class="total">
+    <div class="cart">
 
-        Total :
-        ₹<span id="total">
-            0
-        </span>
+        <h2>
+            Package Summary
+        </h2>
+
+        <div
+            id="cartDetails">
+
+        </div>
+
+        <div class="total">
+
+            Total :
+            ₹<span id="total">
+                0
+            </span>
+
+        </div>
+
+        <button>
+            Continue →
+        </button>
 
     </div>
-
-    <button>
-
-        Continue →
-
-    </button>
 
 </div>
+
 <script src="themeData.js"></script>
 <script src="themes.js"></script>
-<script
-    src="themes.js">
-</script>
 
 </body>
 </html>
