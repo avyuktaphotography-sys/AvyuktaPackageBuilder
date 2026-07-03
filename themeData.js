@@ -8,7 +8,20 @@ const themeData = {
         "WhatsApp Image 2026-06-29 at 11.17.23 AM"
     ],
     "toddlerIndoor": [
-        "WhatsApp Image 2026-06-29 at 11.17.23 AM"
+        "Astronaut",
+        "Bathtub",
+        "Boss Baby",
+        "Farmer",
+        "Flower Jeep",
+        "Flower Trolly",
+        "Harry Potter",
+        "I am One",
+        "Kissing Booth",
+        "Moon",
+        "Painter",
+        "Painter - 2",
+        "Traveller",
+        "Vintage"
     ],
     "toddlerOutdoor": [
         "AVK_1130~4.jpg",
