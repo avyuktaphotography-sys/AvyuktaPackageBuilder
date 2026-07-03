@@ -142,15 +142,10 @@ if(
 `
 <div class="card">
 
-    <img
-
-        src=
-        "images/${folder}/${theme}.jpeg"
-
-        onerror="
-            this.onerror=null;
-            this.src='images/${folder}/${theme}.jpg';
-        ">
+${getImageTag(
+    folder,
+    theme
+)}
 
     <div class="cardBody">
 
@@ -463,3 +458,66 @@ document
                 "confirmation.html";
         }
     );
+
+    function getImageTag(
+    folder,
+    theme
+){
+
+    return `
+
+        <img
+
+            src="images/${folder}/${theme}.jpeg"
+
+            onerror="
+
+                if(
+                    !this.dataset.step
+                ){
+
+                    this.dataset.step=1;
+                    this.src='images/${folder}/${theme}.jpg';
+
+                }
+                else if(
+                    this.dataset.step==1
+                ){
+
+                    this.dataset.step=2;
+                    this.src='images/${folder}/${theme}.JPEG';
+
+                }
+                else if(
+                    this.dataset.step==2
+                ){
+
+                    this.dataset.step=3;
+                    this.src='images/${folder}/${theme}.JPG';
+
+                }
+                else if(
+                    this.dataset.step==3
+                ){
+
+                    this.dataset.step=4;
+                    this.src='images/${folder}/${theme}.png';
+
+                }
+                else if(
+                    this.dataset.step==4
+                ){
+
+                    this.dataset.step=5;
+                    this.src='images/${folder}/${theme}.PNG';
+
+                }
+                else{
+
+                    this.onerror=null;
+                }
+
+            ">
+
+    `;
+}
