@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avyuktaphotography | Package Builder</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <img src="images/header.jpeg">
+
+        <div class="overlay">
+            <h1>Avyuktaphotography</h1>
+            <p>Create Your Perfect Photography Package</p>
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="form-group">
+            <label>
+                Name <span>*</span>
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label>
+                Phone Number <span>*</span>
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number">
+        </div>
+
+        <div class="form-group">
+            <label>
+                Preferred Date <span>*</span>
+            </label>
+
+            <input
+                type="date"
+                id="preferredDate">
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Select Baby Age <span>*</span>
+            </label>
+
+            <div class="radio-group">
+
+                <label class="card">
+                    <input
+                        type="radio"
+                        name="babyAge"
+                        value="newborn">
+                    Newborn
+                </label>
+
+                <label class="card">
+                    <input
+                        type="radio"
+                        name="babyAge"
+                        value="3to6">
+                    3 Months to 6 Months
+                </label>
+
+                <label class="card">
+                    <input
+                        type="radio"
+                        name="babyAge"
+                        value="6to12">
+                    6 Months to 1 Year
+                </label>
+
+                <label class="card">
+                    <input
+                        type="radio"
+                        name="babyAge"
+                        value="1to2">
+                    1 Year to 2 Years
+                </label>
+
+                <label class="card">
+                    <input
+                        type="radio"
+                        name="babyAge"
+                        value="2plus">
+                    2 Years Above
+                </label>
+
+            </div>
+
+        </div>
+
+        <div
+            id="categorySection"
+            style="display:none">
+
+            <div class="form-group">
+
+                <label>
+                    Select Photography Session
+                    <span>*</span>
+                </label>
+
+                <div class="radio-group">
+
+                    <label
+                        class="card studio">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="studio">
+
+                        <strong>
+                            Studio Shoot
+                        </strong>
+
+                        <div class="price">
+                            Starting at ₹3,000
+                        </div>
+
+                    </label>
+
+                    <label
+                        class="card home">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="home">
+
+                        <strong>
+                            Home Shoot
+                        </strong>
+
+                        <div class="price">
+                            Starting at ₹5,000
+                        </div>
+
+                    </label>
+
+                    <label
+                        class="card outdoor">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="outdoor">
+
+                        <strong>
+                            Outdoor Shoot
+                        </strong>
+
+                        <div class="price">
+                            Starting at ₹5,000
+                        </div>
+
+                    </label>
+
+                    <label
+                        class="card mix">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="mix">
+
+                        <strong>
+                            Mix of Indoor & Outdoor
+                        </strong>
+
+                        <div class="price">
+                            Starting at ₹5,000
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="note">
+
+                ★ One theme is included in the package price.<br>
+                ★ Additional themes will be charged extra.<br><br>
+
+                Studio/Home:
+                ₹1,200 per additional theme.<br>
+
+                Outdoor/Mix:
+                ₹1,500 per additional theme.
+
+            </div>
+
+            <button
+                onclick="continueToThemes()">
+
+                Continue →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
