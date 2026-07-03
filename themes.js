@@ -426,3 +426,40 @@ Included
 ========================================= */
 
 updateCart();
+
+document
+    .getElementById(
+        "continueBtn"
+    )
+    .addEventListener(
+
+        "click",
+
+        function(){
+
+            localStorage
+                .setItem(
+
+                    "booking",
+
+                    JSON.stringify({
+
+                        customer:
+                            customer,
+
+                        themes:
+                            selected,
+
+                        total:
+                            document
+                            .getElementById(
+                                "total"
+                            )
+                            .innerHTML
+                    })
+                );
+
+            location.href =
+                "confirmation.html";
+        }
+    );
