@@ -1,26 +1,15 @@
 const themeData = {
     "newborn": [
-        "AVK_1337 (1)~2 (1).jpg",
-        "AVK_3214",
-        "AVK_5543.jpg",
-        "AVK_8808.jpg",
-        "AVK_9769",
-        "Theme"
+        "WhatsApp Image 2026-06-29 at 11.17.23 AM-3",
+        "WhatsApp Image 2026-06-29 at 11.17.23 AM-4"
     ],
     "baby3to6": [
-        "DSC_9142",
-        "IMG_0704"
+        "WhatsApp Image 2026-06-29 at 11.17.23 AM"
     ],
     "toddlerIndoor": [
-        "AVK_4729",
-        "DSC_2516.JPG",
-        "DSC_2568.JPG"
+        "WhatsApp Image 2026-06-29 at 11.17.23 AM"
     ],
     "toddlerOutdoor": [
-        "AVK_3708",
-        "AVK_3722",
-        "AVK_3780 (1)",
-        "AVK_3892",
-        "DSC_7291"
+        "WhatsApp Image 2026-06-29 at 11.17.23 AM"
     ]
 };

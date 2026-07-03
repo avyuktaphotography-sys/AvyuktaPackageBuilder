@@ -177,101 +177,95 @@ document
 function updateCart(){
 
     let base =
-
-        customer
-        .category
-        ===
-        "studio"
-
-        ?
-
-        3000
-
-        :
-
-        5000;
+        customer.category === "studio"
+        ? 3000
+        : 5000;
 
     let additional =
+        customer.category === "studio"
+        ? 1500
+        : 2000;
 
-        customer
-        .category
-        ===
-        "outdoor"
+    let includedThemes = 2;
 
-        ||
+    let total = base;
 
-        customer
-        .category
-        ===
-        "mix"
+    let html = `
 
-        ?
+        Base Package :
+        ₹${base}
 
-        1500
+        <br><br>
 
-        :
+        Included Themes :
+        ${includedThemes}
 
-        1200;
+        <br><br>
 
-    let total =
-        base;
+        Selected Themes :
+        ${selected.length}
 
-    let html =
+    `;
 
-`
-Base Package :
-₹${base}
-
-<br><br>
-
-Selected Themes :
-${selected.length}
-`;
-
-    if(
-        selected.length
-        >
-        1
-    ){
+    if(selected.length > includedThemes){
 
         const extra =
-            selected
-            .length
-            -1;
+            selected.length
+            - includedThemes;
 
-        total +=
+        const extraCost =
             extra
-            *
-            additional;
+            * additional;
 
-        html +=
+        total += extraCost;
 
-`
-<br><br>
+        html += `
 
-Additional Themes :
-${extra}
+            <br><br>
 
-<br>
+            Additional Themes :
+            ${extra}
 
-Extra Cost :
-₹${extra*additional}
-`;
+            <br><br>
+
+            Additional Cost :
+            ₹${extraCost}
+
+        `;
     }
 
-    document
-    .getElementById(
-        "cartDetails"
-    )
-    .innerHTML =
-        html;
+    html += `
+
+        <br><br>
+
+        Family Pictures :
+        2 Included
+
+        <br><br>
+
+        Edited Photos :
+        5 Included
+
+        <br><br>
+
+        Soft Copies :
+        Included
+
+    `;
 
     document
-    .getElementById(
-        "total"
-    )
-    .innerHTML =
-        total;
+        .getElementById(
+            "cartDetails"
+        )
+        .innerHTML =
+            html;
+
+    document
+        .getElementById(
+            "total"
+        )
+        .innerHTML =
+            total;
 }
 
 updateCart();
