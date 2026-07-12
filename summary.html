@@ -10,9 +10,7 @@ name="viewport"
 content="width=device-width, initial-scale=1.0">
 
 <title>
-
 Booking Summary
-
 </title>
 
 <link
@@ -25,17 +23,18 @@ href="summary.css">
 
 <div class="page">
 
-<!-- ==========================================
+<!-- ==========================
 HEADER
-========================================== -->
+=========================== -->
 
 <header class="header">
 
-<div class="logoArea">
+<div class="brand">
 
 <img
 src="images/header.jpeg"
-class="logoImage">
+class="logo"
+alt="Avyuktaphotography">
 
 <div>
 
@@ -55,17 +54,19 @@ Professional Baby Photography
 
 </div>
 
-<div class="bookingId">
+<div class="bookingBox">
+
+<span>
 
 Booking ID
 
-<br>
+</span>
 
-<strong id="bookingId">
+<h2 id="bookingId">
 
 Generating...
 
-</strong>
+</h2>
 
 </div>
 
@@ -73,11 +74,11 @@ Generating...
 
 
 
-<!-- ==========================================
-TITLE
-========================================== -->
+<!-- ==========================
+PAGE TITLE
+=========================== -->
 
-<section class="titleCard">
+<section class="titleSection">
 
 <h2>
 
@@ -87,8 +88,8 @@ Booking Summary
 
 <p>
 
-Please review your package before submitting
-your booking request.
+Please verify your booking details before
+sending your request.
 
 </p>
 
@@ -96,21 +97,21 @@ your booking request.
 
 
 
-<!-- ==========================================
-CUSTOMER DETAILS
-========================================== -->
+<!-- ==========================
+CUSTOMER CARD
+=========================== -->
 
-<section class="customerCard">
+<section class="card">
 
-<h2>
+<div class="cardHeader">
 
-Customer Details
+👶 Customer Details
 
-</h2>
+</div>
 
 <div class="customerGrid">
 
-<div class="detail">
+<div class="info">
 
 <label>
 
@@ -118,11 +119,13 @@ Customer Name
 
 </label>
 
-<h3 id="custName"></h3>
+<h3 id="custName">
+
+</h3>
 
 </div>
 
-<div class="detail">
+<div class="info">
 
 <label>
 
@@ -130,11 +133,13 @@ Phone Number
 
 </label>
 
-<h3 id="custPhone"></h3>
+<h3 id="custPhone">
+
+</h3>
 
 </div>
 
-<div class="detail">
+<div class="info">
 
 <label>
 
@@ -142,11 +147,13 @@ Photography Session
 
 </label>
 
-<h3 id="custSession"></h3>
+<h3 id="custSession">
+
+</h3>
 
 </div>
 
-<div class="detail">
+<div class="info">
 
 <label>
 
@@ -154,7 +161,9 @@ Preferred Date
 
 </label>
 
-<h3 id="custDate"></h3>
+<h3 id="custDate">
+
+</h3>
 
 </div>
 
@@ -164,135 +173,139 @@ Preferred Date
 
 
 
-<!-- ==========================================
-SELECTED THEMES
-========================================== -->
+<!-- ==========================
+THEME GALLERY
+=========================== -->
 
-<section class="themeCard">
+<section class="card">
 
-<h2>
+<div class="cardHeader">
 
-Selected Themes
+📸 Selected Themes
 
-</h2>
+</div>
 
-<p>
+<p class="smallText">
 
-Below are the themes selected for your package.
+Below are the themes you selected.
 
 </p>
 
 <div
+
 id="themeGallery"
+
 class="themeGallery">
+
+<!-- JS -->
 
 </div>
 
 </section>
 
-<!-- ==========================================
-PACKAGE SUMMARY
-========================================== -->
+<!-- ==========================
+INVOICE
+=========================== -->
 
-<section class="invoiceCard">
+<section class="card">
 
-<h2>
+<div class="cardHeader">
 
-Package Summary
+💰 Package Summary
 
-</h2>
+</div>
 
-<table class="invoiceTable">
+<div class="invoice">
 
-<tr>
+<div class="invoiceRow">
 
-<td>
+<span>
 
 Base Package
 
-</td>
+</span>
 
-<td id="basePrice">
+<b id="basePrice">
 
-₹7000
+₹7,000
 
-</td>
+</b>
 
-</tr>
+</div>
 
-<tr>
+<div class="invoiceRow">
 
-<td>
+<span>
 
 Included Themes
 
-</td>
+</span>
 
-<td>
+<b>
 
 4 Themes
 
-</td>
+</b>
 
-</tr>
+</div>
 
-<tr>
+<div class="invoiceRow">
 
-<td>
+<span>
 
 Selected Themes
 
-</td>
+</span>
 
-<td id="selectedThemes">
+<b id="selectedThemes">
 
 0
 
-</td>
+</b>
 
-</tr>
+</div>
 
-<tr>
+<div class="invoiceRow">
 
-<td>
+<span>
 
 Additional Themes
 
-</td>
+</span>
 
-<td id="extraThemes">
+<b id="extraThemes">
 
 0
 
-</td>
+</b>
 
-</tr>
+</div>
 
-<tr>
+<div class="invoiceRow">
 
-<td>
+<span>
 
 Additional Cost
 
-</td>
+</span>
 
-<td id="extraCost">
+<b id="extraCost">
 
 ₹0
 
-</td>
+</b>
 
-</tr>
+</div>
 
-<tr class="grandTotal">
+<div class="grandTotal">
 
-<td>
+<div>
 
-TOTAL
+Grand Total
 
-</td>
+</div>
 
-<td>
+<div>
 
 ₹<span id="total">
 
@@ -300,33 +313,37 @@ TOTAL
 
 </span>
 
-</td>
+</div>
 
-</tr>
+</div>
 
-</table>
+</div>
 
 </section>
 
 
 
-<!-- ==========================================
+<!-- ==========================
 PACKAGE INCLUDES
-========================================== -->
+=========================== -->
 
-<section class="includesCard">
+<section class="card">
 
-<h2>
+<div class="cardHeader">
 
-Your Package Includes
+🎁 Package Includes
 
-</h2>
+</div>
 
 <div class="includesGrid">
 
-<div class="includeItem">
+<div class="includeCard">
+
+<div class="icon">
 
 🎨
+
+</div>
 
 <h3>
 
@@ -334,11 +351,21 @@ Your Package Includes
 
 </h3>
 
+<p>
+
+Professionally designed themes
+
+</p>
+
 </div>
 
-<div class="includeItem">
+<div class="includeCard">
+
+<div class="icon">
 
 👨‍👩‍👧
+
+</div>
 
 <h3>
 
@@ -348,15 +375,19 @@ Family Pictures
 
 <p>
 
-2 Included
+2 Family Pictures Included
 
 </p>
 
 </div>
 
-<div class="includeItem">
+<div class="includeCard">
+
+<div class="icon">
 
 ✨
+
+</div>
 
 <h3>
 
@@ -366,15 +397,19 @@ Edited Photos
 
 <p>
 
-5 Professionally Edited
+5 Premium Edited Images
 
 </p>
 
 </div>
 
-<div class="includeItem">
+<div class="includeCard">
+
+<div class="icon">
 
 💾
+
+</div>
 
 <h3>
 
@@ -384,7 +419,7 @@ Soft Copies
 
 <p>
 
-All Images Included
+All High Resolution Images
 
 </p>
 
@@ -396,70 +431,83 @@ All Images Included
 
 
 
-<!-- ==========================================
-NOTE
-========================================== -->
+<!-- ==========================
+IMPORTANT NOTE
+=========================== -->
 
-<section class="noteCard">
+<section class="card">
 
-<h2>
+<div class="cardHeader">
 
-Important Information
+📌 Important Note
 
-</h2>
+</div>
 
-<p>
-
-Your booking request will be sent to
-Avyuktaphotography through WhatsApp.
-
-</p>
+<div class="noteBox">
 
 <p>
 
-Our team will contact you shortly
-to confirm your preferred date,
-theme availability and booking details.
+Your booking request will be sent directly to
+<strong>Avyuktaphotography</strong> via WhatsApp.
 
 </p>
+
+<br>
+
+<p>
+
+Our team will contact you to confirm your
+preferred date, theme availability and booking.
+
+</p>
+
+</div>
 
 </section>
 
 
 
-<!-- ==========================================
+<!-- ==========================
 BUTTONS
-========================================== -->
+=========================== -->
 
-<section class="buttonArea">
+<section class="actionButtons">
 
 <button
-class="backBtn"
+
+class="btnSecondary"
+
 onclick="history.back()">
 
-← Back
+← Modify Selection
 
 </button>
 
 <button
+
 id="pdfBtn"
-class="pdfBtn">
+
+class="btnBlue">
 
 🖨 Download PDF
 
 </button>
 
 <button
-id="shareBtn"
-class="shareBtn">
 
-📱 Share Booking
+id="shareBtn"
+
+class="btnPurple">
+
+📤 Share
 
 </button>
 
 <button
+
 id="sendBtn"
-class="sendBtn">
+
+class="btnGreen">
 
 📸 Send Booking Request
 
@@ -473,13 +521,13 @@ class="sendBtn">
 
 <p>
 
-© 2026
+© 2026 Avyuktaphotography
 
-Avyuktaphotography
+</p>
 
-<br>
+<p>
 
-Professional Baby Photography
+Capturing Every Beautiful Moment ❤️
 
 </p>
 

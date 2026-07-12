@@ -1,7 +1,7 @@
-/*==================================================
+/*==========================================================
 AVYUKTAPHOTOGRAPHY
 SUMMARY PAGE
-==================================================*/
+==========================================================*/
 
 
 const booking = JSON.parse(
@@ -13,41 +13,50 @@ const booking = JSON.parse(
 );
 
 
-if(!booking){
+if(
+
+    !booking
+
+){
 
     alert(
+
         "Booking not found."
+
     );
 
     window.location.href =
-        "index.html";
+    "index.html";
 
 }
 
 
 
-/*==================================================
+/*==========================================================
 CUSTOMER
-==================================================*/
+==========================================================*/
 
 const customer =
-    booking.customer;
+booking.customer;
 
 
-document.getElementById(
-    "custName"
+document
+.getElementById(
+"custName"
 ).innerHTML =
 customer.name;
 
 
-document.getElementById(
-    "custPhone"
+document
+.getElementById(
+"custPhone"
 ).innerHTML =
 customer.phone;
 
 
-document.getElementById(
-    "custSession"
+document
+.getElementById(
+"custSession"
 ).innerHTML =
 
 customer.category
@@ -63,38 +72,20 @@ customer.category
 .slice(1);
 
 
-document.getElementById(
-    "custDate"
+document
+.getElementById(
+"custDate"
 ).innerHTML =
 customer.preferredDate;
 
 
 
-/*==================================================
+/*==========================================================
 BOOKING ID
-==================================================*/
+==========================================================*/
 
-const today =
+const now =
 new Date();
-
-const yyyy =
-today.getFullYear();
-
-const mm =
-String(
-today.getMonth()+1
-).padStart(
-2,
-"0"
-);
-
-const dd =
-String(
-today.getDate()
-).padStart(
-2,
-"0"
-);
 
 const bookingId =
 
@@ -102,15 +93,29 @@ const bookingId =
 
 +
 
-yyyy
+now.getFullYear()
 
 +
 
-mm
+String(
+
+now.getMonth()+1
+
+).padStart(
+2,
+"0"
+)
 
 +
 
-dd
+String(
+
+now.getDate()
+
+).padStart(
+2,
+"0"
+)
 
 +
 
@@ -120,7 +125,7 @@ dd
 
 Math.floor(
 
-100
+1000
 
 +
 
@@ -128,21 +133,22 @@ Math.random()
 
 *
 
-900
+9000
 
 );
 
 
-document.getElementById(
+document
+.getElementById(
 "bookingId"
 ).innerHTML =
 bookingId;
 
 
 
-/*==================================================
+/*==========================================================
 PACKAGE
-==================================================*/
+==========================================================*/
 
 const includedThemes = 4;
 
@@ -197,84 +203,94 @@ extraCost;
 
 
 
-document.getElementById(
+document
+.getElementById(
 "basePrice"
 ).innerHTML =
+
 "₹"
+
 +
-basePrice.toLocaleString(
+
+basePrice
+.toLocaleString(
 "en-IN"
 );
 
 
-document.getElementById(
+document
+.getElementById(
 "selectedThemes"
 ).innerHTML =
 selectedThemes;
 
 
-document.getElementById(
+document
+.getElementById(
 "extraThemes"
 ).innerHTML =
 extraThemes;
 
 
-document.getElementById(
+document
+.getElementById(
 "extraCost"
 ).innerHTML =
+
 "₹"
+
 +
-extraCost.toLocaleString(
+
+extraCost
+.toLocaleString(
 "en-IN"
 );
 
 
-document.getElementById(
+document
+.getElementById(
 "total"
 ).innerHTML =
-total.toLocaleString(
+
+total
+.toLocaleString(
 "en-IN"
 );
 
-/*==================================================
+/*==========================================================
 IMAGE FOLDER
-==================================================*/
+==========================================================*/
 
 let folder = "";
 
-if(
-    customer.babyAge === "newborn"
-){
+if(customer.babyAge==="newborn"){
 
-    folder = "newborn";
+    folder="newborn";
 
 }
-else if(
-    customer.babyAge === "3to6"
-){
+else if(customer.babyAge==="3to6"){
 
-    folder = "baby3to6";
+    folder="baby3to6";
 
 }
 else{
 
     if(
 
-        customer.category === "outdoor"
+        customer.category==="outdoor"
 
         ||
 
-        customer.category === "mix"
+        customer.category==="mix"
 
     ){
 
-        folder = "toddlerOutdoor";
+        folder="toddlerOutdoor";
 
     }
-
     else{
 
-        folder = "toddlerIndoor";
+        folder="toddlerIndoor";
 
     }
 
@@ -282,38 +298,38 @@ else{
 
 
 
-/*==================================================
-FORMAT TITLE
-==================================================*/
+/*==========================================================
+FORMAT THEME NAME
+==========================================================*/
 
 function formatTitle(text){
 
     return text
 
-        .replace(
-            /[_-]/g,
-            " "
-        )
+    .replace(
+        /[_-]/g,
+        " "
+    )
 
-        .replace(
+    .replace(
 
-            /\b\w/g,
+        /\b\w/g,
 
-            function(letter){
+        function(letter){
 
-                return letter.toUpperCase();
+            return letter.toUpperCase();
 
-            }
+        }
 
-        );
+    );
 
 }
 
 
 
-/*==================================================
-LOAD SELECTED THEMES
-==================================================*/
+/*==========================================================
+THEME GALLERY
+==========================================================*/
 
 const gallery =
 
@@ -325,9 +341,9 @@ document.getElementById(
 
 booking.themes.forEach(
 
-    function(theme){
+function(theme){
 
-        gallery.innerHTML +=
+gallery.innerHTML +=
 
 `
 
@@ -339,7 +355,9 @@ src="images/${folder}/${theme}.jpeg"
 
 alt="${theme}"
 
-onerror="loadNextImage(this,'${folder}','${theme}')"
+loading="lazy"
+
+onerror="loadImage(this,'${folder}','${theme}')"
 
 >
 
@@ -353,16 +371,14 @@ ${formatTitle(theme)}
 
 `;
 
-    }
+}
 
 );
 
 
 
-/*==================================================
+/*==========================================================
 IMAGE FALLBACK
-
-Supports
 
 jpeg
 jpg
@@ -371,9 +387,9 @@ JPG
 png
 PNG
 
-==================================================*/
+==========================================================*/
 
-function loadNextImage(
+function loadImage(
 
 img,
 
@@ -383,240 +399,118 @@ name
 
 ){
 
-    const files=[
+const files=[
 
-        ".jpeg",
+".jpeg",
 
-        ".jpg",
+".jpg",
 
-        ".JPEG",
+".JPEG",
 
-        ".JPG",
+".JPG",
 
-        ".png",
+".png",
 
-        ".PNG"
+".PNG"
 
-    ];
-
-
-
-    let step =
-
-        parseInt(
-
-            img.dataset.step
-
-            ||
-
-            0
-
-        );
+];
 
 
+let index =
 
-    step++;
+parseInt(
 
+img.dataset.index
 
+||
 
-    if(
+0
 
-        step>=files.length
-
-    ){
-
-        img.onerror=null;
-
-        img.src="images/no-image.png";
-
-        return;
-
-    }
+);
 
 
-
-    img.dataset.step=step;
-
+index++;
 
 
-    img.src=
+if(
 
-    `images/${folder}/${name}${files[step]}`;
+index>=files.length
+
+){
+
+img.onerror=null;
+
+img.src="images/no-image.png";
+
+return;
 
 }
 
-/*==================================================
-WHATSAPP MESSAGE
-==================================================*/
+
+img.dataset.index=index;
+
+
+img.src=
+
+`images/${folder}/${name}${files[index]}`;
+
+}
+
+
+
+/*==========================================================
+IMAGE ANIMATION
+==========================================================*/
+
+setTimeout(
+
+function(){
 
 document
-.getElementById(
-    "sendBtn"
+
+.querySelectorAll(
+
+".item"
+
 )
-.addEventListener(
 
-    "click",
+.forEach(
 
-    function(){
+function(card,index){
 
-        let message =
+card.style.opacity="0";
 
-`📸 *AVYUKTAPHOTOGRAPHY*
+card.style.transform="translateY(40px)";
 
-Booking ID
-${bookingId}
+setTimeout(
 
-━━━━━━━━━━━━━━━━━━
+function(){
 
-👤 Customer
+card.style.transition=".5s";
 
-Name :
-${customer.name}
+card.style.opacity="1";
 
-Phone :
-${customer.phone}
+card.style.transform="translateY(0)";
 
-Preferred Date :
-${customer.preferredDate}
+},
 
-Photography Session :
-${formatTitle(customer.category)}
-
-━━━━━━━━━━━━━━━━━━
-
-📸 Selected Themes
-
-${booking.themes
-.map(function(theme){
-
-return "• " + formatTitle(theme);
-
-})
-.join("\n")}
-
-━━━━━━━━━━━━━━━━━━
-
-💰 Package Details
-
-Base Package :
-₹${basePrice.toLocaleString("en-IN")}
-
-Included Themes :
-${includedThemes}
-
-Selected Themes :
-${selectedThemes}
-
-Additional Themes :
-${extraThemes}
-
-Additional Cost :
-₹${extraCost.toLocaleString("en-IN")}
-
-━━━━━━━━━━━━━━━━━━
-
-💵 GRAND TOTAL
-
-₹${total.toLocaleString("en-IN")}
-
-━━━━━━━━━━━━━━━━━━
-
-Thank you for choosing
-Avyuktaphotography ❤️
-
-`;
-
-        window.open(
-
-            "https://wa.me/91XXXXXXXXXX?text="
-
-            +
-
-            encodeURIComponent(
-                message
-            )
-
-        );
-
-    }
+index*120
 
 );
 
-
-
-/*==================================================
-SHARE BOOKING
-==================================================*/
-
-document
-.getElementById(
-    "shareBtn"
-)
-.addEventListener(
-
-    "click",
-
-    async function(){
-
-        if(
-
-            navigator.share
-
-        ){
-
-            try{
-
-                await navigator.share({
-
-                    title:
-                    "Avyuktaphotography Booking",
-
-                    text:
-
-                    "Booking ID : "
-
-                    +
-
-                    bookingId
-
-                    +
-
-                    "\\nTotal : ₹"
-
-                    +
-
-                    total
-
-                });
-
-            }
-
-            catch(e){}
-
-        }
-
-        else{
-
-            alert(
-
-                "Sharing is not supported on this browser."
-
-            );
-
-        }
-
-    }
+}
 
 );
 
+},
 
+200
 
-/*==================================================
+);
+
+/*==========================================================
 DOWNLOAD PDF
-
-(Opens Print Dialog)
-
-==================================================*/
+==========================================================*/
 
 document
 .getElementById(
@@ -636,37 +530,192 @@ document
 
 
 
-/*==================================================
-ANIMATION
-==================================================*/
+/*==========================================================
+SHARE BOOKING
+==========================================================*/
 
 document
-.querySelectorAll(
-
-    ".item"
-
+.getElementById(
+    "shareBtn"
 )
-.forEach(
+.addEventListener(
 
-    function(card,index){
+    "click",
 
-        card.style.opacity="0";
+    async function(){
 
-        card.style.transform="translateY(40px)";
+        const shareText =
 
-        setTimeout(
+`Booking ID : ${bookingId}
 
-            function(){
+Customer : ${customer.name}
 
-                card.style.transition=".5s";
+Session : ${formatTitle(customer.category)}
 
-                card.style.opacity="1";
+Total : ₹${total.toLocaleString("en-IN")}`;
 
-                card.style.transform="translateY(0px)";
 
-            },
+        if(
 
-            index*120
+            navigator.share
+
+        ){
+
+            try{
+
+                await navigator.share({
+
+                    title:
+
+                    "Avyuktaphotography Booking",
+
+                    text:
+
+                    shareText
+
+                });
+
+            }
+
+            catch(error){
+
+                console.log(error);
+
+            }
+
+        }
+
+        else{
+
+            navigator.clipboard.writeText(
+
+                shareText
+
+            );
+
+            alert(
+
+                "Booking copied to clipboard."
+
+            );
+
+        }
+
+    }
+
+);
+
+
+
+/*==========================================================
+WHATSAPP BOOKING
+==========================================================*/
+
+document
+.getElementById(
+    "sendBtn"
+)
+.addEventListener(
+
+    "click",
+
+    function(){
+
+        let themeList =
+
+        booking.themes
+
+        .map(
+
+            function(theme){
+
+                return "• " + formatTitle(theme);
+
+            }
+
+        )
+
+        .join("\n");
+
+
+        const message =
+
+`📸 *AVYUKTAPHOTOGRAPHY*
+
+━━━━━━━━━━━━━━━━━━
+
+📄 Booking ID
+
+${bookingId}
+
+━━━━━━━━━━━━━━━━━━
+
+👤 Customer Details
+
+Name : ${customer.name}
+
+Phone : ${customer.phone}
+
+Preferred Date : ${customer.preferredDate}
+
+Photography Session : ${formatTitle(customer.category)}
+
+━━━━━━━━━━━━━━━━━━
+
+📸 Selected Themes
+
+${themeList}
+
+━━━━━━━━━━━━━━━━━━
+
+💰 Package Summary
+
+Base Package : ₹${basePrice.toLocaleString("en-IN")}
+
+Included Themes : ${includedThemes}
+
+Selected Themes : ${selectedThemes}
+
+Additional Themes : ${extraThemes}
+
+Additional Cost : ₹${extraCost.toLocaleString("en-IN")}
+
+━━━━━━━━━━━━━━━━━━
+
+💵 GRAND TOTAL
+
+₹${total.toLocaleString("en-IN")}
+
+━━━━━━━━━━━━━━━━━━
+
+Thank you for choosing
+*Avyuktaphotography* ❤️`;
+
+
+        const phone =
+
+        "919008203206";   // <-- Replace if needed
+
+
+        window.open(
+
+            "https://wa.me/"
+
+            +
+
+            phone
+
+            +
+
+            "?text="
+
+            +
+
+            encodeURIComponent(
+
+                message
+
+            )
 
         );
 
@@ -676,12 +725,26 @@ document
 
 
 
-/*==================================================
-CONSOLE
-==================================================*/
+/*==========================================================
+PAGE READY
+==========================================================*/
+
+window.addEventListener(
+
+    "load",
+
+    function(){
+
+        document.body.style.opacity="1";
+
+    }
+
+);
+
+
 
 console.log(
 
-"Booking Summary Loaded"
+    "Summary Page Loaded Successfully."
 
 );
