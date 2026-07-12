@@ -20,8 +20,14 @@ const themeData = {
         "Moon",
         "Painter - 2",
         "Painter",
-        "Traveller",
-        "Vintage"
+        "Study",
+        "Traveller 1",
+        "Traveller 2",
+        "UShape Bench - Honey",
+        "UShape Bench - One",
+        "UShape Bench Garden",
+        "Vintage",
+        "Wednesday"
     ],
     "toddlerOutdoor": [
         "AVK_1130~4.jpg",
