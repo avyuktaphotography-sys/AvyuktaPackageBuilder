@@ -159,7 +159,7 @@ booking.themes.forEach(function(theme){
 
             onerror="
                 this.onerror=null;
-                this.src='images/${folder}/${theme}.jpg';
+                this.src='images/${folder}/${theme}.JPG';
             ">
 
         <p>
