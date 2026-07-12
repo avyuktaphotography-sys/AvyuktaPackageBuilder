@@ -528,7 +528,7 @@ Avyuktaphotography ❤️
 
         window.open(
 
-            "https://wa.me/919008203206?text="
+            "https://wa.me/91XXXXXXXXXX?text="
 
             +
 
