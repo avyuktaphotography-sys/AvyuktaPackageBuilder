@@ -565,7 +565,7 @@ Edited Photos
 
 <span>
 
-5 Included
+25 Premium Edited Images & (5 Per Additional Themes if you added)
 
 </span>
 
