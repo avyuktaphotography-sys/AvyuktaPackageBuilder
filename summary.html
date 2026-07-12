@@ -1,1 +1,494 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Booking Summary</title><link rel="stylesheet" href="summary.css"></head><body><div class="container"><h1>Booking Summary</h1><div class="card"><h2>Customer Details</h2><div class="grid"><div><b>Name</b><br><span id="custName"></span></div><div><b>Phone</b><br><span id="custPhone"></span></div><div><b>Session</b><br><span id="custSession"></span></div><div><b>Date</b><br><span id="custDate"></span></div></div></div><div class="card"><h2>Selected Themes</h2><div id="themeGallery" class="gallery"></div></div><div class="card"><h2>Package Summary</h2><table class="summaryTable"><tr><td>Base Package</td><td id="basePrice"></td></tr><tr><td>Included Themes</td><td>4</td></tr><tr><td>Selected Themes</td><td id="selectedThemes"></td></tr><tr><td>Additional Themes</td><td id="extraThemes"></td></tr><tr><td>Additional Cost</td><td id="extraCost"></td></tr><tr class="total"><td>Total</td><td id="total"></td></tr></table></div><div class="actions"><button onclick="history.back()">← Back</button><button id="sendBtn">Send Booking Request</button></div></div><script src="summary.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Booking Summary
+
+</title>
+
+<link
+rel="stylesheet"
+href="summary.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- ==========================================
+HEADER
+========================================== -->
+
+<header class="header">
+
+<div class="logoArea">
+
+<img
+src="images/header.jpeg"
+class="logoImage">
+
+<div>
+
+<h1>
+
+Avyuktaphotography
+
+</h1>
+
+<p>
+
+Professional Baby Photography
+
+</p>
+
+</div>
+
+</div>
+
+<div class="bookingId">
+
+Booking ID
+
+<br>
+
+<strong id="bookingId">
+
+Generating...
+
+</strong>
+
+</div>
+
+</header>
+
+
+
+<!-- ==========================================
+TITLE
+========================================== -->
+
+<section class="titleCard">
+
+<h2>
+
+Booking Summary
+
+</h2>
+
+<p>
+
+Please review your package before submitting
+your booking request.
+
+</p>
+
+</section>
+
+
+
+<!-- ==========================================
+CUSTOMER DETAILS
+========================================== -->
+
+<section class="customerCard">
+
+<h2>
+
+Customer Details
+
+</h2>
+
+<div class="customerGrid">
+
+<div class="detail">
+
+<label>
+
+Customer Name
+
+</label>
+
+<h3 id="custName"></h3>
+
+</div>
+
+<div class="detail">
+
+<label>
+
+Phone Number
+
+</label>
+
+<h3 id="custPhone"></h3>
+
+</div>
+
+<div class="detail">
+
+<label>
+
+Photography Session
+
+</label>
+
+<h3 id="custSession"></h3>
+
+</div>
+
+<div class="detail">
+
+<label>
+
+Preferred Date
+
+</label>
+
+<h3 id="custDate"></h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+SELECTED THEMES
+========================================== -->
+
+<section class="themeCard">
+
+<h2>
+
+Selected Themes
+
+</h2>
+
+<p>
+
+Below are the themes selected for your package.
+
+</p>
+
+<div
+id="themeGallery"
+class="themeGallery">
+
+</div>
+
+</section>
+
+<!-- ==========================================
+PACKAGE SUMMARY
+========================================== -->
+
+<section class="invoiceCard">
+
+<h2>
+
+Package Summary
+
+</h2>
+
+<table class="invoiceTable">
+
+<tr>
+
+<td>
+
+Base Package
+
+</td>
+
+<td id="basePrice">
+
+₹7000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Included Themes
+
+</td>
+
+<td>
+
+4 Themes
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Selected Themes
+
+</td>
+
+<td id="selectedThemes">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Additional Themes
+
+</td>
+
+<td id="extraThemes">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Additional Cost
+
+</td>
+
+<td id="extraCost">
+
+₹0
+
+</td>
+
+</tr>
+
+<tr class="grandTotal">
+
+<td>
+
+TOTAL
+
+</td>
+
+<td>
+
+₹<span id="total">
+
+7000
+
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+</section>
+
+
+
+<!-- ==========================================
+PACKAGE INCLUDES
+========================================== -->
+
+<section class="includesCard">
+
+<h2>
+
+Your Package Includes
+
+</h2>
+
+<div class="includesGrid">
+
+<div class="includeItem">
+
+🎨
+
+<h3>
+
+4 Creative Themes
+
+</h3>
+
+</div>
+
+<div class="includeItem">
+
+👨‍👩‍👧
+
+<h3>
+
+Family Pictures
+
+</h3>
+
+<p>
+
+2 Included
+
+</p>
+
+</div>
+
+<div class="includeItem">
+
+✨
+
+<h3>
+
+Edited Photos
+
+</h3>
+
+<p>
+
+5 Professionally Edited
+
+</p>
+
+</div>
+
+<div class="includeItem">
+
+💾
+
+<h3>
+
+Soft Copies
+
+</h3>
+
+<p>
+
+All Images Included
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+NOTE
+========================================== -->
+
+<section class="noteCard">
+
+<h2>
+
+Important Information
+
+</h2>
+
+<p>
+
+Your booking request will be sent to
+Avyuktaphotography through WhatsApp.
+
+</p>
+
+<p>
+
+Our team will contact you shortly
+to confirm your preferred date,
+theme availability and booking details.
+
+</p>
+
+</section>
+
+
+
+<!-- ==========================================
+BUTTONS
+========================================== -->
+
+<section class="buttonArea">
+
+<button
+class="backBtn"
+onclick="history.back()">
+
+← Back
+
+</button>
+
+<button
+id="pdfBtn"
+class="pdfBtn">
+
+🖨 Download PDF
+
+</button>
+
+<button
+id="shareBtn"
+class="shareBtn">
+
+📱 Share Booking
+
+</button>
+
+<button
+id="sendBtn"
+class="sendBtn">
+
+📸 Send Booking Request
+
+</button>
+
+</section>
+
+
+
+<footer>
+
+<p>
+
+© 2026
+
+Avyuktaphotography
+
+<br>
+
+Professional Baby Photography
+
+</p>
+
+</footer>
+
+</div>
+
+<script src="summary.js"></script>
+
+</body>
+
+</html>
