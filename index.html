@@ -3,231 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avyuktaphotography | Package Builder</title>
+<title>Avyuktaphotography | Build Your Package</title>
+
+<meta name="description" content="Build your own baby photography package with Avyuktaphotography. Studio, Home, Outdoor and Mix sessions with live pricing.">
+<meta name="keywords" content="baby photography Bangalore,newborn photography Bangalore,maternity photography,Bangalore photographer,baby photoshoot">
 
 <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body>
 
-<div class="container">
+<header class="hero">
 
-    <div class="header">
+    <img src="images/header.jpeg" class="heroImage" alt="Avyuktaphotography">
 
-        <img src="images/header.jpeg">
+    <div class="heroOverlay">
+        <h1>Avyuktaphotography</h1>
+        <h1 style="font-size:16px;">Build Your Own Photography Package</h1>
 
-        <div class="overlay">
-            <h1>Avyuktaphotography</h1>
-            <p>Create Your Perfect Photography Package</p>
-        </div>
+        <p style="font-size:16px;">
+            Choose your photography session,
+            select your favourite themes
+            and create your own customised package.
+        </p>
 
     </div>
 
-    <div class="content">
+</header>
 
-        <div class="form-group">
-            <label>
-                Name <span>*</span>
-            </label>
+<div class="bookingContainer">
 
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Enter your name">
-        </div>
+<h2>Customer Details</h2>
 
-        <div class="form-group">
-            <label>
-                Phone Number <span>*</span>
-            </label>
+<div class="inputGrid">
 
-            <input
-                type="tel"
-                id="phone"
-                placeholder="Enter your phone number">
-        </div>
+<div class="formGroup">
+<label>Name *</label>
+<input type="text" id="customerName" placeholder="Enter your name">
+</div>
 
-        <div class="form-group">
-            <label>
-                Preferred Date <span>*</span>
-            </label>
+<div class="formGroup">
+<label>Phone Number *</label>
+<input type="tel" id="phone" placeholder="Enter your phone number">
+</div>
 
-            <input
-                type="date"
-                id="preferredDate">
-        </div>
-
-        <div class="form-group">
-
-            <label>
-                Select Baby Age <span>*</span>
-            </label>
-
-            <div class="radio-group">
-
-                <label class="card">
-                    <input
-                        type="radio"
-                        name="babyAge"
-                        value="newborn">
-                    Newborn
-                </label>
-
-                <label class="card">
-                    <input
-                        type="radio"
-                        name="babyAge"
-                        value="3to6">
-                    3 Months to 6 Months
-                </label>
-
-                <label class="card">
-                    <input
-                        type="radio"
-                        name="babyAge"
-                        value="6to12">
-                    6 Months to 1 Year
-                </label>
-
-                <label class="card">
-                    <input
-                        type="radio"
-                        name="babyAge"
-                        value="1to2">
-                    1 Year to 2 Years
-                </label>
-
-                <label class="card">
-                    <input
-                        type="radio"
-                        name="babyAge"
-                        value="2plus">
-                    2 Years Above
-                </label>
-
-            </div>
-
-        </div>
-
-        <div
-            id="categorySection"
-            style="display:none">
-
-            <div class="form-group">
-
-                <label>
-                    Select Photography Session
-                    <span>*</span>
-                </label>
-
-                <div class="radio-group">
-
-                    <label
-                        class="card studio">
-
-                        <input
-                            type="radio"
-                            name="category"
-                            value="studio">
-
-                        <strong>
-                            Studio Shoot
-                        </strong>
-
-                        <div class="price">
-                            Starting at ₹3,000
-                        </div>
-
-                    </label>
-
-                    <label
-                        class="card home">
-
-                        <input
-                            type="radio"
-                            name="category"
-                            value="home">
-
-                        <strong>
-                            Home Shoot
-                        </strong>
-
-                        <div class="price">
-                            Starting at ₹5,000
-                        </div>
-
-                    </label>
-
-                    <label
-                        class="card outdoor">
-
-                        <input
-                            type="radio"
-                            name="category"
-                            value="outdoor">
-
-                        <strong>
-                            Outdoor Shoot
-                        </strong>
-
-                        <div class="price">
-                            Starting at ₹5,000
-                        </div>
-
-                    </label>
-
-                    <label
-                        class="card mix">
-
-                        <input
-                            type="radio"
-                            name="category"
-                            value="mix">
-
-                        <strong>
-                            Mix of Indoor & Outdoor
-                        </strong>
-
-                        <div class="price">
-                            Starting at ₹5,000
-                        </div>
-
-                    </label>
-
-                </div>
-
-            </div>
-
-<div class="note">
-
-    ★ Two themes are included in the package price.
-
-    <br><br>
-
-    ★ Additional themes will be charged extra.
-
-    <br><br>
-
-    Studio:
-    ₹1500 per additional theme.
-
-    <br>
-
-    Home/Outdoor/Mix:
-    ₹2000 per additional theme.
+<div class="formGroup">
+<label>Preferred Date *</label>
+<input type="date" id="preferredDate">
+</div>
 
 </div>
 
-            <button
-                onclick="continueToThemes()">
+<h2>Baby Age</h2>
 
-                Continue →
+<div class="radioGrid">
 
-            </button>
+<label class="optionCard">
+<input type="radio" name="babyAge" value="newborn">
+<span>👶<br>Newborn</span>
+</label>
 
-        </div>
+<label class="optionCard">
+<input type="radio" name="babyAge" value="3to6">
+<span>🧸<br>3 Months to 6 Months</span>
+</label>
 
-    </div>
+<label class="optionCard">
+<input type="radio" name="babyAge" value="6to12">
+<span>🎈<br>6 Months to 1 Year</span>
+</label>
+
+<label class="optionCard">
+<input type="radio" name="babyAge" value="1to2">
+<span>🚶<br>1 Year to 2 Years</span>
+</label>
+
+<label class="optionCard">
+<input type="radio" name="babyAge" value="2plus">
+<span>⭐<br>2 Years Above</span>
+</label>
+
+</div>
+
+<div id="categorySection" style="display:none;">
+
+<h2>Select Photography Session</h2>
+
+<div class="sessionGrid">
+
+<label class="sessionCard">
+<input type="radio" name="category" value="studio">
+<h3>📸 Studio Shoot</h3>
+<p>₹7,000</p>
+<span>Includes 4 Themes</span>
+</label>
+
+<label class="sessionCard">
+<input type="radio" name="category" value="home">
+<h3>🏠 Home Shoot</h3>
+<p>₹10,000</p>
+<span>Includes 4 Themes</span>
+</label>
+
+<label class="sessionCard">
+<input type="radio" name="category" value="outdoor">
+<h3>🌳 Outdoor Shoot</h3>
+<p>₹10,000</p>
+<span>Includes 4 Themes</span>
+</label>
+
+<label class="sessionCard">
+<input type="radio" name="category" value="mix">
+<h3>✨ Mix of Indoor & Outdoor</h3>
+<p>₹10,000</p>
+<span>Includes 4 Themes</span>
+</label>
+
+</div>
+
+<div class="packageBox">
+
+<h3>Package Includes</h3>
+
+<ul>
+
+<li>✅ 4 Creative Themes</li>
+<li>✅ 2 Family Pictures</li>
+<li>✅ 25 Professionally Edited Photos</li>
+<li>✅ All Soft Copies</li>
+
+</ul>
+
+<p><strong>Additional Theme Charges</strong></p>
+
+<ul>
+<li>Studio : ₹1,500 per theme</li>
+<li>Home / Outdoor / Mix : ₹2,000 per theme</li>
+</ul>
+
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+<button onclick="continueToThemes()">
+Continue →
+</button>
+</div>
+
+</div>
 
 </div>
 
