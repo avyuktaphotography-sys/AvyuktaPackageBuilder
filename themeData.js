@@ -18,8 +18,8 @@ const themeData = {
         "I am One",
         "Kissing Booth",
         "Moon",
-        "Painter",
         "Painter - 2",
+        "Painter",
         "Traveller",
         "Vintage"
     ],

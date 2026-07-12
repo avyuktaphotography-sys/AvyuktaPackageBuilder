@@ -1,121 +1,273 @@
-const booking =
+/*==========================================
+AVYUKTAPHOTOGRAPHY
+CONFIRMATION PAGE
+==========================================*/
 
-    JSON.parse(
+const booking = JSON.parse(
+    localStorage.getItem("booking")
+);
 
-        localStorage
-        .getItem(
-            "booking"
-        )
-    );
+if (!booking) {
 
+    alert("Booking details not found.");
 
-document
-    .getElementById(
-        "total"
-    )
-    .innerHTML =
-    booking.total;
+    window.location.href = "book.html";
 
-
-let html =
-
-`
-<p>
-<b>Name:</b>
-${booking.customer.name}
-</p>
-
-<p>
-<b>Phone:</b>
-${booking.customer.phone}
-</p>
-
-<p>
-<b>Session:</b>
-${booking.customer.category}
-</p>
-
-<p>
-<b>Date:</b>
-${booking.customer.preferredDate}
-</p>
-
-<p>
-<b>Themes:</b>
-</p>
-<ul>
-`;
+}
 
 
-booking.themes
-.forEach(
+/*------------------------------------------
+CUSTOMER DETAILS
+------------------------------------------*/
 
-    t => {
+document.getElementById("custName").innerHTML =
+booking.customer.name;
 
-        html +=
+document.getElementById("custPhone").innerHTML =
+booking.customer.phone;
 
-        `<li>${t}</li>`;
+document.getElementById("custDate").innerHTML =
+booking.customer.preferredDate;
+
+document.getElementById("custSession").innerHTML =
+booking.customer.category
+.charAt(0)
+.toUpperCase()
++
+booking.customer.category.slice(1);
+
+
+/*------------------------------------------
+THEMES
+------------------------------------------*/
+
+const list =
+document.getElementById(
+    "themeList"
+);
+
+booking.themes.forEach(
+
+    function(theme){
+
+        list.innerHTML +=
+
+        `<li>${formatTitle(theme)}</li>`;
 
     }
+
 );
 
 
-html +=
 
-`
-</ul>
-`;
+/*------------------------------------------
+PACKAGE
+------------------------------------------*/
 
+const includedThemes = 4;
+
+const extraThemes =
+
+Math.max(
+
+0,
+
+booking.themes.length
+-
+includedThemes
+
+);
+
+
+const extraThemePrice =
+
+booking.customer.category==="studio"
+
+||
+
+booking.customer.category==="home"
+
+?
+
+1500
+
+:
+
+2000;
+
+
+const extraCost =
+
+extraThemes
+*
+extraThemePrice;
+
+
+document.getElementById(
+"basePrice"
+).innerHTML =
+
+"₹"
++
+booking.basePrice
+.toLocaleString(
+"en-IN"
+);
+
+
+document.getElementById(
+"extraThemes"
+).innerHTML =
+
+extraThemes;
+
+
+document.getElementById(
+"extraCost"
+).innerHTML =
+
+"₹"
++
+extraCost
+.toLocaleString(
+"en-IN"
+);
+
+
+document.getElementById(
+"total"
+).innerHTML =
+
+booking.total
+.toLocaleString(
+"en-IN"
+);
+
+
+
+/*------------------------------------------
+FORMAT TITLE
+------------------------------------------*/
+
+function formatTitle(text){
+
+    return text
+
+    .replace(
+        /[_-]/g,
+        " "
+    )
+
+    .replace(
+
+        /\b\w/g,
+
+        function(letter){
+
+            return letter.toUpperCase();
+
+        }
+
+    );
+
+}
+
+
+
+/*------------------------------------------
+WHATSAPP
+------------------------------------------*/
 
 document
-    .getElementById(
-        "summary"
-    )
-    .innerHTML =
-    html;
+.getElementById(
+"whatsappBtn"
+)
+.addEventListener(
 
-
-document
-    .getElementById(
-        "whatsapp"
-    )
-    .onclick =
+"click",
 
 function(){
 
-    const message =
 
-`
-Hello Avyuktaphotography
+const message =
 
-Name:
+`📸 *New Photography Booking*
+
+👤 Name:
 ${booking.customer.name}
 
-Phone:
+📞 Phone:
 ${booking.customer.phone}
 
-Session:
-${booking.customer.category}
-
-Date:
+📅 Preferred Date:
 ${booking.customer.preferredDate}
 
-Selected Themes:
-${booking.themes.join(", ")}
+📷 Session:
+${booking.customer.category}
 
-Package:
+🎨 Selected Themes:
+${booking.themes
+.map(formatTitle)
+.join("\n")}
+
+💰 Total Package:
 ₹${booking.total}
+
+Thank you.
 `;
 
-    window.open(
 
-        "https://wa.me/917406109829?text="
+/* CHANGE NUMBER */
 
-        +
+const whatsapp =
 
-        encodeURIComponent(
-            message
-        )
+"919876543210";
 
-    );
-};
+
+window.open(
+
+"https://wa.me/"
+
++
+
+whatsapp
+
++
+
+"?text="
+
++
+
+encodeURIComponent(
+message
+)
+
+);
+
+
+}
+
+);
+
+
+
+/*------------------------------------------
+BACK
+------------------------------------------*/
+
+document
+.getElementById(
+"backBtn"
+)
+.addEventListener(
+
+"click",
+
+function(){
+
+window.location.href =
+"index.html";
+
+}
+
+);

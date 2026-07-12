@@ -1,136 +1,246 @@
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+:root{
+    --primary:#b22222;
+    --accent:#d4af37;
+    --light:#f7f7f7;
+    --dark:#222;
+    --radius:16px;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Verdana;
-    background:#f4f6fa;
+    font-family:Verdana,Arial,sans-serif;
+    background:var(--light);
+    color:var(--dark);
 }
 
-.container{
-    max-width:850px;
-    margin:30px auto;
-    background:#fff;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 5px 25px rgba(0,0,0,.1);
-}
-
-.header{
+.hero{
     position:relative;
-    height:250px;
+    height:380px;
+    overflow:hidden;
 }
 
-.header img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-}
-
-.overlay{
-    position:absolute;
-    top:0;
-    left:0;
+.heroImage{
     width:100%;
     height:100%;
-    background:rgba(0,0,0,.45);
+    object-fit:cover;
+    animation:zoomHero 18s ease-in-out infinite alternate;
+}
 
+.heroOverlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
-    color:white;
+    text-align:center;
+    color:#fff;
+    padding:20px;
 }
 
-.overlay h1{
-    font-size:34px;
-    margin-bottom:10px;
+.heroOverlay h1{
+    font-size:48px;
+    margin-bottom:15px;
+    text-shadow:0 2px 8px rgba(0,0,0,.4);
 }
 
-.content{
-    padding:30px;
+.heroOverlay p{
+    font-size:20px;
+    max-width:900px;
+    line-height:1.7;
 }
 
-.form-group{
-    margin-bottom:25px;
+.bookingContainer{
+    width:min(1200px,92%);
+    margin:-60px auto 50px;
+    background:#fff;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+    position:relative;
 }
 
-.form-group label{
-    display:block;
-    font-weight:bold;
-    font-size:12px;
-    margin-bottom:10px;
+h2{
+    color:var(--primary);
+    margin:30px 0 20px;
+    font-size:30px;
 }
 
-.form-group span{
-    color:red;
+.inputGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-input[type=text],
-input[type=tel],
-input[type=date]{
-    width:100%;
-    padding:14px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-family:Verdana;
-}
-
-.radio-group{
+.formGroup{
     display:flex;
     flex-direction:column;
-    gap:12px;
 }
 
-.card{
+.formGroup label{
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.formGroup input{
+    padding:14px;
     border:1px solid #ddd;
-    background:white;
-    padding:15px;
-    border-radius:10px;
+    border-radius:12px;
+    font-size:16px;
+}
+
+.formGroup input:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(178,34,34,.12);
+}
+
+.radioGrid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.optionCard{
     cursor:pointer;
+    border:2px solid #e6e6e6;
+    border-radius:16px;
+    padding:22px 15px;
+    text-align:center;
     transition:.3s;
+    background:#fff;
 }
 
-.card:hover{
-    border-color:#d62828;
-    background:#fafafa;
+.optionCard input{
+    display:none;
 }
 
-.card input{
-    margin-right:10px;
-}
-
-.price{
-    margin-top:5px;
-    margin-left:25px;
-    color:#777;
-    font-size:13px;
-}
-
-.note{
-    background:#fff8e7;
-    border-left:5px solid #d62828;
-    padding:15px;
-    margin-bottom:20px;
-    font-size:14px;
+.optionCard span{
+    font-size:18px;
     line-height:1.6;
 }
 
-button{
-    width:100%;
-    padding:16px;
-    border:none;
-    background:#d62828;
-    color:white;
-    border-radius:10px;
-    font-size:16px;
-    font-weight:bold;
+.optionCard:hover{
+    transform:translateY(-6px);
+    border-color:var(--primary);
+    box-shadow:0 12px 24px rgba(0,0,0,.12);
+}
+
+.optionCard:has(input:checked){
+    border-color:var(--primary);
+    background:#fff6f6;
+}
+
+.sessionGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-top:20px;
+}
+
+.sessionCard{
     cursor:pointer;
+    border:2px solid #e5e5e5;
+    border-radius:18px;
+    padding:28px;
+    transition:.35s;
+    background:#fff;
+}
+
+.sessionCard input{
+    display:none;
+}
+
+.sessionCard h3{
+    font-size:26px;
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.sessionCard p{
+    font-size:34px;
+    font-weight:bold;
+    color:#111;
+}
+
+.sessionCard span{
+    display:block;
+    margin-top:10px;
+    color:#666;
+}
+
+.sessionCard:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+    border-color:var(--accent);
+}
+
+.sessionCard:has(input:checked){
+    background:#fff7eb;
+    border-color:var(--accent);
+}
+
+.packageBox{
+    margin-top:35px;
+    padding:25px;
+    border-left:6px solid var(--primary);
+    background:#fff8eb;
+    border-radius:12px;
+}
+
+.packageBox h3{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.packageBox ul{
+    margin-left:20px;
+    line-height:2;
+}
+
+button{
+    background:linear-gradient(135deg,var(--primary),#e03a3a);
+    color:#fff;
+    border:none;
+    padding:18px 60px;
+    border-radius:40px;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:bold;
 }
 
 button:hover{
-    background:#b71c1c;
+    transform:translateY(-4px);
+    box-shadow:0 12px 24px rgba(178,34,34,.35);
+}
+
+@keyframes zoomHero{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+@media(max-width:992px){
+    .inputGrid{grid-template-columns:1fr;}
+    .radioGrid{grid-template-columns:repeat(2,1fr);}
+    .sessionGrid{grid-template-columns:1fr;}
+    .heroOverlay h1{font-size:34px;}
+}
+
+@media(max-width:600px){
+    .bookingContainer{padding:20px;margin-top:-30px;}
+    .radioGrid{grid-template-columns:1fr;}
+    .hero{height:280px;}
+    .heroOverlay p{font-size:16px;}
 }

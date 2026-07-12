@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1">
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>
+
 Booking Confirmation
+
 </title>
 
 <link
-    rel="stylesheet"
-    href="confirmation.css">
+rel="stylesheet"
+href="confirmation.css">
 
 </head>
 
@@ -23,54 +25,131 @@ Booking Confirmation
 
 <div class="container">
 
-    <div class="success">
+<div class="successIcon">
 
-        ✓
+✓
 
-    </div>
+</div>
 
-    <h1>
+<h1>
 
-        Thank You!
+Thank You!
 
-    </h1>
+</h1>
 
-    <p>
+<p class="subtitle">
 
-        Your package has been created successfully.
+Your package has been created successfully.
 
-    </p>
+</p>
 
-    <div
-        id="summary"
-        class="summary">
 
-    </div>
+<div class="summary">
 
-    <div class="amount">
+<h2>
 
-        Total Package
+Booking Summary
 
-        <h2>
+</h2>
 
-            ₹<span id="total">
+<div class="row">
 
-            </span>
+<span>Name</span>
 
-        </h2>
+<strong id="custName"></strong>
 
-    </div>
+</div>
 
-    <button
-        id="whatsapp">
+<div class="row">
 
-        Send Booking Request
+<span>Phone</span>
 
-    </button>
+<strong id="custPhone"></strong>
+
+</div>
+
+<div class="row">
+
+<span>Preferred Date</span>
+
+<strong id="custDate"></strong>
+
+</div>
+
+<div class="row">
+
+<span>Session</span>
+
+<strong id="custSession"></strong>
+
+</div>
+
+<hr>
+
+<h3>
+
+Selected Themes
+
+</h3>
+
+<ul id="themeList">
+
+</ul>
+
+<hr>
+
+<div class="row">
+
+<span>Base Package</span>
+
+<strong id="basePrice"></strong>
+
+</div>
+
+<div class="row">
+
+<span>Additional Themes</span>
+
+<strong id="extraThemes"></strong>
+
+</div>
+
+<div class="row">
+
+<span>Additional Cost</span>
+
+<strong id="extraCost"></strong>
+
+</div>
+
+<hr>
+
+<div class="grandTotal">
+
+Total
+
+₹<span id="total"></span>
+
+</div>
+
+</div>
+
+<button id="whatsappBtn">
+
+Send Booking on WhatsApp
+
+</button>
+
+<button id="backBtn">
+
+Back to Home
+
+</button>
 
 </div>
 
 <script src="confirmation.js"></script>
 
 </body>
+
 </html>

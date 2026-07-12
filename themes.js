@@ -1,196 +1,291 @@
-/* =========================================
-   CUSTOMER DETAILS
-========================================= */
+/*==================================================
+ AVYUKTAPHOTOGRAPHY
+ PACKAGE BUILDER V2
+==================================================*/
+
 
 const customer =
-    JSON.parse(
-        localStorage.getItem(
-            "customer"
-        )
-    );
-
-document
-    .getElementById(
-        "custName"
-    )
-    .innerHTML =
-    customer.name;
-
-document
-    .getElementById(
-        "custPhone"
-    )
-    .innerHTML =
-    customer.phone;
-
-document
-    .getElementById(
-        "custSession"
-    )
-    .innerHTML =
-    customer.category
-        .charAt(0)
-        .toUpperCase()
-    +
-    customer.category
-        .slice(1);
-
-document
-    .getElementById(
-        "custDate"
-    )
-    .innerHTML =
-    customer.preferredDate;
+JSON.parse(
+localStorage.getItem(
+"customer"
+));
 
 
-/* =========================================
-   DETERMINE FOLDER
-========================================= */
+document.getElementById(
+"custName"
+).innerHTML =
+customer.name;
 
-let folder = "";
+
+document.getElementById(
+"custPhone"
+).innerHTML =
+customer.phone;
+
+
+document.getElementById(
+"custSession"
+).innerHTML =
+customer.category
+.charAt(0)
+.toUpperCase()
++
+customer.category
+.slice(1);
+
+
+document.getElementById(
+"custDate"
+).innerHTML =
+customer.preferredDate;
+
+
+
+/*-----------------------------------------
+PACKAGE DETAILS
+-----------------------------------------*/
+
+const includedThemes = 4;
+
+
+let basePrice = 7000;
 
 if(
-    customer.babyAge
-    ===
-    "newborn"
+
+    customer.category==="home"
+
+    ||
+
+    customer.category==="outdoor"
+
+    ||
+
+    customer.category==="mix"
+
 ){
 
-    folder =
-        "newborn";
+    basePrice = 10000;
+
 }
+
+
+
+const extraThemePrice =
+
+customer.category==="studio"
+
+||
+
+customer.category==="home"
+
+?
+
+1500
+
+:
+
+2000;
+
+
+
+document.getElementById(
+"packagePrice"
+).innerHTML =
+"₹"
++
+basePrice.toLocaleString();
+
+
+document.getElementById(
+"extraPrice"
+).innerHTML =
+"₹"
++
+extraThemePrice.toLocaleString()
++
+" / Theme";
+
+
+
+/*-----------------------------------------
+DETERMINE IMAGE FOLDER
+-----------------------------------------*/
+
+let folder="";
+
+
+if(
+
+customer.babyAge==="newborn"
+
+){
+
+folder="newborn";
+
+}
+
 else if(
-    customer.babyAge
-    ===
-    "3to6"
+
+customer.babyAge==="3to6"
+
 ){
 
-    folder =
-        "baby3to6";
+folder="baby3to6";
+
 }
+
 else{
 
-    if(
-        customer.category
-        ===
-        "outdoor"
-        ||
-        customer.category
-        ===
-        "mix"
-    ){
-
-        folder =
-            "toddlerOutdoor";
-    }
-    else{
-
-        folder =
-            "toddlerIndoor";
-    }
-}
-
-
-/* =========================================
-   LOAD THEMES
-========================================= */
-
-const themes =
-    themeData;
-
-const container =
-    document.getElementById(
-        "themeContainer"
-    );
-
-
-function formatTitle(
-    text
-){
-
-    return text
-
-        .replace(
-            /[_-]/g,
-            " "
-        )
-
-        .replace(
-            /\b\w/g,
-            function(c){
-
-                return c
-                    .toUpperCase();
-
-            });
-}
-
-
 if(
-    themes[folder]
+
+customer.category==="outdoor"
+
+||
+
+customer.category==="mix"
+
 ){
 
-    themes[folder]
-    .forEach(
+folder="toddlerOutdoor";
 
-        function(
-            theme
-        ){
+}
 
-            container
-                .innerHTML +=
+else{
 
-`
-<div class="card">
+folder="toddlerIndoor";
 
-${getImageTag(
-    folder,
-    theme
-)}
+}
 
-    <div class="cardBody">
+}
 
-        <h3>
-            ${formatTitle(
-                theme
-            )}
-        </h3>
 
-        <label>
 
-            <input
-                type="checkbox"
-                class="theme"
-                value="${theme}">
+const container=
 
-            Select Theme
+document.getElementById(
+"themeContainer"
+);
 
-        </label>
+
+
+let selected=[];
+
+
+
+function titleCase(text){
+
+return text
+
+.replace(
+/[_-]/g,
+" "
+)
+
+.replace(
+
+/\b\w/g,
+
+function(letter){
+
+return letter.toUpperCase();
+
+}
+
+);
+
+}
+
+/*-----------------------------------------
+LOAD THEMES
+-----------------------------------------*/
+
+const themes = themeData[folder] || [];
+
+themes.forEach(function(theme){
+
+    container.innerHTML += `
+
+    <div class="card">
+
+        <img
+            src="images/${folder}/${theme}.jpeg"
+            alt="${titleCase(theme)}"
+
+            onerror="loadNextImage(this,'${folder}','${theme}')">
+
+        <div class="cardBody">
+
+            <h3>
+
+                ${titleCase(theme)}
+
+            </h3>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    class="theme"
+                    value="${theme}">
+
+                Select Theme
+
+            </label>
+
+        </div>
 
     </div>
 
-</div>
-`;
+    `;
 
-        }
+});
 
-    );
+
+
+/*-----------------------------------------
+IMAGE FALLBACK
+-----------------------------------------*/
+
+function loadNextImage(img,folder,name){
+
+    const files=[
+
+        ".jpeg",
+        ".jpg",
+        ".JPEG",
+        ".JPG",
+        ".png",
+        ".PNG"
+
+    ];
+
+    let step=parseInt(img.dataset.step||0);
+
+    step++;
+
+    if(step>=files.length){
+
+        img.onerror=null;
+
+        img.src="images/no-image.png";
+
+        return;
+
+    }
+
+    img.dataset.step=step;
+
+    img.src=
+    `images/${folder}/${name}${files[step]}`;
+
 }
 
 
-/* =========================================
-   CART
-========================================= */
+/*-----------------------------------------
+THEME SELECTION
+-----------------------------------------*/
 
-let selected =
-    [];
-
-
-/* =========================================
-   THEME SELECTION
-========================================= */
-
-document
-.addEventListener(
+document.addEventListener(
 
     "change",
 
@@ -198,326 +293,411 @@ document
 
         if(
 
-            e.target
-            .classList
-            .contains(
+            !e.target.classList.contains(
                 "theme"
             )
 
         ){
 
-            const card =
+            return;
 
-                e.target
-                    .closest(
-                        ".card"
-                    );
+        }
+
+        const card =
+            e.target.closest(
+                ".card"
+            );
+
+        const value =
+            e.target.value;
+
+
+        if(
+            e.target.checked
+        ){
 
             if(
-                e.target
-                .checked
+                !selected.includes(
+                    value
+                )
             ){
 
-                card
-                    .classList
-                    .add(
-                        "selected"
-                    );
-
-                if(
-
-                    !selected
-                    .includes(
-                        e.target
-                            .value
-                    )
-
-                ){
-
-                    selected
-                        .push(
-
-                            e.target
-                                .value
-
-                        );
-                }
+                selected.push(
+                    value
+                );
 
             }
-            else{
 
-                card
-                    .classList
-                    .remove(
-                        "selected"
-                    );
+            card.classList.add(
+                "selected"
+            );
 
-                selected =
-
-                    selected
-                    .filter(
-
-                        x =>
-
-                        x
-                        !==
-
-                        e.target
-                            .value
-                    );
-            }
-
-            updateCart();
         }
+
+        else{
+
+            selected =
+                selected.filter(
+
+                    x =>
+
+                    x !== value
+
+                );
+
+            card.classList.remove(
+                "selected"
+            );
+
+        }
+
+        updateProgress();
+
+        updateCart();
 
     }
 
 );
 
 
-/* =========================================
-   UPDATE CART
-========================================= */
+
+/*-----------------------------------------
+UPDATE PROGRESS BAR
+-----------------------------------------*/
+
+function updateProgress(){
+
+    document
+    .getElementById(
+        "selectedCount"
+    )
+    .innerHTML =
+    selected.length;
+
+
+    let percentage =
+
+        (
+            selected.length
+            /
+            includedThemes
+        )
+
+        *100;
+
+
+    if(
+        percentage>100
+    ){
+
+        percentage=100;
+
+    }
+
+
+    document
+    .getElementById(
+        "progressBar"
+    )
+    .style.width =
+    percentage
+    +
+    "%";
+
+
+    if(
+
+        selected.length
+        >=
+        includedThemes
+
+    ){
+
+        document
+        .getElementById(
+            "progressBar"
+        )
+        .style.background =
+
+        "#2ecc71";
+
+    }
+
+    else{
+
+        document
+        .getElementById(
+            "progressBar"
+        )
+        .style.background =
+
+        "#d62828";
+
+    }
+
+}
+
+/*-----------------------------------------
+LIVE CART
+-----------------------------------------*/
 
 function updateCart(){
 
-    const base =
-
-        customer
-        .category
-        ===
-        "studio"
-
-        ?
-
-        3000
-
-        :
-
-        5000;
-
-
-    const additional =
-
-        customer
-        .category
-        ===
-        "studio"
-
-        ?
-
-        1500
-
-        :
-
-        2000;
-
-
-    const included =
-        2;
-
-
-    const extra =
+    const extraThemes =
 
         Math.max(
 
             0,
 
-            selected
-                .length
+            selected.length
             -
-            included
+            includedThemes
+
         );
 
 
     const extraCost =
 
-        extra
+        extraThemes
         *
-        additional;
+        extraThemePrice;
 
 
     const total =
 
-        base
+        basePrice
         +
         extraCost;
 
 
     document
-        .getElementById(
-            "cartDetails"
-        )
-        .innerHTML =
+    .getElementById(
+        "cartDetails"
+    )
+    .innerHTML =
 
 `
-<div>
 
-<b>Package :</b>
-₹${base}
+<div class="cartRow">
 
-&nbsp;&nbsp;&nbsp;
+<b>Base Package</b>
 
-<b>Included :</b>
-${included}
+<span>
+
+₹${basePrice.toLocaleString("en-IN")}
+
+</span>
 
 </div>
 
-<br>
 
-<div>
+<div class="cartRow">
 
-<b>Selected :</b>
+<b>Included Themes</b>
+
+<span>
+
+${includedThemes}
+
+</span>
+
+</div>
+
+
+<div class="cartRow">
+
+<b>Selected Themes</b>
+
+<span>
+
 ${selected.length}
 
-&nbsp;&nbsp;&nbsp;
-
-<b>Extra :</b>
-${extra}
+</span>
 
 </div>
 
-<br>
 
-<div>
+<div class="cartRow">
 
-<b>Extra Cost :</b>
-₹${extraCost}
+<b>Additional Themes</b>
 
-&nbsp;&nbsp;&nbsp;
+<span>
 
-<b>Family :</b>
-2
+${extraThemes}
+
+</span>
 
 </div>
 
-<br>
 
-<div>
+<div class="cartRow">
 
-<b>Edited :</b>
-5
+<b>Additional Cost</b>
 
-&nbsp;&nbsp;&nbsp;
+<span>
 
-<b>Soft :</b>
+₹${extraCost.toLocaleString("en-IN")}
+
+</span>
+
+</div>
+
+
+<hr>
+
+
+<div class="cartRow">
+
+Family Pictures
+
+<span>
+
+2 Included
+
+</span>
+
+</div>
+
+
+<div class="cartRow">
+
+Edited Photos
+
+<span>
+
+5 Included
+
+</span>
+
+</div>
+
+
+<div class="cartRow">
+
+Soft Copies
+
+<span>
+
 Included
 
+</span>
+
 </div>
+
 `;
 
 
     document
-        .getElementById(
-            "total"
-        )
-        .innerHTML =
-            total;
+    .getElementById(
+        "total"
+    )
+    .innerHTML =
+
+    total.toLocaleString(
+        "en-IN"
+    );
+
 }
 
 
-/* =========================================
-   INITIAL LOAD
-========================================= */
+
+/*-----------------------------------------
+INITIAL LOAD
+-----------------------------------------*/
+
+updateProgress();
 
 updateCart();
 
+
+
+/*-----------------------------------------
+CONTINUE BUTTON
+-----------------------------------------*/
+
 document
-    .getElementById(
-        "continueBtn"
-    )
-    .addEventListener(
+.getElementById(
+    "continueBtn"
+)
+.addEventListener(
 
-        "click",
+    "click",
 
-        function(){
+    function(){
 
-            localStorage
-                .setItem(
+        if(
 
-                    "booking",
+            selected.length===0
 
-                    JSON.stringify({
+        ){
 
-                        customer:
-                            customer,
+            alert(
 
-                        themes:
-                            selected,
+                "Please select at least one theme."
 
-                        total:
-                            document
-                            .getElementById(
-                                "total"
-                            )
-                            .innerHTML
-                    })
-                );
+            );
 
-            location.href =
-                "confirmation.html";
+            return;
+
         }
-    );
 
-    function getImageTag(
-    folder,
-    theme
-){
 
-    return `
+        const booking={
 
-        <img
+            customer:
 
-            src="images/${folder}/${theme}.jpeg"
+                customer,
 
-            onerror="
+            themes:
 
-                if(
-                    !this.dataset.step
-                ){
+                selected,
 
-                    this.dataset.step=1;
-                    this.src='images/${folder}/${theme}.jpg';
+            basePrice:
 
-                }
-                else if(
-                    this.dataset.step==1
-                ){
+                basePrice,
 
-                    this.dataset.step=2;
-                    this.src='images/${folder}/${theme}.JPEG';
+            includedThemes:
 
-                }
-                else if(
-                    this.dataset.step==2
-                ){
+                includedThemes,
 
-                    this.dataset.step=3;
-                    this.src='images/${folder}/${theme}.JPG';
+            extraThemePrice:
 
-                }
-                else if(
-                    this.dataset.step==3
-                ){
+                extraThemePrice,
 
-                    this.dataset.step=4;
-                    this.src='images/${folder}/${theme}.png';
+            total:
 
-                }
-                else if(
-                    this.dataset.step==4
-                ){
+                Number(
 
-                    this.dataset.step=5;
-                    this.src='images/${folder}/${theme}.PNG';
+                    document
+                    .getElementById(
+                        "total"
+                    )
+                    .innerHTML
+                    .replace(
+                        /,/g,
+                        ""
+                    )
 
-                }
-                else{
+                )
 
-                    this.onerror=null;
-                }
+        };
 
-            ">
 
-    `;
-}
+        localStorage.setItem(
+
+            "booking",
+
+            JSON.stringify(
+                booking
+            )
+
+        );
+
+
+        window.location.href=
+
+            "confirmation.html";
+
+    }
+
+);
