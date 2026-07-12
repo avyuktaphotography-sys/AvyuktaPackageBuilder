@@ -696,7 +696,7 @@ document
 
         window.location.href=
 
-            "confirmation.html";
+            "summary.html";
 
     }
 
