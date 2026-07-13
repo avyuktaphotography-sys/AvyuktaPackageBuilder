@@ -1,4 +1,4 @@
-const galleryImages = [
+const newbornImages = [
 
 {
 image:"newborn-photography-bangalore-01.JPG",
