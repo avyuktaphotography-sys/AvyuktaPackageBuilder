@@ -33,6 +33,7 @@ const themeData = {
         "Flight",
         "Flower Jeep",
         "Flower Trolly",
+        "Floral Halo",
         "Farmer with Tractor",
         "Garden bench",
         "Garden Theme",
