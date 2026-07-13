@@ -33,6 +33,7 @@ const themeData = {
         "Flower Trolly",
         "Farmer with Tractor",
         "Garden bench",
+        "Garden Theme",
         "Harry Potter",
         "I am One",
         "Jungle theme",
