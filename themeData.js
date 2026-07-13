@@ -38,6 +38,7 @@ const themeData = {
         "Little soldier",
         "Makeup",
         "Moon",
+        "Mermaid",        
         "Painter - 2",
         "Painter",
         "Piano 2",
