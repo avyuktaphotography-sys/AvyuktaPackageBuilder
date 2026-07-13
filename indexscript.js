@@ -1,253 +1,205 @@
-/*==========================================================
-AVYUKTAPHOTOGRAPHY
-LANDING PAGE
-==========================================================*/
+/*==========================================
+AVYUKTA PHOTOGRAPHY
+Homepage Script
+==========================================*/
 
+function comingSoon() {
 
-/*=========================================
-PAGE LOADED
-=========================================*/
+    const phone = "917406109829";
 
-window.addEventListener(
+    const message =
+`Hello Team,
 
-    "load",
+I would like to enquire about a photography session.
 
-    function(){
+Could you please share your package details and availability?
 
-        document.body.style.opacity="1";
+Thank you.`;
 
-        console.log(
-
-            "Avyuktaphotography Loaded Successfully."
-
-        );
-
-    }
-
-);
-
-
-
-/*=========================================
-ENQUIRY BUTTON
-
-(Temporary)
-
-We'll replace this later
-=========================================*/
-
-function comingSoon(){
-
-    alert(
-
-`Enquiry Page
-
-Coming Soon 😊
-
-You will soon be able to:
-
-• Ask Questions
-
-• Check Packages
-
-• Chat on WhatsApp
-
-• Schedule a Call
-
-Stay Tuned!
-
-Avyuktaphotography`
-
+    window.open(
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message),
+        "_blank"
     );
 
 }
 
 
+/*==========================================
+SMOOTH SCROLL FOR MENU
+==========================================*/
 
-/*=========================================
-PRELOAD BOOK PAGE
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-Makes navigation faster
-=========================================*/
+    anchor.addEventListener("click", function (e) {
 
-const preload =
+        e.preventDefault();
 
-document.createElement(
+        const target = document.querySelector(this.getAttribute("href"));
 
-"link"
+        if(target){
 
-);
+            target.scrollIntoView({
 
-preload.rel="prefetch";
+                behavior:"smooth"
 
-preload.href="book.html";
+            });
 
-document.head.appendChild(
+        }
 
-preload
+    });
 
-);
+});
 
 
+/*==========================================
+SCROLL ANIMATION
+==========================================*/
 
-/*=========================================
-BUTTON ANIMATION
-=========================================*/
+const observer = new IntersectionObserver((entries)=>{
 
-document
+    entries.forEach(entry=>{
 
-.querySelectorAll(
+        if(entry.isIntersecting){
 
-".buttons button"
+            entry.target.classList.add("show");
 
-)
+        }
 
-.forEach(
+    });
 
-function(button){
+},{
+    threshold:.15
+});
 
-button.addEventListener(
 
-"mouseenter",
+document.querySelectorAll(
 
-function(){
+".statCard,.reviewCard,.galleryGrid a,.faqItem"
 
-button.style.transform=
+).forEach(el=>{
 
-"translateY(-5px) scale(1.03)";
+    el.classList.add("hidden");
+
+    observer.observe(el);
+
+});
+
+
+/*==========================================
+IMAGE HOVER EFFECT
+==========================================*/
+
+document.querySelectorAll(".galleryGrid a").forEach(card=>{
+
+    card.addEventListener("mouseenter",()=>{
+
+        card.style.transform="translateY(-10px) scale(1.02)";
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform="translateY(0) scale(1)";
+
+    });
+
+});
+
+
+/*==========================================
+COUNTER ANIMATION
+==========================================*/
+
+const counters = document.querySelectorAll(".statCard h3");
+
+const speed = 40;
+
+const counterObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+const counter = entry.target;
+
+const target = parseInt(counter.innerText);
+
+let count = 0;
+
+const update = ()=>{
+
+if(count < target){
+
+count += Math.ceil(target/speed);
+
+counter.innerText = count + "+";
+
+requestAnimationFrame(update);
+
+}
+else{
+
+counter.innerText = target + "+";
 
 }
 
-);
+};
 
-button.addEventListener(
+update();
 
-"mouseleave",
-
-function(){
-
-button.style.transform=
-
-"translateY(0px) scale(1)";
-
-}
-
-);
-
-}
-
-);
-
-
-
-/*=========================================
-WELCOME MESSAGE
-=========================================*/
-
-setTimeout(
-
-function(){
-
-console.log(
-
-"Welcome to Avyuktaphotography"
-
-);
-
-},
-
-1000
-
-);
-
-
-
-/*=========================================
-SCROLL LOCK
-
-(Removable later when homepage grows)
-=========================================*/
-
-window.addEventListener(
-
-"wheel",
-
-function(e){
-
-if(
-
-document.body.scrollHeight
-
-<=
-
-window.innerHeight
-
-){
-
-e.preventDefault();
-
-}
-
-},
-
-{
-
-passive:false
-
-}
-
-);
-
-
-
-/*=========================================
-KEYBOARD
-
-Future Ready
-=========================================*/
-
-document.addEventListener(
-
-"keydown",
-
-function(e){
-
-if(
-
-e.key==="Enter"
-
-){
-
-const bookButton=
-
-document.querySelector(
-
-".booking"
-
-);
-
-if(
-
-document.activeElement===bookButton
-
-){
-
-window.location.href="book.html";
-
-}
+counterObserver.unobserve(counter);
 
 }
 
 });
 
+});
+
+counters.forEach(counter=>{
+
+counterObserver.observe(counter);
+
+});
 
 
-/*=========================================
-END
-=========================================*/
+/*==========================================
+BACK TO TOP
+==========================================*/
 
-console.log(
+const topButton = document.createElement("div");
 
-"Landing Page Ready."
+topButton.innerHTML="⬆";
 
-);
+topButton.className="topButton";
+
+document.body.appendChild(topButton);
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topButton.classList.add("topShow");
+
+}
+else{
+
+topButton.classList.remove("topShow");
+
+}
+
+});
+
+topButton.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
