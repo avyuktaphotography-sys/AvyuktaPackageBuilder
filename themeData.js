@@ -28,6 +28,7 @@ const themeData = {
         "Flight",
         "Flower Jeep",
         "Flower Trolly",
+        "Farmer with Tractor",
         "Garden bench",
         "Harry Potter",
         "I am One",
