@@ -37,6 +37,7 @@ const themeData = {
         "I am One",
         "Jungle theme",
         "Kissing Booth",
+        "Kissing Booth 2",
         "Krishna",
         "Liabray ",
         "Little soldier",
