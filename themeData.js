@@ -59,6 +59,7 @@ const themeData = {
         "Traveller 2",
         "Traveller 3",
         "Treasure Hunt",
+        "Tent",
         "U bench ",
         "UShape Bench - Honey",
         "UShape Bench - One",
