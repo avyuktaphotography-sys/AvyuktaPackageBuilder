@@ -22,6 +22,7 @@ const themeData = {
         "Cocomelon",
         "Cowboy",
         "Customised 1",
+        "Customised 2",
         "Dad Little Helper",
         "Doctor ",
         "Farmer",
