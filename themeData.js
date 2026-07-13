@@ -56,6 +56,7 @@ const themeData = {
         "Sailor",
         "Sankranthi",
         "Scooty",
+        "Scooty 2",
         "Shiva 2",
         "Shiva",
         "Study",
@@ -70,6 +71,7 @@ const themeData = {
         "UShape Bench - One",
         "UShape Bench Garden",
         "Vintage",
+        "Vintage Trolley",
         "Wednesday",
         "Wonder women",
         "Yellow tent"
