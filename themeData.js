@@ -78,6 +78,7 @@ const themeData = {
         "UShape Bench - One",
         "UShape Bench Garden",
         "Vintage",
+        "Vintage Calling",
         "Wednesday",
         "Wonder women",
         "Yellow tent"
