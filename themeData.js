@@ -90,6 +90,7 @@ const themeData = {
         "I am one.JPG",
         "Bloom Wagon.JPG",
         "One Year of Joy.JPG",
+        "Floral Majesty.jpg",
         "WhatsApp Image 2026-06-29 at 11.17.23 AM.jpeg"
     ]
 };
