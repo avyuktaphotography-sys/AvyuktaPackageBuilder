@@ -84,13 +84,13 @@ const themeData = {
         "Yellow tent"
     ],
     "toddlerOutdoor": [
-        "AVK_1130~4.jpg",
-        "Mini Makeover.jpg",
-        "Lemonade.JPG",
-        "I am one.JPG",
-        "Bloom Wagon.JPG",
-        "One Year of Joy.JPG",
-        "Floral Majesty.jpg",
-        "WhatsApp Image 2026-06-29 at 11.17.23 AM.jpeg"
+        "AVK_1130~4",
+        "Mini Makeover",
+        "Lemonade",
+        "I am one",
+        "Bloom Wagon",
+        "One Year of Joy",
+        "Floral Majesty",
+        "WhatsApp Image 2026-06-29 at 11.17.23 AM"
     ]
 };
