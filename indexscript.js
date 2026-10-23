@@ -1,205 +1,96 @@
-/*==========================================
-AVYUKTA PHOTOGRAPHY
-Homepage Script
-==========================================*/
 
-function comingSoon() {
+/* Avyukta Photography — Homepage V3 */
 
-    const phone = "917406109829";
+(function () {
+  "use strict";
 
-    const message =
-`Hello Team,
+  const header = document.getElementById("siteHeader");
+  const menuToggle = document.getElementById("menuToggle");
+  const mainMenu = document.getElementById("mainMenu");
+  const year = document.getElementById("year");
 
-I would like to enquire about a photography session.
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 
-Could you please share your package details and availability?
+  function updateHeader() {
+    if (header) {
+      header.classList.toggle("scrolled", window.scrollY > 20);
+    }
+  }
 
-Thank you.`;
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
 
-    window.open(
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        encodeURIComponent(message),
-        "_blank"
+  function closeMenu() {
+    if (!menuToggle || !mainMenu) return;
+
+    menuToggle.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+
+    mainMenu.classList.remove("open");
+    document.body.classList.remove("menu-open");
+  }
+
+  if (menuToggle && mainMenu) {
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mainMenu.classList.toggle("open");
+
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    mainMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
+  }
+
+  const revealItems = document.querySelectorAll(".reveal");
+
+  if (
+    "IntersectionObserver" in window &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const observer = new IntersectionObserver(
+      function (entries, currentObserver) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -25px 0px"
+      }
     );
 
-}
-
-
-/*==========================================
-SMOOTH SCROLL FOR MENU
-==========================================*/
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-    anchor.addEventListener("click", function (e) {
-
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute("href"));
-
-        if(target){
-
-            target.scrollIntoView({
-
-                behavior:"smooth"
-
-            });
-
-        }
-
+    revealItems.forEach(function (item) {
+      observer.observe(item);
     });
-
-});
-
-
-/*==========================================
-SCROLL ANIMATION
-==========================================*/
-
-const observer = new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-
-        }
-
+  } else {
+    revealItems.forEach(function (item) {
+      item.classList.add("visible");
     });
-
-},{
-    threshold:.15
-});
-
-
-document.querySelectorAll(
-
-".statCard,.reviewCard,.galleryGrid a,.faqItem"
-
-).forEach(el=>{
-
-    el.classList.add("hidden");
-
-    observer.observe(el);
-
-});
-
-
-/*==========================================
-IMAGE HOVER EFFECT
-==========================================*/
-
-document.querySelectorAll(".galleryGrid a").forEach(card=>{
-
-    card.addEventListener("mouseenter",()=>{
-
-        card.style.transform="translateY(-10px) scale(1.02)";
-
-    });
-
-    card.addEventListener("mouseleave",()=>{
-
-        card.style.transform="translateY(0) scale(1)";
-
-    });
-
-});
-
-
-/*==========================================
-COUNTER ANIMATION
-==========================================*/
-
-const counters = document.querySelectorAll(".statCard h3");
-
-const speed = 40;
-
-const counterObserver = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-const counter = entry.target;
-
-const target = parseInt(counter.innerText);
-
-let count = 0;
-
-const update = ()=>{
-
-if(count < target){
-
-count += Math.ceil(target/speed);
-
-counter.innerText = count + "+";
-
-requestAnimationFrame(update);
-
-}
-else{
-
-counter.innerText = target + "+";
-
-}
-
-};
-
-update();
-
-counterObserver.unobserve(counter);
-
-}
-
-});
-
-});
-
-counters.forEach(counter=>{
-
-counterObserver.observe(counter);
-
-});
-
-
-/*==========================================
-BACK TO TOP
-==========================================*/
-
-const topButton = document.createElement("div");
-
-topButton.innerHTML="⬆";
-
-topButton.className="topButton";
-
-document.body.appendChild(topButton);
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>500){
-
-topButton.classList.add("topShow");
-
-}
-else{
-
-topButton.classList.remove("topShow");
-
-}
-
-});
-
-topButton.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
+  }
+})();
