@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Gallery Builder | Avyukta Photography</title>
+
+<style>
+:root {
+  --cream: #f7f3ee;
+  --white: #fffdf9;
+  --sage: #30382f;
+  --gold: #a18460;
+  --muted: #77746e;
+  --border: #e6ded3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--sage);
+  font-family: Verdana, Arial, sans-serif;
+}
+
+header {
+  background: var(--sage);
+  color: white;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: 2px;
+}
+
+header p {
+  color: #ddd9cf;
+  font-size: 12px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 45px auto;
+  padding: 0 20px;
+}
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 32px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.04);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+label {
+  display: block;
+  margin: 24px 0 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+select,
+input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--sage);
+  font: inherit;
+}
+
+.dropzone {
+  margin-top: 25px;
+  padding: 55px 20px;
+  background: #faf6ef;
+  border: 2px dashed var(--gold);
+  border-radius: 13px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dropzone.dragover {
+  background: #eee6d9;
+  border-color: var(--sage);
+}
+
+.dropzone .symbol {
+  font-size: 42px;
+  color: var(--gold);
+}
+
+.dropzone h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.dropzone p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.preview {
+  position: relative;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.preview img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.preview-name {
+  padding: 10px;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.remove {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  padding: 5px 10px;
+  background: rgba(30,35,30,.85);
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.action-button {
+  padding: 15px 24px;
+  background: var(--sage);
+  border: 0;
+  border-radius: 7px;
+  color: white;
+  font: inherit;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.action-button.secondary {
+  background: #e9e2d7;
+  color: var(--sage);
+}
+
+.action-button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+progress {
+  display: block;
+  width: 100%;
+  height: 12px;
+  margin-top: 24px;
+}
+
+progress[hidden] {
+  display: none;
+}
+
+.status {
+  margin-top: 18px;
+  white-space: pre-wrap;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.note {
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  main { margin: 20px auto; }
+  .panel { padding: 20px; }
+  .dropzone { padding: 35px 12px; }
+  header h1 { font-size: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>AVYUKTA PHOTOGRAPHY</h1>
+  <p>GALLERY BUILDER · ADMIN DASHBOARD</p>
+</header>
+
+<main>
+  <section class="panel">
+
+    <h2>Upload Gallery Photographs</h2>
+
+    <p class="description">
+      Select a photography gallery, then browse or
+      drag and drop photographs to publish them.
+    </p>
+
+    <label for="gallery">
+      Select Photography Gallery
+    </label>
+
+    <select id="gallery">
+      <option value="">-- Select Gallery --</option>
+      <option value="avyukta_newborns">Newborn</option>
+      <option value="avyukta_3to6months">3–6 Months</option>
+      <option value="avyukta_7to1yearindoor">7 Months–1 Year</option>
+      <option value="avyukta_1yearabove">1 Year and Above</option>
+      <option value="avyukta_outdoor">Outdoor</option>
+      <option value="avyukta_cakesmash">Cake Smash</option>
+      <option value="avyukta_maternity">Maternity</option>
+      <option value="avyukta_family">Family</option>
+      <option value="avyukta_events">Events</option>
+    </select>
+
+    <label for="adminPassword">
+      Admin Password
+    </label>
+
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Enter your admin password"
+      autocomplete="current-password"
+    >
+
+    <div
+      id="dropzone"
+      class="dropzone"
+      role="button"
+      tabindex="0"
+      aria-label="Browse or drop photographs"
+    >
+      <div class="symbol">⇧</div>
+      <h3>Drag & Drop Photos Here</h3>
+      <p>Or click here to browse photographs</p>
+      <p>JPG, PNG, WEBP, GIF, AVIF · Maximum 10 MB per image</p>
+    </div>
+
+    <input
+      type="file"
+      id="fileInput"
+      accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
+      multiple
+      hidden
+    >
+
+    <div
+      id="previewGrid"
+      class="preview-grid"
+      aria-label="Selected photograph previews"
+    ></div>
+
+    <div class="actions">
+      <button
+        id="uploadButton"
+        class="action-button"
+        type="button"
+        disabled
+      >
+        Upload Photos
+      </button>
+
+      <button
+        id="clearButton"
+        class="action-button secondary"
+        type="button"
+      >
+        Clear Selection
+      </button>
+    </div>
+
+    <progress
+      id="uploadProgress"
+      max="100"
+      value="0"
+      hidden
+    ></progress>
+
+    <div
+      id="status"
+      class="status"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <p class="note">
+      The Upload button connects to a secure server endpoint:
+      <code>/api/gallery-upload</code>.
+      The server must be configured before uploads can publish
+      photographs to GitHub.
+    </p>
+
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  const gallery = document.getElementById("gallery");
+  const password = document.getElementById("adminPassword");
+  const dropzone = document.getElementById("dropzone");
+  const fileInput = document.getElementById("fileInput");
+  const previewGrid = document.getElementById("previewGrid");
+  const uploadButton = document.getElementById("uploadButton");
+  const clearButton = document.getElementById("clearButton");
+  const progress = document.getElementById("uploadProgress");
+  const status = document.getElementById("status");
+
+  const allowedTypes = new Set([
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/gif",
+    "image/avif"
+  ]);
+
+  const maxFileSize = 10 * 1024 * 1024;
+
+  let selectedFiles = [];
+  let uploading = false;
+
+  function showStatus(message) {
+    status.textContent = message;
+  }
+
+  function updateButtons() {
+    uploadButton.disabled =
+      uploading || selectedFiles.length === 0;
+
+    clearButton.disabled = uploading;
+    gallery.disabled = uploading;
+    password.disabled = uploading;
+  }
+
+  function addFiles(files) {
+    const errors = [];
+
+    Array.from(files).forEach(function (file) {
+
+      if (!allowedTypes.has(file.type)) {
+        errors.push(file.name + ": Unsupported file type.");
+        return;
+      }
+
+      if (file.size > maxFileSize) {
+        errors.push(file.name + ": Exceeds 10 MB.");
+        return;
+      }
+
+      const exists = selectedFiles.some(function (item) {
+        return (
+          item.name === file.name &&
+          item.size === file.size &&
+          item.lastModified === file.lastModified
+        );
+      });
+
+      if (!exists) {
+        selectedFiles.push(file);
+      }
+
+    });
+
+    renderPreviews();
+    showStatus(errors.join("\n"));
+  }
+
+  function renderPreviews() {
+    previewGrid.replaceChildren();
+
+    selectedFiles.forEach(function (file, index) {
+
+      const tile = document.createElement("div");
+      tile.className = "preview";
+
+      const image = document.createElement("img");
+      const imageURL = URL.createObjectURL(file);
+
+      image.src = imageURL;
+      image.alt = file.name;
+
+      image.addEventListener("load", function () {
+        URL.revokeObjectURL(imageURL);
+      }, { once: true });
+
+      image.addEventListener("error", function () {
+        URL.revokeObjectURL(imageURL);
+      }, { once: true });
+
+      const name = document.createElement("div");
+      name.className = "preview-name";
+      name.textContent = file.name;
+
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "remove";
+      remove.textContent = "×";
+      remove.setAttribute(
+        "aria-label",
+        "Remove " + file.name
+      );
+
+      remove.addEventListener("click", function () {
+        selectedFiles.splice(index, 1);
+        renderPreviews();
+      });
+
+      tile.append(image, remove, name);
+      previewGrid.appendChild(tile);
+    });
+
+    updateButtons();
+  }
+
+  dropzone.addEventListener("click", function () {
+    if (!uploading) fileInput.click();
+  });
+
+  dropzone.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      if (!uploading) fileInput.click();
+    }
+  });
+
+  fileInput.addEventListener("change", function () {
+    addFiles(fileInput.files);
+    fileInput.value = "";
+  });
+
+  ["dragenter", "dragover"].forEach(function (eventName) {
+    dropzone.addEventListener(eventName, function (event) {
+      event.preventDefault();
+      dropzone.classList.add("dragover");
+    });
+  });
+
+  ["dragleave", "drop"].forEach(function (eventName) {
+    dropzone.addEventListener(eventName, function (event) {
+      event.preventDefault();
+      dropzone.classList.remove("dragover");
+    });
+  });
+
+  dropzone.addEventListener("drop", function (event) {
+    if (!uploading) {
+      addFiles(event.dataTransfer.files);
+    }
+  });
+
+  clearButton.addEventListener("click", function () {
+    selectedFiles = [];
+    renderPreviews();
+    progress.hidden = true;
+    showStatus("Selection cleared.");
+  });
+
+  uploadButton.addEventListener("click", async function () {
+
+    const category = gallery.value;
+    const adminPassword = password.value;
+
+    if (!category) {
+      showStatus("Please select a photography gallery.");
+      gallery.focus();
+      return;
+    }
+
+    if (!adminPassword) {
+      showStatus("Please enter your admin password.");
+      password.focus();
+      return;
+    }
+
+    if (selectedFiles.length === 0) {
+      showStatus("Please select photographs.");
+      return;
+    }
+
+    uploading = true;
+    updateButtons();
+
+    progress.hidden = false;
+    progress.value = 0;
+
+    const filesToUpload = [...selectedFiles];
+    const failedFiles = [];
+    let uploadedCount = 0;
+
+    for (let i = 0; i < filesToUpload.length; i++) {
+
+      const file = filesToUpload[i];
+
+      showStatus(
+        "Uploading " + (i + 1) +
+        " of " + filesToUpload.length +
+        ": " + file.name
+      );
+
+      const formData = new FormData();
+
+      formData.append("category", category);
+      formData.append("photo", file, file.name);
+
+      try {
+
+        const response = await fetch("/api/gallery-upload", {
+          method: "POST",
+          headers: {
+            "X-Gallery-Password": adminPassword
+          },
+          body: formData,
+          credentials: "same-origin"
+        });
+
+        const result = await response.json().catch(function () {
+          return {};
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            result.error || "Upload failed: " + response.status
+          );
+        }
+
+        uploadedCount++;
+
+      } catch (error) {
+
+        failedFiles.push({
+          file: file,
+          error: error.message
+        });
+
+      }
+
+      progress.value = Math.round(
+        ((i + 1) / filesToUpload.length) * 100
+      );
+    }
+
+    uploading = false;
+
+    // Retain unsuccessful files for retry.
+    selectedFiles = failedFiles.map(function (item) {
+      return item.file;
+    });
+
+    renderPreviews();
+
+    let message =
+      uploadedCount + " photograph(s) uploaded successfully.";
+
+    if (failedFiles.length > 0) {
+      message += "\n\nFailed uploads:\n";
+
+      failedFiles.forEach(function (item) {
+        message +=
+          item.file.name + ": " + item.error + "\n";
+      });
+    } else {
+      message +=
+        "\nYour photos will appear after website deployment.";
+    }
+
+    showStatus(message);
+  });
+
+  updateButtons();
+
+})();
+</script>
+
+</body>
+</html>
