@@ -15,6 +15,8 @@
   --gold: #a18460;
   --muted: #77746e;
   --border: #e6ded3;
+  --green: #276749;
+  --red: #b42318;
 }
 
 * { box-sizing: border-box; }
@@ -27,9 +29,9 @@ body {
 }
 
 header {
+  padding: 28px 24px;
   background: var(--sage);
   color: white;
-  padding: 28px 24px;
   text-align: center;
 }
 
@@ -51,10 +53,10 @@ main {
 }
 
 .panel {
+  padding: 32px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 15px;
-  padding: 32px;
   box-shadow: 0 10px 35px rgba(0,0,0,.04);
 }
 
@@ -127,17 +129,17 @@ input[type="password"] {
 
 .preview {
   position: relative;
+  overflow: hidden;
   background: white;
   border: 1px solid var(--border);
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .preview img {
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  display: block;
 }
 
 .preview-name {
@@ -148,8 +150,8 @@ input[type="password"] {
 
 .remove {
   position: absolute;
-  right: 7px;
   top: 7px;
+  right: 7px;
   padding: 5px 10px;
   background: rgba(30,35,30,.85);
   color: white;
@@ -205,6 +207,9 @@ progress[hidden] {
   line-height: 1.8;
 }
 
+.status.success { color: var(--green); }
+.status.error { color: var(--red); }
+
 .note {
   margin-top: 30px;
   color: var(--muted);
@@ -229,116 +234,111 @@ progress[hidden] {
 </header>
 
 <main>
-  <section class="panel">
+<section class="panel">
 
-    <h2>Upload Gallery Photographs</h2>
+  <h2>Upload Gallery Photographs</h2>
 
-    <p class="description">
-      Select a photography gallery, then browse or
-      drag and drop photographs to publish them.
-    </p>
+  <p class="description">
+    Select a photography gallery, then browse or drag
+    and drop photographs to publish them automatically.
+  </p>
 
-    <label for="gallery">
-      Select Photography Gallery
-    </label>
+  <label for="gallery">Select Photography Gallery</label>
 
-    <select id="gallery">
-      <option value="">-- Select Gallery --</option>
-      <option value="avyukta_newborns">Newborn</option>
-      <option value="avyukta_3to6months">3–6 Months</option>
-      <option value="avyukta_7to1yearindoor">7 Months–1 Year</option>
-      <option value="avyukta_1yearabove">1 Year and Above</option>
-      <option value="avyukta_outdoor">Outdoor</option>
-      <option value="avyukta_cakesmash">Cake Smash</option>
-      <option value="avyukta_maternity">Maternity</option>
-      <option value="avyukta_family">Family</option>
-      <option value="avyukta_events">Events</option>
-    </select>
+  <select id="gallery">
+    <option value="">-- Select Gallery --</option>
+    <option value="avyukta_newborns">Newborn</option>
+    <option value="avyukta_3to6months">3–6 Months</option>
+    <option value="avyukta_7to1yearindoor">7 Months–1 Year</option>
+    <option value="avyukta_1yearabove">1 Year and Above</option>
+    <option value="avyukta_outdoor">Outdoor</option>
+    <option value="avyukta_cakesmash">Cake Smash</option>
+    <option value="avyukta_maternity">Maternity</option>
+    <option value="avyukta_family">Family</option>
+    <option value="avyukta_events">Events</option>
+  </select>
 
-    <label for="adminPassword">
-      Admin Password
-    </label>
+  <label for="adminPassword">Admin Password</label>
 
-    <input
-      type="password"
-      id="adminPassword"
-      placeholder="Enter your admin password"
-      autocomplete="current-password"
+  <input
+    type="password"
+    id="adminPassword"
+    placeholder="Enter your admin password"
+    autocomplete="current-password"
+  >
+
+  <div
+    id="dropzone"
+    class="dropzone"
+    role="button"
+    tabindex="0"
+    aria-label="Browse or drop photographs"
+  >
+    <div class="symbol">⇧</div>
+    <h3>Drag & Drop Photos Here</h3>
+    <p>Or click here to browse photographs</p>
+    <p>JPG, PNG, WEBP, GIF, AVIF · Maximum 10 MB per image</p>
+  </div>
+
+  <input
+    type="file"
+    id="fileInput"
+    accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
+    multiple
+    hidden
+  >
+
+  <div id="previewGrid" class="preview-grid"></div>
+
+  <div class="actions">
+    <button
+      id="uploadButton"
+      class="action-button"
+      type="button"
+      disabled
     >
+      Upload Photos
+    </button>
 
-    <div
-      id="dropzone"
-      class="dropzone"
-      role="button"
-      tabindex="0"
-      aria-label="Browse or drop photographs"
+    <button
+      id="clearButton"
+      class="action-button secondary"
+      type="button"
     >
-      <div class="symbol">⇧</div>
-      <h3>Drag & Drop Photos Here</h3>
-      <p>Or click here to browse photographs</p>
-      <p>JPG, PNG, WEBP, GIF, AVIF · Maximum 10 MB per image</p>
-    </div>
+      Clear Selection
+    </button>
+  </div>
 
-    <input
-      type="file"
-      id="fileInput"
-      accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
-      multiple
-      hidden
-    >
+  <progress
+    id="uploadProgress"
+    max="100"
+    value="0"
+    hidden
+  ></progress>
 
-    <div
-      id="previewGrid"
-      class="preview-grid"
-      aria-label="Selected photograph previews"
-    ></div>
+  <div
+    id="status"
+    class="status"
+    role="status"
+    aria-live="polite"
+  ></div>
 
-    <div class="actions">
-      <button
-        id="uploadButton"
-        class="action-button"
-        type="button"
-        disabled
-      >
-        Upload Photos
-      </button>
+  <p class="note">
+    Photos are securely sent to the Avyukta Gallery Uploader
+    Cloudflare Worker, committed to the selected GitHub gallery
+    folder, and published through GitHub Pages.
+  </p>
 
-      <button
-        id="clearButton"
-        class="action-button secondary"
-        type="button"
-      >
-        Clear Selection
-      </button>
-    </div>
-
-    <progress
-      id="uploadProgress"
-      max="100"
-      value="0"
-      hidden
-    ></progress>
-
-    <div
-      id="status"
-      class="status"
-      role="status"
-      aria-live="polite"
-    ></div>
-
-    <p class="note">
-      The Upload button connects to a secure server endpoint:
-      <code>/api/gallery-upload</code>.
-      The server must be configured before uploads can publish
-      photographs to GitHub.
-    </p>
-
-  </section>
+</section>
 </main>
 
 <script>
 (function () {
   "use strict";
+
+  // Your actual deployed Cloudflare Worker URL
+  const UPLOAD_API =
+    "https://avyukta-gallery-uploader.avyuktaphotography.workers.dev";
 
   const gallery = document.getElementById("gallery");
   const password = document.getElementById("adminPassword");
@@ -363,8 +363,9 @@ progress[hidden] {
   let selectedFiles = [];
   let uploading = false;
 
-  function showStatus(message) {
+  function showStatus(message, type = "") {
     status.textContent = message;
+    status.className = "status " + type;
   }
 
   function updateButtons() {
@@ -380,14 +381,13 @@ progress[hidden] {
     const errors = [];
 
     Array.from(files).forEach(function (file) {
-
       if (!allowedTypes.has(file.type)) {
         errors.push(file.name + ": Unsupported file type.");
         return;
       }
 
-      if (file.size > maxFileSize) {
-        errors.push(file.name + ": Exceeds 10 MB.");
+      if (file.size === 0 || file.size > maxFileSize) {
+        errors.push(file.name + ": Invalid size or exceeds 10 MB.");
         return;
       }
 
@@ -399,21 +399,24 @@ progress[hidden] {
         );
       });
 
-      if (!exists) {
-        selectedFiles.push(file);
-      }
-
+      if (!exists) selectedFiles.push(file);
     });
 
     renderPreviews();
-    showStatus(errors.join("\n"));
+
+    if (errors.length) {
+      showStatus(errors.join("\n"), "error");
+    } else {
+      showStatus(
+        selectedFiles.length + " photograph(s) selected."
+      );
+    }
   }
 
   function renderPreviews() {
     previewGrid.replaceChildren();
 
     selectedFiles.forEach(function (file, index) {
-
       const tile = document.createElement("div");
       tile.className = "preview";
 
@@ -439,10 +442,7 @@ progress[hidden] {
       remove.type = "button";
       remove.className = "remove";
       remove.textContent = "×";
-      remove.setAttribute(
-        "aria-label",
-        "Remove " + file.name
-      );
+      remove.setAttribute("aria-label", "Remove " + file.name);
 
       remove.addEventListener("click", function () {
         selectedFiles.splice(index, 1);
@@ -467,11 +467,6 @@ progress[hidden] {
     }
   });
 
-  fileInput.addEventListener("change", function () {
-    addFiles(fileInput.files);
-    fileInput.value = "";
-  });
-
   ["dragenter", "dragover"].forEach(function (eventName) {
     dropzone.addEventListener(eventName, function (event) {
       event.preventDefault();
@@ -492,6 +487,11 @@ progress[hidden] {
     }
   });
 
+  fileInput.addEventListener("change", function () {
+    addFiles(fileInput.files);
+    fileInput.value = "";
+  });
+
   clearButton.addEventListener("click", function () {
     selectedFiles = [];
     renderPreviews();
@@ -500,24 +500,23 @@ progress[hidden] {
   });
 
   uploadButton.addEventListener("click", async function () {
-
     const category = gallery.value;
     const adminPassword = password.value;
 
     if (!category) {
-      showStatus("Please select a photography gallery.");
+      showStatus("Please select a photography gallery.", "error");
       gallery.focus();
       return;
     }
 
     if (!adminPassword) {
-      showStatus("Please enter your admin password.");
+      showStatus("Please enter your admin password.", "error");
       password.focus();
       return;
     }
 
     if (selectedFiles.length === 0) {
-      showStatus("Please select photographs.");
+      showStatus("Please select photographs.", "error");
       return;
     }
 
@@ -532,7 +531,6 @@ progress[hidden] {
     let uploadedCount = 0;
 
     for (let i = 0; i < filesToUpload.length; i++) {
-
       const file = filesToUpload[i];
 
       showStatus(
@@ -542,19 +540,18 @@ progress[hidden] {
       );
 
       const formData = new FormData();
-
       formData.append("category", category);
       formData.append("photo", file, file.name);
 
       try {
-
-        const response = await fetch("/api/gallery-upload", {
+        const response = await fetch(UPLOAD_API, {
           method: "POST",
           headers: {
             "X-Gallery-Password": adminPassword
           },
           body: formData,
-          credentials: "same-origin"
+          credentials: "omit",
+          mode: "cors"
         });
 
         const result = await response.json().catch(function () {
@@ -563,19 +560,22 @@ progress[hidden] {
 
         if (!response.ok) {
           throw new Error(
-            result.error || "Upload failed: " + response.status
+            result.error ||
+            "Upload failed with HTTP " + response.status
           );
+        }
+
+        if (result.success !== true) {
+          throw new Error("Server did not confirm the upload.");
         }
 
         uploadedCount++;
 
       } catch (error) {
-
         failedFiles.push({
           file: file,
           error: error.message
         });
-
       }
 
       progress.value = Math.round(
@@ -585,7 +585,7 @@ progress[hidden] {
 
     uploading = false;
 
-    // Retain unsuccessful files for retry.
+    // Retain failed photos so they can be retried.
     selectedFiles = failedFiles.map(function (item) {
       return item.file;
     });
@@ -595,23 +595,25 @@ progress[hidden] {
     let message =
       uploadedCount + " photograph(s) uploaded successfully.";
 
-    if (failedFiles.length > 0) {
+    if (failedFiles.length) {
       message += "\n\nFailed uploads:\n";
 
       failedFiles.forEach(function (item) {
-        message +=
-          item.file.name + ": " + item.error + "\n";
+        message += item.file.name + ": " + item.error + "\n";
       });
+
+      showStatus(message, "error");
     } else {
       message +=
-        "\nYour photos will appear after website deployment.";
-    }
+        "\nPhotos have been committed to GitHub." +
+        "\nThey will appear after GitHub Pages finishes deploying.";
 
-    showStatus(message);
+      showStatus(message, "success");
+      password.value = "";
+    }
   });
 
   updateButtons();
-
 })();
 </script>
 
