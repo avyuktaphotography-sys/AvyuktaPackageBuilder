@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3ee">
+
+  <title>Event Photography in Bengaluru | Avyukta Photography</title>
+
+  <meta name="description"
+        content="Professional event photography in Bengaluru by Avyukta Photography. Capturing birthdays, family celebrations, baby showers, naming ceremonies and unforgettable occasions.">
+
+  <link rel="canonical"
+        href="https://avyuktaphotography.com/avyukta-events.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="indexstyle.css">
+
+  <style>
+    :root {
+      --cream: #f7f3ee;
+      --white: #fffdf9;
+      --sage: #30382f;
+      --gold: #a18460;
+      --muted: #77746e;
+      --border: #e6ded3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--sage);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    .event-header {
+      position: relative;
+      z-index: 50;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .event-nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .event-logo {
+      color: var(--sage);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .event-logo small {
+      display: block;
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 4px;
+    }
+
+    .event-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .event-links a {
+      color: var(--sage);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .event-links .event-book {
+      padding: 13px 20px;
+      border-radius: 3px;
+      background: var(--sage);
+      color: white;
+    }
+
+    .event-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 110px 20px 100px;
+      background: linear-gradient(145deg, #f8f4ee, #e9e7df);
+      text-align: center;
+    }
+
+    .event-hero::before {
+      content: "✦";
+      position: absolute;
+      top: -100px;
+      right: -40px;
+      font-size: 300px;
+      line-height: 1;
+      color: rgba(161,132,96,.07);
+      pointer-events: none;
+    }
+
+    .event-eyebrow {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .event-hero h1 {
+      max-width: 950px;
+      margin: 0 auto 24px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(42px, 6vw, 78px);
+      font-weight: 400;
+      line-height: 1.14;
+    }
+
+    .event-hero h1 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .event-hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .event-breadcrumb {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .event-breadcrumb a {
+      color: var(--sage);
+      text-decoration: none;
+    }
+
+    .event-gallery-section {
+      max-width: 1250px;
+      margin: auto;
+      padding: 90px 24px 110px;
+    }
+
+    .event-gallery-heading {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .event-gallery-heading h2 {
+      margin: 0 0 15px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+    }
+
+    .event-gallery-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .event-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .event-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: 3px;
+      background: #e8e1d8;
+      cursor: zoom-in;
+      box-shadow: 0 6px 25px rgba(30,35,28,.04);
+    }
+
+    .event-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .event-photo:hover img {
+      transform: scale(1.045);
+    }
+
+    .event-photo::after {
+      content: "VIEW PHOTO ↗";
+      position: absolute;
+      inset: auto 0 0;
+      padding: 28px 16px 16px;
+      text-align: right;
+      color: white;
+      font-size: 11px;
+      letter-spacing: 2px;
+      background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.5)
+      );
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .event-photo:hover::after {
+      opacity: 1;
+    }
+
+    .event-gallery-status {
+      padding: 50px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .event-gallery-status[hidden] {
+      display: none;
+    }
+
+    .event-cta {
+      padding: 85px 24px;
+      background: var(--sage);
+      color: white;
+      text-align: center;
+    }
+
+    .event-cta h2 {
+      max-width: 750px;
+      margin: 0 auto 18px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(32px, 5vw, 55px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .event-cta h2 em {
+      color: #d5b78d;
+      font-weight: 400;
+    }
+
+    .event-cta p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #e2e4dc;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .event-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .event-button {
+      display: inline-block;
+      padding: 16px 24px;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s;
+    }
+
+    .event-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .event-button-primary {
+      background: var(--cream);
+      color: var(--sage);
+    }
+
+    .event-button-outline {
+      border: 1px solid rgba(255,255,255,.7);
+      color: white;
+    }
+
+    .event-footer {
+      padding: 40px 24px;
+      background: #f4efe8;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .event-footer p {
+      margin: 10px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .event-footer a {
+      color: var(--sage);
+      text-decoration: none;
+    }
+
+    .event-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 65px 70px;
+      background: rgba(9,12,10,.96);
+    }
+
+    .event-lightbox.is-open {
+      display: flex;
+    }
+
+    .event-lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 2px;
+    }
+
+    .event-lightbox button {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      color: white;
+      cursor: pointer;
+      font-size: 23px;
+    }
+
+    .event-lightbox-close {
+      top: 20px;
+      right: 20px;
+    }
+
+    .event-lightbox-prev {
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+    }
+
+    .event-lightbox-next {
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+    }
+
+    .event-lightbox-count {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      color: #eee;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 850px) {
+      .event-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        gap: 14px;
+      }
+
+      .event-links {
+        gap: 15px;
+      }
+
+      .event-hero {
+        padding: 80px 20px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .event-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .event-links {
+        justify-content: center;
+      }
+
+      .event-links a {
+        font-size: 12px;
+      }
+
+      .event-gallery-section {
+        padding: 65px 14px 75px;
+      }
+
+      .event-gallery-grid {
+        gap: 9px;
+      }
+
+      .event-photo {
+        aspect-ratio: 3 / 4;
+      }
+
+      .event-lightbox {
+        padding: 70px 48px;
+      }
+
+      .event-lightbox button {
+        width: 35px;
+        height: 35px;
+        font-size: 19px;
+      }
+
+      .event-lightbox-prev {
+        left: 6px;
+      }
+
+      .event-lightbox-next {
+        right: 6px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .event-photo img,
+      .event-button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="event-header">
+    <nav class="event-nav" aria-label="Gallery navigation">
+
+      <a class="event-logo" href="index.html">
+        AVYUKTA
+        <small>PHOTOGRAPHY</small>
+      </a>
+
+      <div class="event-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#gallery">All Galleries</a>
+        <a href="index.html#packages">Packages</a>
+        <a href="index.html#contact">Contact</a>
+
+        <a class="event-book" href="index.html#availability">
+          Check Availability ↗
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="event-hero">
+
+      <span class="event-eyebrow">
+        AVYUKTA PHOTOGRAPHY · BENGALURU
+      </span>
+
+      <h1>
+        Event <em>Photography</em>
+      </h1>
+
+      <p>
+        Every celebration tells a beautiful story.
+        From birthdays and family gatherings to baby showers,
+        naming ceremonies and special occasions, we capture
+        genuine emotions, joyful moments and memories that
+        deserve to last forever.
+      </p>
+
+      <div class="event-breadcrumb">
+        <a href="index.html">Home</a>
+        &nbsp; / &nbsp;
+        <a href="index.html#gallery">Photography Galleries</a>
+        &nbsp; / &nbsp;
+        Events
+      </div>
+
+    </section>
+
+    <!-- AUTOMATIC EVENT GALLERY -->
+    <section class="event-gallery-section">
+
+      <div class="event-gallery-heading">
+
+        <span class="event-eyebrow">
+          OUR EVENT PHOTOGRAPHY COLLECTION
+        </span>
+
+        <h2>
+          Celebrations worth remembering.
+        </h2>
+
+        <p>
+          Explore beautifully captured birthdays,
+          family celebrations and special occasions.
+        </p>
+
+      </div>
+
+      <div
+        class="event-gallery-status"
+        id="eventGalleryStatus"
+        role="status"
+      >
+        Loading event photographs...
+      </div>
+
+      <div
+        class="event-gallery-grid"
+        id="eventGalleryGrid"
+        aria-label="Event photography collection"
+      ></div>
+
+    </section>
+
+    <!-- BOOKING SECTION -->
+    <section class="event-cta">
+
+      <span class="event-eyebrow">
+        LET'S CAPTURE YOUR CELEBRATION
+      </span>
+
+      <h2>
+        Beautiful moments.<br>
+        <em>Unforgettable celebrations.</em>
+      </h2>
+
+      <p>
+        Planning a birthday, baby shower, naming ceremony
+        or family celebration? Contact us for event
+        photography enquiries and availability.
+      </p>
+
+      <div class="event-cta-buttons">
+
+        <a
+          class="event-button event-button-primary"
+          href="index.html#availability"
+        >
+          Check Availability ↗
+        </a>
+
+        <a
+          class="event-button event-button-outline"
+          href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20am%20interested%20in%20Event%20Photography.%20Please%20share%20the%20details."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp Us ↗
+        </a>
+
+        <a
+          class="event-button event-button-outline"
+          href="tel:+919008203206"
+        >
+          Call Now ↗
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="event-footer">
+
+    <a href="index.html">
+      <strong>AVYUKTA PHOTOGRAPHY</strong>
+    </a>
+
+    <p>Bengaluru, Karnataka, India</p>
+
+    <p>
+      © <span id="eventYear">2026</span>
+      Avyukta Photography. All rights reserved.
+    </p>
+
+  </footer>
+
+  <!-- FULL-SCREEN IMAGE VIEWER -->
+  <div
+    class="event-lightbox"
+    id="eventLightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Event photograph viewer"
+    aria-hidden="true"
+  >
+
+    <button
+      type="button"
+      class="event-lightbox-close"
+      id="eventLightboxClose"
+      aria-label="Close photograph"
+    >
+      &times;
+    </button>
+
+    <button
+      type="button"
+      class="event-lightbox-prev"
+      id="eventLightboxPrev"
+      aria-label="Previous photograph"
+    >
+      &#10094;
+    </button>
+
+    <img
+      id="eventLightboxImage"
+      alt="Event photography portrait"
+    >
+
+    <button
+      type="button"
+      class="event-lightbox-next"
+      id="eventLightboxNext"
+      aria-label="Next photograph"
+    >
+      &#10095;
+    </button>
+
+    <span
+      class="event-lightbox-count"
+      id="eventLightboxCount"
+    ></span>
+
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /*
+       * AUTOMATIC EVENT GALLERY
+       *
+       * Expected folder:
+       * GalleryForImages/avyukta_events/
+       *
+       * The GitHub API lists files in the public repository.
+       * Images must also be available on the published website.
+       */
+
+      const GALLERY_CONFIG = {
+        owner: "avyuktaphotography-sys",
+        repo: "AvyuktaPackageBuilder",
+        branch: "website-v2",
+        folder: "GalleryForImages/avyukta_events"
+      };
+
+      const grid = document.getElementById("eventGalleryGrid");
+      const status = document.getElementById("eventGalleryStatus");
+
+      const lightbox = document.getElementById("eventLightbox");
+      const lightboxImage = document.getElementById("eventLightboxImage");
+      const lightboxCount = document.getElementById("eventLightboxCount");
+
+      const closeButton = document.getElementById("eventLightboxClose");
+      const prevButton = document.getElementById("eventLightboxPrev");
+      const nextButton = document.getElementById("eventLightboxNext");
+
+      const supportedImage = /\.(jpg|jpeg|png|webp|gif|avif)$/i;
+
+      let galleryPhotos = [];
+      let currentPhoto = 0;
+      let previousFocus = null;
+
+      document.getElementById("eventYear").textContent =
+        new Date().getFullYear();
+
+      function setStatus(message) {
+        status.textContent = message;
+        status.hidden = !message;
+      }
+
+      function buildGitHubApiUrl() {
+        const encodedFolder = GALLERY_CONFIG.folder
+          .split("/")
+          .map(encodeURIComponent)
+          .join("/");
+
+        return (
+          "https://api.github.com/repos/" +
+          encodeURIComponent(GALLERY_CONFIG.owner) +
+          "/" +
+          encodeURIComponent(GALLERY_CONFIG.repo) +
+          "/contents/" +
+          encodedFolder +
+          "?ref=" +
+          encodeURIComponent(GALLERY_CONFIG.branch)
+        );
+      }
+
+      function getImageUrl(file) {
+        return (
+          GALLERY_CONFIG.folder +
+          "/" +
+          encodeURIComponent(file.name)
+        );
+      }
+
+      async function loadGallery() {
+        setStatus("Loading event photographs...");
+
+        try {
+          const response = await fetch(buildGitHubApiUrl(), {
+            headers: {
+              "Accept": "application/vnd.github+json"
+            },
+            cache: "no-store"
+          });
+
+          if (!response.ok) {
+            throw new Error(
+              "Gallery listing unavailable: " + response.status
+            );
+          }
+
+          const files = await response.json();
+
+          if (!Array.isArray(files)) {
+            throw new Error("Unexpected gallery response.");
+          }
+
+          const images = files
+            .filter(function (file) {
+              return (
+                file.type === "file" &&
+                supportedImage.test(file.name)
+              );
+            })
+            .sort(function (a, b) {
+              return a.name.localeCompare(
+                b.name,
+                undefined,
+                {
+                  numeric: true,
+                  sensitivity: "base"
+                }
+              );
+            });
+
+          galleryPhotos = images.map(function (file) {
+            return {
+              name: file.name,
+              src: getImageUrl(file)
+            };
+          });
+
+          grid.replaceChildren();
+
+          if (galleryPhotos.length === 0) {
+            setStatus(
+              "No event photographs have been published yet."
+            );
+            return;
+          }
+
+          const fragment = document.createDocumentFragment();
+
+          galleryPhotos.forEach(function (photo, index) {
+            const button = document.createElement("button");
+
+            button.type = "button";
+            button.className = "event-photo";
+
+            button.setAttribute(
+              "aria-label",
+              "View event photograph " + (index + 1)
+            );
+
+            const img = document.createElement("img");
+
+            img.src = photo.src;
+
+            img.alt =
+              "Avyukta Photography event photograph " +
+              (index + 1);
+
+            img.loading = "lazy";
+            img.decoding = "async";
+
+            button.appendChild(img);
+
+            button.addEventListener("click", function () {
+              openLightbox(index);
+            });
+
+            fragment.appendChild(button);
+          });
+
+          grid.appendChild(fragment);
+          setStatus("");
+
+        } catch (error) {
+          console.error("Event gallery:", error);
+
+          setStatus(
+            "The event gallery could not be loaded right now. " +
+            "Please check that the image folder exists in the " +
+            "configured public GitHub repository and branch."
+          );
+        }
+      }
+
+      function showPhoto(index) {
+        if (!galleryPhotos.length) {
+          return;
+        }
+
+        currentPhoto =
+          (index + galleryPhotos.length) % galleryPhotos.length;
+
+        lightboxImage.src = galleryPhotos[currentPhoto].src;
+
+        lightboxImage.alt =
+          "Event photograph " +
+          (currentPhoto + 1) +
+          " of " +
+          galleryPhotos.length;
+
+        lightboxCount.textContent =
+          (currentPhoto + 1) +
+          " / " +
+          galleryPhotos.length;
+      }
+
+      function openLightbox(index) {
+        previousFocus = document.activeElement;
+
+        showPhoto(index);
+
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+
+        lightboxImage.removeAttribute("src");
+
+        if (
+          previousFocus &&
+          typeof previousFocus.focus === "function"
+        ) {
+          previousFocus.focus();
+        }
+      }
+
+      closeButton.addEventListener("click", closeLightbox);
+
+      prevButton.addEventListener("click", function () {
+        showPhoto(currentPhoto - 1);
+      });
+
+      nextButton.addEventListener("click", function () {
+        showPhoto(currentPhoto + 1);
+      });
+
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("is-open")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+
+        if (event.key === "ArrowLeft") {
+          showPhoto(currentPhoto - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          showPhoto(currentPhoto + 1);
+        }
+
+        if (event.key === "Tab") {
+          const controls = [
+            closeButton,
+            prevButton,
+            nextButton
+          ];
+
+          const first = controls[0];
+          const last = controls[controls.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (
+            !event.shiftKey &&
+            document.activeElement === last
+          ) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      loadGallery();
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3ee">
+
+  <title>Outdoor Photography in Bengaluru | Avyukta Photography</title>
+
+  <meta name="description"
+        content="Explore beautiful outdoor photography in Bengaluru by Avyukta Photography. Natural light baby portraits, kids photography, family moments and creative outdoor photoshoots.">
+
+  <link rel="canonical"
+        href="https://avyuktaphotography.com/avyukta-outdoor.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="indexstyle.css">
+
+  <style>
+    :root {
+      --cream: #f7f3ee;
+      --white: #fffdf9;
+      --sage: #30382f;
+      --gold: #a18460;
+      --muted: #77746e;
+      --border: #e6ded3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--sage);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    .outdoor-header {
+      position: relative;
+      z-index: 50;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .outdoor-nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .outdoor-logo {
+      color: var(--sage);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .outdoor-logo small {
+      display: block;
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 4px;
+    }
+
+    .outdoor-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .outdoor-links a {
+      color: var(--sage);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .outdoor-links .outdoor-book {
+      padding: 13px 20px;
+      border-radius: 3px;
+      background: var(--sage);
+      color: white;
+    }
+
+    .outdoor-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 110px 20px 100px;
+      background: linear-gradient(145deg, #f8f4ee, #e9e7df);
+      text-align: center;
+    }
+
+    .outdoor-hero::before {
+      content: "✦";
+      position: absolute;
+      top: -100px;
+      right: -40px;
+      font-size: 300px;
+      line-height: 1;
+      color: rgba(161,132,96,.07);
+      pointer-events: none;
+    }
+
+    .outdoor-eyebrow {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .outdoor-hero h1 {
+      max-width: 950px;
+      margin: 0 auto 24px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(42px, 6vw, 78px);
+      font-weight: 400;
+      line-height: 1.14;
+    }
+
+    .outdoor-hero h1 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .outdoor-hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .outdoor-breadcrumb {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .outdoor-breadcrumb a {
+      color: var(--sage);
+      text-decoration: none;
+    }
+
+    .outdoor-gallery-section {
+      max-width: 1250px;
+      margin: auto;
+      padding: 90px 24px 110px;
+    }
+
+    .outdoor-gallery-heading {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .outdoor-gallery-heading h2 {
+      margin: 0 0 15px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+    }
+
+    .outdoor-gallery-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .outdoor-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .outdoor-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: 3px;
+      background: #e8e1d8;
+      cursor: zoom-in;
+      box-shadow: 0 6px 25px rgba(30,35,28,.04);
+    }
+
+    .outdoor-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .outdoor-photo:hover img {
+      transform: scale(1.045);
+    }
+
+    .outdoor-photo::after {
+      content: "VIEW PHOTO ↗";
+      position: absolute;
+      inset: auto 0 0;
+      padding: 28px 16px 16px;
+      text-align: right;
+      color: white;
+      font-size: 11px;
+      letter-spacing: 2px;
+      background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.5)
+      );
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .outdoor-photo:hover::after {
+      opacity: 1;
+    }
+
+    .outdoor-gallery-status {
+      padding: 50px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .outdoor-gallery-status[hidden] {
+      display: none;
+    }
+
+    .outdoor-cta {
+      padding: 85px 24px;
+      background: var(--sage);
+      color: white;
+      text-align: center;
+    }
+
+    .outdoor-cta h2 {
+      max-width: 750px;
+      margin: 0 auto 18px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(32px, 5vw, 55px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .outdoor-cta h2 em {
+      color: #d5b78d;
+      font-weight: 400;
+    }
+
+    .outdoor-cta p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #e2e4dc;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .outdoor-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .outdoor-button {
+      display: inline-block;
+      padding: 16px 24px;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s;
+    }
+
+    .outdoor-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .outdoor-button-primary {
+      background: var(--cream);
+      color: var(--sage);
+    }
+
+    .outdoor-button-outline {
+      border: 1px solid rgba(255,255,255,.7);
+      color: white;
+    }
+
+    .outdoor-footer {
+      padding: 40px 24px;
+      background: #f4efe8;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .outdoor-footer p {
+      margin: 10px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .outdoor-footer a {
+      color: var(--sage);
+      text-decoration: none;
+    }
+
+    .outdoor-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 65px 70px;
+      background: rgba(9,12,10,.96);
+    }
+
+    .outdoor-lightbox.is-open {
+      display: flex;
+    }
+
+    .outdoor-lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 2px;
+    }
+
+    .outdoor-lightbox button {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      color: white;
+      cursor: pointer;
+      font-size: 23px;
+    }
+
+    .outdoor-lightbox-close {
+      top: 20px;
+      right: 20px;
+    }
+
+    .outdoor-lightbox-prev {
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+    }
+
+    .outdoor-lightbox-next {
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+    }
+
+    .outdoor-lightbox-count {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      color: #eee;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 850px) {
+      .outdoor-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        gap: 14px;
+      }
+
+      .outdoor-links {
+        gap: 15px;
+      }
+
+      .outdoor-hero {
+        padding: 80px 20px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .outdoor-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .outdoor-links {
+        justify-content: center;
+      }
+
+      .outdoor-links a {
+        font-size: 12px;
+      }
+
+      .outdoor-gallery-section {
+        padding: 65px 14px 75px;
+      }
+
+      .outdoor-gallery-grid {
+        gap: 9px;
+      }
+
+      .outdoor-photo {
+        aspect-ratio: 3 / 4;
+      }
+
+      .outdoor-lightbox {
+        padding: 70px 48px;
+      }
+
+      .outdoor-lightbox button {
+        width: 35px;
+        height: 35px;
+        font-size: 19px;
+      }
+
+      .outdoor-lightbox-prev {
+        left: 6px;
+      }
+
+      .outdoor-lightbox-next {
+        right: 6px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .outdoor-photo img,
+      .outdoor-button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="outdoor-header">
+    <nav class="outdoor-nav" aria-label="Gallery navigation">
+
+      <a class="outdoor-logo" href="index.html">
+        AVYUKTA
+        <small>PHOTOGRAPHY</small>
+      </a>
+
+      <div class="outdoor-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#gallery">All Galleries</a>
+        <a href="index.html#packages">Packages</a>
+        <a href="index.html#contact">Contact</a>
+
+        <a class="outdoor-book" href="index.html#availability">
+          Check Availability ↗
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="outdoor-hero">
+
+      <span class="outdoor-eyebrow">
+        AVYUKTA PHOTOGRAPHY · BENGALURU
+      </span>
+
+      <h1>
+        Outdoor <em>Photography</em>
+      </h1>
+
+      <p>
+        Beautiful memories beneath the open sky.
+        From playful baby moments and adventurous childhood
+        expressions to heartfelt family portraits,
+        our outdoor photography sessions capture genuine
+        emotions surrounded by nature and natural light.
+      </p>
+
+      <div class="outdoor-breadcrumb">
+        <a href="index.html">Home</a>
+        &nbsp; / &nbsp;
+        <a href="index.html#gallery">Photography Galleries</a>
+        &nbsp; / &nbsp;
+        Outdoor
+      </div>
+
+    </section>
+
+    <!-- AUTOMATIC OUTDOOR GALLERY -->
+    <section class="outdoor-gallery-section">
+
+      <div class="outdoor-gallery-heading">
+
+        <span class="outdoor-eyebrow">
+          OUR OUTDOOR PHOTOGRAPHY COLLECTION
+        </span>
+
+        <h2>
+          Natural light. Beautiful stories.
+        </h2>
+
+        <p>
+          Explore our outdoor baby, kids and family
+          photography collection captured in beautiful settings.
+        </p>
+
+      </div>
+
+      <div
+        class="outdoor-gallery-status"
+        id="outdoorGalleryStatus"
+        role="status"
+      >
+        Loading outdoor photographs...
+      </div>
+
+      <div
+        class="outdoor-gallery-grid"
+        id="outdoorGalleryGrid"
+        aria-label="Outdoor photography collection"
+      ></div>
+
+    </section>
+
+    <!-- BOOKING SECTION -->
+    <section class="outdoor-cta">
+
+      <span class="outdoor-eyebrow">
+        LET'S CREATE BEAUTIFUL OUTDOOR MEMORIES
+      </span>
+
+      <h2>
+        Moments in nature.<br>
+        <em>Memories for a lifetime.</em>
+      </h2>
+
+      <p>
+        Enquire about our outdoor photography sessions,
+        beautiful locations, creative themes and available dates.
+      </p>
+
+      <div class="outdoor-cta-buttons">
+
+        <a
+          class="outdoor-button outdoor-button-primary"
+          href="index.html#availability"
+        >
+          Check Availability ↗
+        </a>
+
+        <a
+          class="outdoor-button outdoor-button-outline"
+          href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20am%20interested%20in%20Outdoor%20Photography.%20Please%20share%20the%20details."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp Us ↗
+        </a>
+
+        <a
+          class="outdoor-button outdoor-button-outline"
+          href="tel:+919008203206"
+        >
+          Call Now ↗
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="outdoor-footer">
+
+    <a href="index.html">
+      <strong>AVYUKTA PHOTOGRAPHY</strong>
+    </a>
+
+    <p>Bengaluru, Karnataka, India</p>
+
+    <p>
+      © <span id="outdoorYear">2026</span>
+      Avyukta Photography. All rights reserved.
+    </p>
+
+  </footer>
+
+  <!-- FULL-SCREEN IMAGE VIEWER -->
+  <div
+    class="outdoor-lightbox"
+    id="outdoorLightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Outdoor photograph viewer"
+    aria-hidden="true"
+  >
+
+    <button
+      type="button"
+      class="outdoor-lightbox-close"
+      id="outdoorLightboxClose"
+      aria-label="Close photograph"
+    >
+      &times;
+    </button>
+
+    <button
+      type="button"
+      class="outdoor-lightbox-prev"
+      id="outdoorLightboxPrev"
+      aria-label="Previous photograph"
+    >
+      &#10094;
+    </button>
+
+    <img
+      id="outdoorLightboxImage"
+      alt="Outdoor photography portrait"
+    >
+
+    <button
+      type="button"
+      class="outdoor-lightbox-next"
+      id="outdoorLightboxNext"
+      aria-label="Next photograph"
+    >
+      &#10095;
+    </button>
+
+    <span
+      class="outdoor-lightbox-count"
+      id="outdoorLightboxCount"
+    ></span>
+
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /*
+       * AUTOMATIC OUTDOOR GALLERY
+       *
+       * Existing image folder:
+       * GalleryForImages/avyukta_outdoor/
+       *
+       * The GitHub API lists images from the public repository.
+       * Image files must also be deployed to the website.
+       */
+
+      const GALLERY_CONFIG = {
+        owner: "avyuktaphotography-sys",
+        repo: "AvyuktaPackageBuilder",
+        branch: "website-v2",
+        folder: "GalleryForImages/avyukta_outdoor"
+      };
+
+      const grid = document.getElementById("outdoorGalleryGrid");
+      const status = document.getElementById("outdoorGalleryStatus");
+
+      const lightbox = document.getElementById("outdoorLightbox");
+      const lightboxImage = document.getElementById("outdoorLightboxImage");
+      const lightboxCount = document.getElementById("outdoorLightboxCount");
+
+      const closeButton = document.getElementById("outdoorLightboxClose");
+      const prevButton = document.getElementById("outdoorLightboxPrev");
+      const nextButton = document.getElementById("outdoorLightboxNext");
+
+      const supportedImage = /\.(jpg|jpeg|png|webp|gif|avif)$/i;
+
+      let galleryPhotos = [];
+      let currentPhoto = 0;
+      let previousFocus = null;
+
+      document.getElementById("outdoorYear").textContent =
+        new Date().getFullYear();
+
+      function setStatus(message) {
+        status.textContent = message;
+        status.hidden = !message;
+      }
+
+      function buildGitHubApiUrl() {
+        const encodedFolder = GALLERY_CONFIG.folder
+          .split("/")
+          .map(encodeURIComponent)
+          .join("/");
+
+        return (
+          "https://api.github.com/repos/" +
+          encodeURIComponent(GALLERY_CONFIG.owner) +
+          "/" +
+          encodeURIComponent(GALLERY_CONFIG.repo) +
+          "/contents/" +
+          encodedFolder +
+          "?ref=" +
+          encodeURIComponent(GALLERY_CONFIG.branch)
+        );
+      }
+
+      function getImageUrl(file) {
+        return (
+          GALLERY_CONFIG.folder +
+          "/" +
+          encodeURIComponent(file.name)
+        );
+      }
+
+      async function loadGallery() {
+        setStatus("Loading outdoor photographs...");
+
+        try {
+          const response = await fetch(buildGitHubApiUrl(), {
+            headers: {
+              "Accept": "application/vnd.github+json"
+            },
+            cache: "no-store"
+          });
+
+          if (!response.ok) {
+            throw new Error(
+              "Gallery listing unavailable: " + response.status
+            );
+          }
+
+          const files = await response.json();
+
+          if (!Array.isArray(files)) {
+            throw new Error("Unexpected gallery response.");
+          }
+
+          const images = files
+            .filter(function (file) {
+              return (
+                file.type === "file" &&
+                supportedImage.test(file.name)
+              );
+            })
+            .sort(function (a, b) {
+              return a.name.localeCompare(
+                b.name,
+                undefined,
+                {
+                  numeric: true,
+                  sensitivity: "base"
+                }
+              );
+            });
+
+          galleryPhotos = images.map(function (file) {
+            return {
+              name: file.name,
+              src: getImageUrl(file)
+            };
+          });
+
+          grid.replaceChildren();
+
+          if (galleryPhotos.length === 0) {
+            setStatus(
+              "No outdoor photographs have been published yet."
+            );
+            return;
+          }
+
+          const fragment = document.createDocumentFragment();
+
+          galleryPhotos.forEach(function (photo, index) {
+            const button = document.createElement("button");
+
+            button.type = "button";
+            button.className = "outdoor-photo";
+
+            button.setAttribute(
+              "aria-label",
+              "View outdoor photograph " + (index + 1)
+            );
+
+            const img = document.createElement("img");
+
+            img.src = photo.src;
+
+            img.alt =
+              "Avyukta Photography outdoor photograph " +
+              (index + 1);
+
+            img.loading = "lazy";
+            img.decoding = "async";
+
+            button.appendChild(img);
+
+            button.addEventListener("click", function () {
+              openLightbox(index);
+            });
+
+            fragment.appendChild(button);
+          });
+
+          grid.appendChild(fragment);
+          setStatus("");
+
+        } catch (error) {
+          console.error("Outdoor gallery:", error);
+
+          setStatus(
+            "The outdoor gallery could not be loaded right now. " +
+            "Please check that the image folder exists in the " +
+            "configured public GitHub repository and branch."
+          );
+        }
+      }
+
+      function showPhoto(index) {
+        if (!galleryPhotos.length) {
+          return;
+        }
+
+        currentPhoto =
+          (index + galleryPhotos.length) % galleryPhotos.length;
+
+        lightboxImage.src = galleryPhotos[currentPhoto].src;
+
+        lightboxImage.alt =
+          "Outdoor photograph " +
+          (currentPhoto + 1) +
+          " of " +
+          galleryPhotos.length;
+
+        lightboxCount.textContent =
+          (currentPhoto + 1) +
+          " / " +
+          galleryPhotos.length;
+      }
+
+      function openLightbox(index) {
+        previousFocus = document.activeElement;
+
+        showPhoto(index);
+
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+
+        lightboxImage.removeAttribute("src");
+
+        if (
+          previousFocus &&
+          typeof previousFocus.focus === "function"
+        ) {
+          previousFocus.focus();
+        }
+      }
+
+      closeButton.addEventListener("click", closeLightbox);
+
+      prevButton.addEventListener("click", function () {
+        showPhoto(currentPhoto - 1);
+      });
+
+      nextButton.addEventListener("click", function () {
+        showPhoto(currentPhoto + 1);
+      });
+
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("is-open")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+
+        if (event.key === "ArrowLeft") {
+          showPhoto(currentPhoto - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          showPhoto(currentPhoto + 1);
+        }
+
+        if (event.key === "Tab") {
+          const controls = [
+            closeButton,
+            prevButton,
+            nextButton
+          ];
+
+          const first = controls[0];
+          const last = controls[controls.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (
+            !event.shiftKey &&
+            document.activeElement === last
+          ) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      loadGallery();
+    })();
+  </script>
+
+</body>
+</html>
