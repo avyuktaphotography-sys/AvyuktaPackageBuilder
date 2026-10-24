@@ -2,1709 +2,2084 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3ee">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f3ee">
 
-  <title>Avyukta Photography | Premium Baby, Newborn & Maternity Photography in Bengaluru</title>
+<title>Avyukta Photography | Premium Baby, Newborn & Maternity Photography in Bengaluru</title>
+<meta name="description" content="Avyukta Photography offers newborn, baby, maternity, family and event photography in Bengaluru. Check photoshoot availability and enquire via WhatsApp.">
+<link rel="canonical" href="https://avyuktaphotography.com/">
 
-  <meta name="description" content="Avyukta Photography offers newborn, baby, maternity, family and event photography in Bengaluru. Check photoshoot availability and enquire via WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="indexstyle.css">
 
-  <link rel="canonical" href="https://avyuktaphotography.com/">
+<style>
+/* HERO SLIDESHOW */
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #30382f;
+  touch-action: pan-y;
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.1s ease, visibility 1.1s;
+}
 
-  <link rel="stylesheet" href="indexstyle.css">
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
 
-  <style>
-    /* Availability enquiry form — self-contained styles */
+.hero-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
-    .availability-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(19, 24, 22, .78);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
+.hero .hero-image {
+  display: none !important;
+}
 
-    .availability-overlay.is-open {
-      display: flex;
-    }
+.hero .hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 20, 15, .72) 0%,
+      rgba(12, 20, 15, .42) 48%,
+      rgba(12, 20, 15, .12) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(12, 20, 15, .40),
+      transparent 35%
+    );
+}
 
-    .availability-dialog {
-      position: relative;
-      width: 100%;
-      max-width: 680px;
-      max-height: min(92vh, 900px);
-      overflow-y: auto;
-      background: #faf7f2;
-      color: #252925;
-      border-radius: 12px;
-      box-shadow: 0 30px 100px rgba(0, 0, 0, .25);
-      padding: clamp(24px, 5vw, 46px);
-      overscroll-behavior: contain;
-    }
+.hero .hero-inner {
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
 
-    .availability-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 38px;
-      height: 38px;
-      border: 1px solid #e5ded4;
-      border-radius: 50%;
-      background: #fff;
-      color: #30382f;
-      font-size: 25px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      line-height: 1;
-    }
+.hero .hero-inner a,
+.hero .hero-inner button {
+  pointer-events: auto;
+}
 
-    .availability-eyebrow {
-      display: block;
-      color: #a18460;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
+.hero-navigation {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(12px, 2.5vw, 38px);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
 
-    .availability-dialog h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(30px, 5vw, 43px);
-      line-height: 1.15;
-      font-weight: 400;
-      margin: 0 35px 12px 0;
-      color: #30382f;
-    }
+.hero-arrow {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 50%;
+  background: rgba(25, 30, 25, .28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  font-size: 28px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background .2s, transform .2s;
+}
 
-    .availability-dialog h2 em {
-      color: #a18460;
-      font-weight: 400;
-    }
+.hero-arrow:hover {
+  background: rgba(25, 30, 25, .75);
+  transform: scale(1.07);
+}
 
-    .availability-description {
-      color: #73736e;
-      font-size: 14px;
-      line-height: 1.7;
-      margin: 0 0 26px;
-    }
+.hero-arrow:focus-visible,
+.hero-dot:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
 
-    .availability-fields {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
+.hero-pagination {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: clamp(22px, 4vw, 42px);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transform: translateX(-50%);
+}
 
-    .availability-field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      min-width: 0;
-    }
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: rgba(255,255,255,.55);
+  cursor: pointer;
+  transition: width .3s, background .3s;
+}
 
-    .availability-field.full-width {
-      grid-column: 1 / -1;
-    }
+.hero-dot.is-active {
+  width: 28px;
+  background: white;
+}
 
-    .availability-field label {
-      color: #333b34;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .2px;
-    }
+.hero-slide-counter {
+  position: absolute;
+  z-index: 5;
+  right: clamp(20px, 5vw, 70px);
+  bottom: clamp(22px, 4vw, 42px);
+  color: white;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
 
-    .availability-field input,
-    .availability-field select,
-    .availability-field textarea {
-      width: 100%;
-      min-width: 0;
-      padding: 13px 14px;
-      border: 1px solid #ddd7cd;
-      border-radius: 5px;
-      background: #fff;
-      color: #252925;
-      font: 14px "DM Sans", Arial, sans-serif;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
+.hero-slideshow.is-single ~ .hero-navigation,
+.hero-slideshow.is-single ~ .hero-pagination,
+.hero-slideshow.is-single ~ .hero-slide-counter {
+  display: none;
+}
 
-    .availability-field input:focus,
-    .availability-field select:focus,
-    .availability-field textarea:focus {
-      border-color: #a18460;
-      box-shadow: 0 0 0 3px rgba(161, 132, 96, .13);
-    }
+@media (max-width: 768px) {
+  .hero .hero-shade {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(12,20,15,.76) 0%,
+        rgba(12,20,15,.43) 55%,
+        rgba(12,20,15,.15) 100%
+      );
+  }
 
-    .availability-field textarea {
-      min-height: 88px;
-      resize: vertical;
-    }
+  .hero-slide img {
+    object-position: center;
+  }
 
-    .availability-field input::placeholder,
-    .availability-field textarea::placeholder {
-      color: #a4a19c;
-    }
+  .hero-navigation {
+    padding: 0 12px;
+  }
 
-    .availability-slot-note {
-      font-size: 11px;
-      color: #827d75;
-      line-height: 1.5;
-    }
+  .hero-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 23px;
+  }
 
-    .availability-submit {
-      width: 100%;
-      margin-top: 24px;
-      padding: 16px 20px;
-      border: none;
-      border-radius: 5px;
-      background: #30382f;
-      color: #fff;
-      font: 600 14px "DM Sans", Arial, sans-serif;
-      cursor: pointer;
-      transition: background .2s, transform .2s;
-    }
+  .hero-pagination {
+    bottom: 23px;
+  }
 
-    .availability-submit:hover {
-      background: #485545;
-      transform: translateY(-1px);
-    }
+  .hero-slide-counter {
+    right: 15px;
+    bottom: 20px;
+    font-size: 10px;
+  }
 
-    .availability-disclaimer {
-      margin: 14px 0 0;
-      text-align: center;
-      font-size: 12px;
-      line-height: 1.7;
-      color: #77746e;
-    }
+  .hero .hero-bottom {
+    padding-bottom: 50px;
+  }
+}
 
-    .availability-help {
-      margin-top: 20px;
-      padding-top: 17px;
-      border-top: 1px solid #e6ded3;
-      text-align: center;
-      color: #77746e;
-      font-size: 12px;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+}
 
-    .availability-help a {
-      color: #30382f;
-      font-weight: 700;
-      text-decoration: underline;
-    }
+/* AVAILABILITY ENQUIRY */
+.availability-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(19,24,22,.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
 
-    body.availability-open {
-      overflow: hidden;
-    }
+.availability-overlay.is-open {
+  display: flex;
+}
 
-    @media (max-width: 600px) {
-      .availability-overlay {
-        padding: 10px;
-        align-items: flex-end;
-      }
+.availability-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: min(92vh, 900px);
+  overflow-y: auto;
+  background: #faf7f2;
+  color: #252925;
+  border-radius: 12px;
+  box-shadow: 0 30px 100px rgba(0,0,0,.25);
+  padding: clamp(24px, 5vw, 46px);
+  overscroll-behavior: contain;
+}
 
-      .availability-dialog {
-        max-height: 94dvh;
-        border-radius: 14px 14px 0 0;
-        padding: 30px 20px 24px;
-      }
+.availability-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e5ded4;
+  border-radius: 50%;
+  background: #fff;
+  color: #30382f;
+  font-size: 25px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+}
 
-      .availability-fields {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
+.availability-eyebrow {
+  display: block;
+  color: #a18460;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
-      .availability-field.full-width {
-        grid-column: auto;
-      }
-    }
+.availability-dialog h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(30px, 5vw, 43px);
+  line-height: 1.15;
+  font-weight: 400;
+  margin: 0 35px 12px 0;
+  color: #30382f;
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      .availability-submit,
-      .availability-field input,
-      .availability-field select,
-      .availability-field textarea {
-        transition: none;
-      }
-    }
-  </style>
+.availability-dialog h2 em {
+  color: #a18460;
+  font-weight: 400;
+}
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-65JQNK8MX6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-65JQNK8MX6");
-  </script>
+.availability-description {
+  color: #73736e;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 26px;
+}
+
+.availability-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.availability-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.availability-field.full-width {
+  grid-column: 1 / -1;
+}
+
+.availability-field label {
+  color: #333b34;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.availability-field input,
+.availability-field select,
+.availability-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid #ddd7cd;
+  border-radius: 5px;
+  background: #fff;
+  color: #252925;
+  font: 14px "DM Sans", Arial, sans-serif;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.availability-field input:focus,
+.availability-field select:focus,
+.availability-field textarea:focus {
+  border-color: #a18460;
+  box-shadow: 0 0 0 3px rgba(161,132,96,.13);
+}
+
+.availability-field textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.availability-field input::placeholder,
+.availability-field textarea::placeholder {
+  color: #a4a19c;
+}
+
+.availability-slot-note {
+  font-size: 11px;
+  color: #827d75;
+  line-height: 1.5;
+}
+
+.availability-submit {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #30382f;
+  color: #fff;
+  font: 600 14px "DM Sans", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.availability-submit:hover {
+  background: #485545;
+}
+
+.availability-disclaimer {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #77746e;
+}
+
+.availability-help {
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid #e6ded3;
+  text-align: center;
+  color: #77746e;
+  font-size: 12px;
+}
+
+.availability-help a {
+  color: #30382f;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+body.availability-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .availability-overlay {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .availability-dialog {
+    max-height: 94dvh;
+    border-radius: 14px 14px 0 0;
+    padding: 30px 20px 24px;
+  }
+
+  .availability-fields {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .availability-field.full-width {
+    grid-column: auto;
+  }
+}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-65JQNK8MX6"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag("js", new Date());
+gtag("config", "G-65JQNK8MX6");
+</script>
 </head>
 
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ANNOUNCEMENT -->
-  <div class="announcement">
-    <span>Beautiful moments, thoughtfully preserved.</span>
-    <a href="#availability" data-availability>
-      Check Available Slots <span aria-hidden="true">↗</span>
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  <span>Beautiful moments, thoughtfully preserved.</span>
+  <a href="#availability" data-availability>
+    Check Available Slots <span aria-hidden="true">↗</span>
+  </a>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav container" aria-label="Main navigation">
+
+    <a class="brand" href="index.html" aria-label="Avyukta Photography home">
+      <span class="brand-mark">A<span>✦</span></span>
+      <span class="brand-copy">
+        <strong>AVYUKTA</strong>
+        <small>PHOTOGRAPHY</small>
+      </span>
     </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainMenu"
+      aria-label="Open navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links" id="mainMenu">
+      <a href="#home">Home</a>
+      <a href="#gallery">Portfolio</a>
+      <a href="#about">Our Story</a>
+      <a href="#packages">Packages</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#availability" data-availability class="nav-book">
+        Check Availability <span>↗</span>
+      </a>
+    </div>
+
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- HERO SLIDESHOW -->
+<section class="hero" id="home">
+
+  <div
+    class="hero-slideshow"
+    id="heroSlideshow"
+    aria-label="Avyukta Photography featured photographs"
+    aria-roledescription="carousel"
+  >
+    <!-- Slides are loaded automatically from GitHub -->
   </div>
 
-  <!-- HEADER -->
-  <header class="site-header" id="siteHeader">
-    <nav class="nav container" aria-label="Main navigation">
+  <div class="hero-shade"></div>
 
-      <a class="brand" href="index.html" aria-label="Avyukta Photography home">
-        <span class="brand-mark">
-          A<span>✦</span>
-        </span>
-        <span class="brand-copy">
-          <strong>AVYUKTA</strong>
-          <small>PHOTOGRAPHY</small>
-        </span>
+  <div class="hero-inner container">
+
+    <div class="hero-copy reveal">
+
+      <span class="eyebrow light">
+        BENGALURU · NEWBORN · BABY · MATERNITY
+      </span>
+
+      <h1>
+        Little moments.<br>
+        <em>Forever memories.</em>
+      </h1>
+
+      <p>
+        Thoughtfully styled photography for the tiny details,
+        beautiful milestones and extraordinary love that make
+        your story yours.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-cream" href="#availability" data-availability>
+          Check Availability <span>↗</span>
+        </a>
+
+        <a class="btn btn-outline-light" href="#gallery">
+          Explore Our Work <span>↓</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-bottom">
+      <span>
+        <span id="heroBottomNumber">01 / 10</span>
+        &nbsp; THE ART OF PRESERVING MOMENTS
+      </span>
+
+      <a href="#gallery">
+        SCROLL TO EXPLORE <span>↓</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hero-navigation" id="heroNavigation">
+    <button
+      class="hero-arrow"
+      id="heroPrevious"
+      type="button"
+      aria-label="Previous photograph"
+    >&#8249;</button>
+
+    <button
+      class="hero-arrow"
+      id="heroNext"
+      type="button"
+      aria-label="Next photograph"
+    >&#8250;</button>
+  </div>
+
+  <div
+    class="hero-pagination"
+    id="heroPagination"
+    aria-label="Choose slideshow photograph"
+  ></div>
+
+  <div class="hero-slide-counter" id="heroCounter">
+    01 / 10
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="intro section-space" id="about">
+  <div class="container intro-layout">
+
+    <div class="intro-left reveal">
+      <span class="eyebrow">WELCOME TO AVYUKTA PHOTOGRAPHY</span>
+      <h2>
+        Because every little story deserves to be
+        <em>beautifully told.</em>
+      </h2>
+    </div>
+
+    <div class="intro-right reveal">
+      <p>
+        From your baby's first sleepy expressions to the wonder
+        of growing up, we create heartfelt portraits that feel
+        just as special years from now.
+      </p>
+
+      <p>
+        Based in Bengaluru, our studio combines thoughtful
+        styling, gentle guidance and a relaxed photography
+        experience for the whole family.
+      </p>
+
+      <a class="text-link" href="#gallery">
+        Discover our photography <span>↗</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="container stats">
+    <div><strong>8+</strong><span>Years of experience</span></div>
+    <div><strong>5,500+</strong><span>Photoshoots captured</span></div>
+    <div><strong>60+</strong><span>Creative themes</span></div>
+    <div><strong>4.6 ★</strong><span>Google rating</span></div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY GALLERY -->
+<section class="portfolio section-space" id="gallery">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">OUR PHOTOGRAPHY GALLERY</span>
+        <h2>
+          Every chapter,<br>
+          <em>a work of art.</em>
+        </h2>
+      </div>
+
+      <p>
+        From your newborn's first days to growing milestones,
+        beautiful maternity portraits, family memories and
+        unforgettable celebrations — explore our collections.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <a
+        class="gallery-card gallery-feature reveal"
+        href="avyukta-newborn.html"
+        aria-label="Explore Newborn Photography, 0 to 30 days"
+      >
+        <img
+          src="images/gallery/newborn.jpg.jpeg"
+          alt="Newborn Photography in Bengaluru, 0 to 30 days"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>01 / 0 – 30 DAYS</span>
+          <h3>Newborn Photography</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
       </a>
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="mainMenu"
-        aria-label="Open navigation"
+      <a
+        class="gallery-card reveal"
+        href="avyukta-baby-3to6.html"
+        aria-label="Explore Baby Photography, 3 months to 6 months"
       >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="nav-links" id="mainMenu">
-        <a href="#home">Home</a>
-        <a href="#gallery">Portfolio</a>
-        <a href="#about">Our Story</a>
-        <a href="#packages">Packages</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
-        <a href="#availability" data-availability class="nav-book">
-          Check Availability <span>↗</span>
-        </a>
-      </div>
-
-    </nav>
-  </header>
-
-  <main id="main">
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div
-        class="hero-image"
-        role="img"
-        aria-label="Avyukta Photography portrait"
-      ></div>
-
-      <div class="hero-shade"></div>
-
-      <div class="hero-inner container">
-        <div class="hero-copy reveal">
-          <span class="eyebrow light">
-            BENGALURU · NEWBORN · BABY · MATERNITY
-          </span>
-
-          <h1>
-            Little moments.<br>
-            <em>Forever memories.</em>
-          </h1>
-
-          <p>
-            Thoughtfully styled photography for the tiny details,
-            beautiful milestones and extraordinary love that make
-            your story yours.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-cream" href="#availability" data-availability>
-              Check Availability <span>↗</span>
-            </a>
-            <a class="btn btn-outline-light" href="#gallery">
-              Explore Our Work <span>↓</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-bottom">
-          <span>
-            01 / 03 &nbsp; THE ART OF PRESERVING MOMENTS
-          </span>
-          <a href="#gallery">
-            SCROLL TO EXPLORE <span>↓</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="intro section-space" id="about">
-      <div class="container intro-layout">
-
-        <div class="intro-left reveal">
-          <span class="eyebrow">
-            WELCOME TO AVYUKTA PHOTOGRAPHY
-          </span>
-          <h2>
-            Because every little story deserves to be
-            <em>beautifully told.</em>
-          </h2>
-        </div>
-
-        <div class="intro-right reveal">
-          <p>
-            From your baby's first sleepy expressions to the wonder
-            of growing up, we create heartfelt portraits that feel
-            just as special years from now.
-          </p>
-
-          <p>
-            Based in Bengaluru, our studio combines thoughtful
-            styling, gentle guidance and a relaxed photography
-            experience for the whole family.
-          </p>
-
-          <a class="text-link" href="#gallery">
-            Discover our photography <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="container stats">
-        <div>
-          <strong>8+</strong>
-          <span>Years of experience</span>
-        </div>
-        <div>
-          <strong>5,500+</strong>
-          <span>Photoshoots captured</span>
-        </div>
-        <div>
-          <strong>60+</strong>
-          <span>Creative themes</span>
-        </div>
-        <div>
-          <strong>4.6 ★</strong>
-          <span>Google rating</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PHOTOGRAPHY GALLERY -->
-    <section class="portfolio section-space" id="gallery">
-      <div class="container">
-
-        <div class="section-head reveal">
-          <div>
-            <span class="eyebrow">
-              OUR PHOTOGRAPHY GALLERY
-            </span>
-            <h2>
-              Every chapter,<br>
-              <em>a work of art.</em>
-            </h2>
-          </div>
-
-          <p>
-            From your newborn's first days to growing milestones,
-            beautiful maternity portraits, family memories and
-            unforgettable celebrations — explore our collections.
-          </p>
-        </div>
-
-        <div class="gallery-grid">
-
-          <!-- 1. NEWBORN PHOTOGRAPHY -->
-          <a
-            class="gallery-card gallery-feature reveal"
-            href="avyukta-newborn.html"
-            aria-label="Explore Newborn Photography, 0 to 30 days"
-          >
-            <img
-              src="images/gallery/newborn.jpg.jpeg"
-              alt="Newborn Photography in Bengaluru, 0 to 30 days"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>01 / 0 – 30 DAYS</span>
-              <h3>Newborn Photography</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 2. 3 MONTHS TO 6 MONTHS -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-baby-3to6.html"
-            aria-label="Explore Baby Photography, 3 months to 6 months"
-          >
-            <img
-              src="images/gallery/3 to 6 Months.jpeg"
-              alt="Baby Photography in Bengaluru, 3 to 6 months"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>02 / BABY PHOTOGRAPHY</span>
-              <h3>3 Months to 6 Months</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 3. 7 MONTHS TO 1 YEAR -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-baby-7to12.html"
-            aria-label="Explore Baby Photography, 7 months to 1 year"
-          >
-            <img
-              src="images/gallery/BabyGallery.JPG"
-              alt="Baby Photography in Bengaluru, 7 months to 1 year"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>03 / BABY MILESTONES</span>
-              <h3>7 Months to 1 Year</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 4. 1 YEAR AND ABOVE -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-kids-1plus.html"
-            aria-label="Explore Photography for children aged 1 year and above"
-          >
-            <img
-              src="images/gallery/Above 1 Year.jpeg"
-              alt="Child Photography in Bengaluru, 1 year and above"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>04 / GROWING UP</span>
-              <h3>1 Year and Above</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 5. OUTDOOR PHOTOGRAPHY -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-outdoor.html"
-            aria-label="Explore Outdoor Baby Photography"
-          >
-            <img
-              src="images/gallery/Outdoor Main.jpeg"
-              alt="Outdoor Baby Photography in Bengaluru"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>05 / NATURAL & WILD</span>
-              <h3>Outdoor Photography</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 6. CAKE SMASH PHOTOGRAPHY -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-cakesmash.html"
-            aria-label="Explore Cake Smash Photography"
-          >
-            <img
-              src="images/gallery/Cake Smash Photoshoot In Bangalore.jpg"
-              alt="Premium Cake Smash Photography in Bengaluru"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>06 / BIRTHDAY CELEBRATIONS</span>
-              <h3>Cake Smash Photography</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 7. MATERNITY PHOTOGRAPHY -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-maternity.html"
-            aria-label="Explore Maternity Photography"
-          >
-            <img
-              src="images/gallery/maternity.JPG"
-              alt="Premium Maternity Photography in Bengaluru"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>07 / A NEW BEGINNING</span>
-              <h3>Maternity Photography</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 8. FAMILY PHOTOGRAPHY -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-family.html"
-            aria-label="Explore Family Photography"
-          >
-            <img
-              src="images/gallery/Family.jpg.jpeg"
-              alt="Family Photography in Bengaluru"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>08 / TOGETHER FOREVER</span>
-              <h3>Family Photography</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- 9. EVENT PHOTOGRAPHY -->
-          <a
-            class="gallery-card reveal"
-            href="avyukta-events.html"
-            aria-label="Explore Event Photography"
-          >
-            <img
-              src="images/gallery/Outdoor.jpg.jpeg"
-              alt="Event Photography in Bengaluru"
-              loading="lazy"
-            >
-            <div class="gallery-caption">
-              <span>09 / SPECIAL CELEBRATIONS</span>
-              <h3>Event Photography</h3>
-              <span class="gallery-arrow">↗</span>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="experience section-space">
-      <div class="container">
-
-        <div class="section-head centered reveal">
-          <span class="eyebrow">
-            THE AVYUKTA EXPERIENCE
-          </span>
-          <h2>
-            More than photographs.<br>
-            <em>A beautiful experience.</em>
-          </h2>
-          <p>
-            Every detail is considered, so you can simply
-            enjoy the moment.
-          </p>
-        </div>
-
-        <div class="experience-grid">
-
-          <article class="experience-card reveal">
-            <span class="feature-number">01</span>
-            <div class="feature-icon">♡</div>
-            <h3>Baby-First Comfort</h3>
-            <p>
-              Gentle, patient sessions thoughtfully planned
-              around your baby's comfort and routine.
-            </p>
-          </article>
-
-          <article class="experience-card reveal">
-            <span class="feature-number">02</span>
-            <div class="feature-icon">✳</div>
-            <h3>Beautifully Styled Themes</h3>
-            <p>
-              Creative settings, carefully selected props
-              and timeless visual storytelling.
-            </p>
-          </article>
-
-          <article class="experience-card reveal">
-            <span class="feature-number">03</span>
-            <div class="feature-icon">✧</div>
-            <h3>Thoughtful Editing</h3>
-            <p>
-              Beautifully finished portraits with a natural,
-              elegant and enduring feel.
-            </p>
-          </article>
-
-          <article class="experience-card reveal">
-            <span class="feature-number">04</span>
-            <div class="feature-icon">∞</div>
-            <h3>Family Moments</h3>
-            <p>
-              Because the love surrounding your little one
-              deserves a place in the story too.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- QUOTE -->
-    <section class="quote-section">
-      <div class="container quote-content reveal">
-        <span class="eyebrow light">
-          THE MOMENTS THAT MATTER
-        </span>
-        <p>
-          “The smallest moments often become our
-          <em>most treasured memories.</em>”
-        </p>
-        <a href="#availability" data-availability class="btn btn-cream">
-          Check Availability <span>↗</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- PACKAGES -->
-    <section class="packages section-space" id="packages">
-      <div class="container">
-
-        <div class="section-head centered reveal">
-          <span class="eyebrow">OUR SESSIONS</span>
-          <h2>
-            Beautiful memories,<br>
-            <em>thoughtfully packaged.</em>
-          </h2>
-          <p>
-            Choose the photography experience that suits your family.
-          </p>
-        </div>
-
-        <div class="package-grid">
-
-          <!-- STUDIO PACKAGE -->
-          <article class="package-card reveal">
-            <span class="package-tag">
-              STUDIO EXPERIENCE
-            </span>
-
-            <h3>Indoor Studio Shoot</h3>
-            <p class="package-price">₹7,000</p>
-
-            <p class="package-intro">
-              A beautifully styled photography experience
-              in our studio.
-            </p>
-
-            <ul>
-              <li>4 photography themes</li>
-              <li>25 professionally edited photos</li>
-              <li>All unedited photographs</li>
-              <li>2–3 family photographs</li>
-              <li>Digital soft-copy delivery</li>
-            </ul>
-
-            <a
-              class="btn btn-dark full"
-              href="#availability"
-              data-availability
-              data-location="Studio"
-            >
-              Check Studio Availability <span>↗</span>
-            </a>
-          </article>
-
-          <!-- HOME / OUTDOOR PACKAGE -->
-          <article class="package-card featured reveal">
-            <span class="package-tag">
-              AT YOUR LOCATION
-            </span>
-
-            <h3>Home / Outdoor Shoot</h3>
-            <p class="package-price">₹10,000</p>
-
-            <p class="package-intro">
-              The same thoughtful experience at your
-              preferred location.
-            </p>
-
-            <ul>
-              <li>4 photography themes</li>
-              <li>25 professionally edited photos</li>
-              <li>All unedited photographs</li>
-              <li>2–3 family photographs</li>
-              <li>Digital soft-copy delivery</li>
-            </ul>
-
-            <a
-              class="btn btn-cream full"
-              href="#availability"
-              data-availability
-              data-location="Home / Outdoor"
-            >
-              Check Location Availability <span>↗</span>
-            </a>
-          </article>
-
-        </div>
-
-        <!-- VIDEO ADD-ONS -->
-        <div
-          class="reveal"
-          style="max-width:1000px;margin:50px auto 0;"
+        <img
+          src="images/gallery/3 to 6 Months.jpeg"
+          alt="Baby Photography in Bengaluru, 3 to 6 months"
+          loading="lazy"
         >
-
-          <div style="text-align:center;margin-bottom:30px;">
-            <span class="eyebrow">
-              OPTIONAL VIDEO ADD-ONS
-            </span>
-
-            <h3
-              style="font-family:'Playfair Display',Georgia,serif;
-                     font-size:clamp(28px,3.5vw,42px);
-                     font-weight:400;
-                     margin:15px 0;"
-            >
-              Bring Your Memories to Life
-            </h3>
-
-            <p style="color:#77746d;font-size:14px;">
-              Add beautiful moving memories to your photography session.
-            </p>
-          </div>
-
-          <div
-            style="display:grid;
-                   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-                   gap:20px;"
-          >
-
-            <!-- REEL -->
-            <article
-              style="background:#f7f3ee;
-                     border:1px solid #e6ded3;
-                     padding:30px;"
-            >
-              <span
-                style="font-size:11px;
-                       font-weight:700;
-                       letter-spacing:2px;
-                       color:#a98c65;"
-              >
-                VIDEO ADD-ON 01
-              </span>
-
-              <h4
-                style="font-family:'Playfair Display',Georgia,serif;
-                       font-size:27px;
-                       font-weight:400;
-                       margin:18px 0 10px;"
-              >
-                Instagram Reel
-              </h4>
-
-              <p
-                style="font-family:'Playfair Display',Georgia,serif;
-                       font-size:39px;
-                       margin:0;"
-              >
-                ₹3,000
-              </p>
-
-              <p
-                style="font-size:13px;
-                       color:#77746d;
-                       margin:12px 0 22px;"
-              >
-                Additional charge for a professionally edited reel
-                highlighting beautiful moments from your photoshoot.
-              </p>
-
-              <a
-                class="text-link"
-                href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20add%20an%20Instagram%20Reel%20for%20Rs.%203000%20to%20my%20photoshoot."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Enquire About Reel <span>↗</span>
-              </a>
-            </article>
-
-            <!-- CINEMATIC VIDEO -->
-            <article
-              style="background:#f7f3ee;
-                     border:1px solid #e6ded3;
-                     padding:30px;"
-            >
-              <span
-                style="font-size:11px;
-                       font-weight:700;
-                       letter-spacing:2px;
-                       color:#a98c65;"
-              >
-                VIDEO ADD-ON 02
-              </span>
-
-              <h4
-                style="font-family:'Playfair Display',Georgia,serif;
-                       font-size:27px;
-                       font-weight:400;
-                       margin:18px 0 10px;"
-              >
-                Cinematic Video
-              </h4>
-
-              <p
-                style="font-family:'Playfair Display',Georgia,serif;
-                       font-size:39px;
-                       margin:0;"
-              >
-                ₹15,000
-              </p>
-
-              <p
-                style="font-size:13px;
-                       color:#77746d;
-                       margin:12px 0 22px;"
-              >
-                Additional charge for a beautifully crafted
-                3–4 minute cinematic video of your special moments.
-              </p>
-
-              <a
-                class="text-link"
-                href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20add%20a%203-4%20minute%20Cinematic%20Video%20for%20Rs.%2015000%20to%20my%20photoshoot."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Enquire About Video <span>↗</span>
-              </a>
-            </article>
-
-          </div>
-
-          <p
-            style="text-align:center;
-                   color:#77746d;
-                   font-size:13px;
-                   margin:24px 0 0;"
-          >
-            Video services are optional and charged additionally
-            to the photography package.
-          </p>
+        <div class="gallery-caption">
+          <span>02 / BABY PHOTOGRAPHY</span>
+          <h3>3 Months to 6 Months</h3>
+          <span class="gallery-arrow">↗</span>
         </div>
+      </a>
 
-        <p class="package-note">
-          For maternity, event or customised sessions,
-          contact us for package details.
+      <a
+        class="gallery-card reveal"
+        href="avyukta-baby-7to12.html"
+        aria-label="Explore Baby Photography, 7 months to 1 year"
+      >
+        <img
+          src="images/gallery/BabyGallery.JPG"
+          alt="Baby Photography in Bengaluru, 7 months to 1 year"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>03 / BABY MILESTONES</span>
+          <h3>7 Months to 1 Year</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
+      </a>
+
+      <a
+        class="gallery-card reveal"
+        href="avyukta-kids-1plus.html"
+        aria-label="Explore Photography for children aged 1 year and above"
+      >
+        <img
+          src="images/gallery/Above 1 Year.jpeg"
+          alt="Child Photography in Bengaluru, 1 year and above"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>04 / GROWING UP</span>
+          <h3>1 Year and Above</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
+      </a>
+
+      <a
+        class="gallery-card reveal"
+        href="avyukta-outdoor.html"
+        aria-label="Explore Outdoor Baby Photography"
+      >
+        <img
+          src="images/gallery/Outdoor Main.jpeg"
+          alt="Outdoor Baby Photography in Bengaluru"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>05 / NATURAL & WILD</span>
+          <h3>Outdoor Photography</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
+      </a>
+
+      <a
+        class="gallery-card reveal"
+        href="avyukta-cakesmash.html"
+        aria-label="Explore Cake Smash Photography"
+      >
+        <img
+          src="images/gallery/Cake Smash Photoshoot In Bangalore.jpg"
+          alt="Premium Cake Smash Photography in Bengaluru"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>06 / BIRTHDAY CELEBRATIONS</span>
+          <h3>Cake Smash Photography</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
+      </a>
+
+      <a
+        class="gallery-card reveal"
+        href="avyukta-maternity.html"
+        aria-label="Explore Maternity Photography"
+      >
+        <img
+          src="images/gallery/maternity.JPG"
+          alt="Premium Maternity Photography in Bengaluru"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>07 / A NEW BEGINNING</span>
+          <h3>Maternity Photography</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
+      </a>
+
+      <a
+        class="gallery-card reveal"
+        href="avyukta-family.html"
+        aria-label="Explore Family Photography"
+      >
+        <img
+          src="images/gallery/Family.jpg.jpeg"
+          alt="Family Photography in Bengaluru"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>08 / TOGETHER FOREVER</span>
+          <h3>Family Photography</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
+      </a>
+
+      <a
+        class="gallery-card reveal"
+        href="avyukta-events.html"
+        aria-label="Explore Event Photography"
+      >
+        <img
+          src="images/gallery/Outdoor.jpg.jpeg"
+          alt="Event Photography in Bengaluru"
+          loading="lazy"
+        >
+        <div class="gallery-caption">
+          <span>09 / SPECIAL CELEBRATIONS</span>
+          <h3>Event Photography</h3>
+          <span class="gallery-arrow">↗</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience section-space">
+  <div class="container">
+
+    <div class="section-head centered reveal">
+      <span class="eyebrow">THE AVYUKTA EXPERIENCE</span>
+      <h2>
+        More than photographs.<br>
+        <em>A beautiful experience.</em>
+      </h2>
+      <p>
+        Every detail is considered, so you can simply
+        enjoy the moment.
+      </p>
+    </div>
+
+    <div class="experience-grid">
+
+      <article class="experience-card reveal">
+        <span class="feature-number">01</span>
+        <div class="feature-icon">♡</div>
+        <h3>Baby-First Comfort</h3>
+        <p>
+          Gentle, patient sessions thoughtfully planned
+          around your baby's comfort and routine.
+        </p>
+      </article>
+
+      <article class="experience-card reveal">
+        <span class="feature-number">02</span>
+        <div class="feature-icon">✳</div>
+        <h3>Beautifully Styled Themes</h3>
+        <p>
+          Creative settings, carefully selected props
+          and timeless visual storytelling.
+        </p>
+      </article>
+
+      <article class="experience-card reveal">
+        <span class="feature-number">03</span>
+        <div class="feature-icon">✧</div>
+        <h3>Thoughtful Editing</h3>
+        <p>
+          Beautifully finished portraits with a natural,
+          elegant and enduring feel.
+        </p>
+      </article>
+
+      <article class="experience-card reveal">
+        <span class="feature-number">04</span>
+        <div class="feature-icon">∞</div>
+        <h3>Family Moments</h3>
+        <p>
+          Because the love surrounding your little one
+          deserves a place in the story too.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container quote-content reveal">
+    <span class="eyebrow light">THE MOMENTS THAT MATTER</span>
+
+    <p>
+      “The smallest moments often become our
+      <em>most treasured memories.</em>”
+    </p>
+
+    <a href="#availability" data-availability class="btn btn-cream">
+      Check Availability <span>↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages section-space" id="packages">
+  <div class="container">
+
+    <div class="section-head centered reveal">
+      <span class="eyebrow">OUR SESSIONS</span>
+      <h2>
+        Beautiful memories,<br>
+        <em>thoughtfully packaged.</em>
+      </h2>
+      <p>
+        Choose the photography experience that suits your family.
+      </p>
+    </div>
+
+    <div class="package-grid">
+
+      <article class="package-card reveal">
+        <span class="package-tag">STUDIO EXPERIENCE</span>
+        <h3>Indoor Studio Shoot</h3>
+        <p class="package-price">₹7,000</p>
+
+        <p class="package-intro">
+          A beautifully styled photography experience
+          in our studio.
         </p>
 
+        <ul>
+          <li>4 photography themes</li>
+          <li>25 professionally edited photos</li>
+          <li>All unedited photographs</li>
+          <li>2–3 family photographs</li>
+          <li>Digital soft-copy delivery</li>
+        </ul>
+
+        <a
+          class="btn btn-dark full"
+          href="#availability"
+          data-availability
+          data-location="Studio"
+        >
+          Check Studio Availability <span>↗</span>
+        </a>
+      </article>
+
+      <article class="package-card featured reveal">
+        <span class="package-tag">AT YOUR LOCATION</span>
+        <h3>Home / Outdoor Shoot</h3>
+        <p class="package-price">₹10,000</p>
+
+        <p class="package-intro">
+          The same thoughtful experience at your
+          preferred location.
+        </p>
+
+        <ul>
+          <li>4 photography themes</li>
+          <li>25 professionally edited photos</li>
+          <li>All unedited photographs</li>
+          <li>2–3 family photographs</li>
+          <li>Digital soft-copy delivery</li>
+        </ul>
+
+        <a
+          class="btn btn-cream full"
+          href="#availability"
+          data-availability
+          data-location="Home / Outdoor"
+        >
+          Check Location Availability <span>↗</span>
+        </a>
+      </article>
+
+    </div>
+
+    <!-- VIDEO ADD-ONS -->
+    <div class="reveal" style="max-width:1000px;margin:50px auto 0;">
+
+      <div style="text-align:center;margin-bottom:30px;">
+        <span class="eyebrow">OPTIONAL VIDEO ADD-ONS</span>
+
+        <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,3.5vw,42px);font-weight:400;margin:15px 0;">
+          Bring Your Memories to Life
+        </h3>
+
+        <p style="color:#77746d;font-size:14px;">
+          Add beautiful moving memories to your photography session.
+        </p>
       </div>
-    </section>
 
-    <!-- REVIEWS -->
-    <section class="reviews section-space" id="reviews">
-      <div class="container review-layout">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
 
-        <div class="reveal">
-          <span class="eyebrow">
-            KIND WORDS & TRUST
+        <article style="background:#f7f3ee;border:1px solid #e6ded3;padding:30px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#a98c65;">
+            VIDEO ADD-ON 01
           </span>
 
-          <h2>
-            Memories made.<br>
-            <em>Love shared.</em>
-          </h2>
+          <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:27px;font-weight:400;margin:18px 0 10px;">
+            Instagram Reel
+          </h4>
 
-          <p>
-            We're grateful to the families who have trusted
-            us with their most precious milestones.
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:39px;margin:0;">
+            ₹3,000
+          </p>
+
+          <p style="font-size:13px;color:#77746d;margin:12px 0 22px;">
+            Additional charge for a professionally edited reel
+            highlighting beautiful moments from your photoshoot.
           </p>
 
           <a
             class="text-link"
-            href="https://maps.app.goo.gl/S65dgdg1oW84fshK6"
+            href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20add%20an%20Instagram%20Reel%20for%20Rs.%203000%20to%20my%20photoshoot."
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read our Google reviews <span>↗</span>
+            Enquire About Reel <span>↗</span>
           </a>
-        </div>
+        </article>
 
-        <div class="rating-panel reveal">
-          <span class="rating-stars">★★★★★</span>
-          <strong>4.6<span>/5</span></strong>
-          <p>
-            Google rating · 120+ reviews
-          </p>
-
-          <a
-            href="https://maps.app.goo.gl/S65dgdg1oW84fshK6"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View reviews on Google ↗
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq section-space">
-      <div class="container faq-layout">
-
-        <div class="reveal">
-          <span class="eyebrow">
-            GOOD TO KNOW
+        <article style="background:#f7f3ee;border:1px solid #e6ded3;padding:30px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#a98c65;">
+            VIDEO ADD-ON 02
           </span>
 
-          <h2>
-            Your questions,<br>
-            <em>answered.</em>
-          </h2>
+          <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:27px;font-weight:400;margin:18px 0 10px;">
+            Cinematic Video
+          </h4>
 
-          <p>
-            Everything you need to know before your session.
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:39px;margin:0;">
+            ₹15,000
           </p>
-        </div>
 
-        <div class="faq-list reveal">
-
-          <details>
-            <summary>
-              How early should I enquire about my photoshoot?
-            </summary>
-            <p>
-              We recommend enquiring 2–4 weeks in advance
-              to help find a suitable date.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              What photoshoot time slots are available?
-            </summary>
-            <p>
-              Our standard session timings are 07:00 AM,
-              10:00 AM, 01:00 PM, 04:00 PM and 07:00 PM.
-              Each slot is subject to confirmation.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Where is your photography studio located?
-            </summary>
-            <p>
-              Our studio is located near Electronic City
-              in Bengaluru.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Do you offer home and outdoor photoshoots?
-            </summary>
-            <p>
-              Yes. We offer both indoor studio sessions
-              and photography at your preferred location.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Are family photographs included?
-            </summary>
-            <p>
-              Yes. Our baby photography packages include
-              2–3 family photographs.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Can I add a reel or cinematic video?
-            </summary>
-            <p>
-              Yes. An Instagram reel is available for an
-              additional ₹3,000, and a 3–4 minute cinematic
-              video is available for an additional ₹15,000.
-            </p>
-          </details>
-
-          <details>
-            <summary>
-              Does submitting an enquiry confirm my slot?
-            </summary>
-            <p>
-              No. Submitting an availability enquiry does not
-              reserve or confirm a photoshoot. Our team will
-              review your preferred date and time and respond
-              to you directly.
-            </p>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact section-space" id="contact">
-      <div class="container contact-content reveal">
-
-        <span class="eyebrow light">
-          LET'S CREATE SOMETHING BEAUTIFUL
-        </span>
-
-        <h2>
-          Your story deserves<br>
-          <em>to be remembered.</em>
-        </h2>
-
-        <p>
-          Every milestone is worth celebrating.
-          We'd love to hear what you're dreaming of.
-        </p>
-
-        <div class="contact-actions">
-          <a
-            class="btn btn-cream"
-            href="#availability"
-            data-availability
-          >
-            Check Availability <span>↗</span>
-          </a>
+          <p style="font-size:13px;color:#77746d;margin:12px 0 22px;">
+            Additional charge for a beautifully crafted
+            3–4 minute cinematic video of your special moments.
+          </p>
 
           <a
-            class="btn btn-outline-light"
-            href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20enquire%20about%20a%20photoshoot."
+            class="text-link"
+            href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20add%20a%203-4%20minute%20Cinematic%20Video%20for%20Rs.%2015000%20to%20my%20photoshoot."
             target="_blank"
             rel="noopener noreferrer"
           >
-            WhatsApp Us <span>↗</span>
+            Enquire About Video <span>↗</span>
           </a>
-        </div>
-
-        <a class="contact-phone" href="tel:+919008203206">
-          +91 9008203206
-        </a>
+        </article>
 
       </div>
-    </section>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-main">
-
-      <div>
-        <a class="footer-brand" href="index.html">
-          AVYUKTA <span>PHOTOGRAPHY</span>
-        </a>
-
-        <p>
-          Preserving the little moments that mean everything.
-        </p>
-
-        <p>
-          Bengaluru, Karnataka, India
-        </p>
-      </div>
-
-      <div class="footer-links">
-        <div>
-          <strong>EXPLORE</strong>
-          <a href="#gallery">Portfolio</a>
-          <a href="#about">About Us</a>
-          <a href="themes.html">Themes</a>
-        </div>
-
-        <div>
-          <strong>CONNECT</strong>
-
-          <a href="#availability" data-availability>
-            Check Availability
-          </a>
-
-          <a href="tel:+919008203206">
-            Call Us
-          </a>
-
-          <a
-            href="https://wa.me/919008203206"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WhatsApp
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="container footer-bottom">
-      <span>
-        © <span id="year">2026</span> Avyukta Photography.
-        All rights reserved.
-      </span>
-
-      <a href="#home">
-        Back to top ↑
-      </a>
-    </div>
-  </footer>
-
-  <!-- FLOATING CONTACT -->
-  <div class="floating-contact" aria-label="Quick contact options">
-
-    <a
-      class="float-call"
-      href="tel:+919008203206"
-      aria-label="Call Avyukta Photography"
-    >
-      ☎ <span>Call Now</span>
-    </a>
-
-    <a
-      class="float-whatsapp"
-      href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20enquire%20about%20a%20photoshoot."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contact Avyukta Photography on WhatsApp"
-    >
-      ✆ <span>WhatsApp</span>
-    </a>
-
-  </div>
-
-  <!-- AVAILABILITY ENQUIRY MODAL -->
-  <div
-    class="availability-overlay"
-    id="availabilityModal"
-    aria-hidden="true"
-  >
-
-    <div
-      class="availability-dialog"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="availabilityTitle"
-      aria-describedby="availabilityDescription"
-      tabindex="-1"
-    >
-
-      <button
-        class="availability-close"
-        id="availabilityClose"
-        type="button"
-        aria-label="Close availability enquiry"
-      >
-        &times;
-      </button>
-
-      <span class="availability-eyebrow">
-        AVYUKTA PHOTOGRAPHY · BENGALURU
-      </span>
-
-      <h2 id="availabilityTitle">
-        Let's find your<br>
-        <em>perfect moment.</em>
-      </h2>
-
-      <p
-        class="availability-description"
-        id="availabilityDescription"
-      >
-        Tell us your preferred session details. We'll review
-        your enquiry and confirm availability personally.
+      <p style="text-align:center;color:#77746d;font-size:13px;margin:24px 0 0;">
+        Video services are optional and charged additionally
+        to the photography package.
       </p>
 
-      <form id="availabilityForm">
+    </div>
 
-        <div class="availability-fields">
+    <p class="package-note">
+      For maternity, event or customised sessions,
+      contact us for package details.
+    </p>
 
-          <!-- CUSTOMER NAME -->
-          <div class="availability-field">
-            <label for="enquiryName">
-              Your Name *
-            </label>
+  </div>
+</section>
 
-            <input
-              type="text"
-              id="enquiryName"
-              name="customerName"
-              placeholder="Full name"
-              autocomplete="name"
-              maxlength="100"
-              required
-            >
-          </div>
+<!-- REVIEWS -->
+<section class="reviews section-space" id="reviews">
+  <div class="container review-layout">
 
-          <!-- MOBILE NUMBER -->
-          <div class="availability-field">
-            <label for="enquiryPhone">
-              WhatsApp Number *
-            </label>
+    <div class="reveal">
+      <span class="eyebrow">KIND WORDS & TRUST</span>
+      <h2>
+        Memories made.<br>
+        <em>Love shared.</em>
+      </h2>
 
-            <input
-              type="tel"
-              id="enquiryPhone"
-              name="phone"
-              placeholder="10-digit mobile number"
-              autocomplete="tel"
-              inputmode="tel"
-              pattern="[6-9][0-9]{9}"
-              title="Enter a valid 10-digit Indian mobile number"
-              maxlength="10"
-              required
-            >
-          </div>
+      <p>
+        We're grateful to the families who have trusted
+        us with their most precious milestones.
+      </p>
 
-          <!-- PHOTOGRAPHY CATEGORY -->
-          <div class="availability-field full-width">
-            <label for="enquiryCategory">
-              Photography Category *
-            </label>
+      <a
+        class="text-link"
+        href="https://maps.app.goo.gl/S65dgdg1oW84fshK6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read our Google reviews <span>↗</span>
+      </a>
+    </div>
 
-            <select
-              id="enquiryCategory"
-              name="category"
-              required
-            >
-              <option value="">
-                Select photography category
-              </option>
+    <div class="rating-panel reveal">
+      <span class="rating-stars">★★★★★</span>
+      <strong>4.6<span>/5</span></strong>
+      <p>Google rating · 120+ reviews</p>
 
-              <option value="Newborn Photography (0–30 Days)">
-                Newborn Photography (0–30 Days)
-              </option>
+      <a
+        href="https://maps.app.goo.gl/S65dgdg1oW84fshK6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View reviews on Google ↗
+      </a>
+    </div>
 
-              <option value="3 Months to 6 Months">
-                3 Months to 6 Months
-              </option>
+  </div>
+</section>
 
-              <option value="7 Months to 1 Year">
-                7 Months to 1 Year
-              </option>
+<!-- FAQ -->
+<section class="faq section-space">
+  <div class="container faq-layout">
 
-              <option value="1 Year and Above">
-                1 Year and Above
-              </option>
+    <div class="reveal">
+      <span class="eyebrow">GOOD TO KNOW</span>
+      <h2>
+        Your questions,<br>
+        <em>answered.</em>
+      </h2>
+      <p>Everything you need to know before your session.</p>
+    </div>
 
-              <option value="Outdoor Photography">
-                Outdoor Photography
-              </option>
+    <div class="faq-list reveal">
 
-              <option value="Cake Smash Photography">
-                Cake Smash Photography
-              </option>
-
-              <option value="Maternity Photography">
-                Maternity Photography
-              </option>
-
-              <option value="Family Photography">
-                Family Photography
-              </option>
-
-              <option value="Event Photography">
-                Event Photography
-              </option>
-            </select>
-          </div>
-
-          <!-- PREFERRED DATE -->
-          <div class="availability-field">
-            <label for="enquiryDate">
-              Preferred Date *
-            </label>
-
-            <input
-              type="date"
-              id="enquiryDate"
-              name="preferredDate"
-              required
-            >
-          </div>
-
-          <!-- EXACT TIME SLOTS -->
-          <div class="availability-field">
-            <label for="enquiryTime">
-              Preferred Time Slot *
-            </label>
-
-            <select
-              id="enquiryTime"
-              name="preferredTime"
-              required
-            >
-              <option value="">
-                Select a time slot
-              </option>
-
-              <option value="07:00 AM">
-                07:00 AM
-              </option>
-
-              <option value="10:00 AM">
-                10:00 AM
-              </option>
-
-              <option value="01:00 PM">
-                01:00 PM
-              </option>
-
-              <option value="04:00 PM">
-                04:00 PM
-              </option>
-
-              <option value="07:00 PM">
-                07:00 PM
-              </option>
-            </select>
-
-            <span class="availability-slot-note">
-              All slots are subject to confirmation.
-            </span>
-          </div>
-
-          <!-- PHOTOSHOOT LOCATION -->
-          <div class="availability-field full-width">
-            <label for="enquiryLocation">
-              Photoshoot Location *
-            </label>
-
-            <select
-              id="enquiryLocation"
-              name="location"
-              required
-            >
-              <option value="">
-                Select location
-              </option>
-
-              <option value="Studio">
-                Indoor Studio
-              </option>
-
-              <option value="Home / Outdoor">
-                Home / Outdoor
-              </option>
-            </select>
-          </div>
-
-          <!-- OPTIONAL ADD-ON -->
-          <div class="availability-field full-width">
-            <label for="enquiryAddon">
-              Video Add-On (Optional)
-            </label>
-
-            <select
-              id="enquiryAddon"
-              name="videoAddon"
-            >
-              <option value="None">
-                No video add-on
-              </option>
-
-              <option value="Instagram Reel - ₹3,000 additional">
-                Instagram Reel — ₹3,000 additional
-              </option>
-
-              <option value="3–4 Minute Cinematic Video - ₹15,000 additional">
-                3–4 Minute Cinematic Video — ₹15,000 additional
-              </option>
-
-              <option value="Both Reel and Cinematic Video">
-                Both Reel and Cinematic Video
-              </option>
-            </select>
-          </div>
-
-          <!-- NOTES -->
-          <div class="availability-field full-width">
-            <label for="enquiryNotes">
-              Special Requests (Optional)
-            </label>
-
-            <textarea
-              id="enquiryNotes"
-              name="notes"
-              maxlength="500"
-              placeholder="Tell us about your preferred themes, location or any special requirements..."
-            ></textarea>
-          </div>
-
-        </div>
-
-        <button
-          class="availability-submit"
-          type="submit"
-        >
-          Submit Enquiry via WhatsApp ↗
-        </button>
-
-        <p class="availability-disclaimer">
-          Your enquiry will open in WhatsApp for you to send.
-          This does not reserve or confirm a photoshoot slot.
+      <details>
+        <summary>How early should I enquire about my photoshoot?</summary>
+        <p>
+          We recommend enquiring 2–4 weeks in advance
+          to help find a suitable date.
         </p>
+      </details>
 
-      </form>
+      <details>
+        <summary>What photoshoot time slots are available?</summary>
+        <p>
+          Our standard session timings are 07:00 AM,
+          10:00 AM, 01:00 PM, 04:00 PM and 07:00 PM.
+          Each slot is subject to confirmation.
+        </p>
+      </details>
 
-      <div class="availability-help">
-        Prefer to speak with us?
-        <a href="tel:+919008203206">
-          Call +91 9008203206
+      <details>
+        <summary>Where is your photography studio located?</summary>
+        <p>
+          Our studio is located near Electronic City
+          in Bengaluru.
+        </p>
+      </details>
+
+      <details>
+        <summary>Do you offer home and outdoor photoshoots?</summary>
+        <p>
+          Yes. We offer both indoor studio sessions
+          and photography at your preferred location.
+        </p>
+      </details>
+
+      <details>
+        <summary>Are family photographs included?</summary>
+        <p>
+          Yes. Our baby photography packages include
+          2–3 family photographs.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I add a reel or cinematic video?</summary>
+        <p>
+          Yes. An Instagram reel is available for an
+          additional ₹3,000, and a 3–4 minute cinematic
+          video is available for an additional ₹15,000.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does submitting an enquiry confirm my slot?</summary>
+        <p>
+          No. Submitting an availability enquiry does not
+          reserve or confirm a photoshoot. Our team will
+          review your preferred date and time and respond
+          to you directly.
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section-space" id="contact">
+  <div class="container contact-content reveal">
+
+    <span class="eyebrow light">
+      LET'S CREATE SOMETHING BEAUTIFUL
+    </span>
+
+    <h2>
+      Your story deserves<br>
+      <em>to be remembered.</em>
+    </h2>
+
+    <p>
+      Every milestone is worth celebrating.
+      We'd love to hear what you're dreaming of.
+    </p>
+
+    <div class="contact-actions">
+
+      <a
+        class="btn btn-cream"
+        href="#availability"
+        data-availability
+      >
+        Check Availability <span>↗</span>
+      </a>
+
+      <a
+        class="btn btn-outline-light"
+        href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20enquire%20about%20a%20photoshoot."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp Us <span>↗</span>
+      </a>
+
+    </div>
+
+    <a class="contact-phone" href="tel:+919008203206">
+      +91 9008203206
+    </a>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-main">
+
+    <div>
+      <a class="footer-brand" href="index.html">
+        AVYUKTA <span>PHOTOGRAPHY</span>
+      </a>
+
+      <p>Preserving the little moments that mean everything.</p>
+      <p>Bengaluru, Karnataka, India</p>
+    </div>
+
+    <div class="footer-links">
+
+      <div>
+        <strong>EXPLORE</strong>
+        <a href="#gallery">Portfolio</a>
+        <a href="#about">About Us</a>
+        <a href="themes.html">Themes</a>
+      </div>
+
+      <div>
+        <strong>CONNECT</strong>
+        <a href="#availability" data-availability>
+          Check Availability
         </a>
+        <a href="tel:+919008203206">Call Us</a>
+        <a
+          href="https://wa.me/919008203206"
+          target="_blank"
+          rel="noopener noreferrer"
+        >WhatsApp</a>
       </div>
 
     </div>
   </div>
 
-  <!-- EXISTING WEBSITE SCRIPT -->
-  <script src="indexscript.js"></script>
+  <div class="container footer-bottom">
+    <span>
+      © <span id="year">2026</span> Avyukta Photography.
+      All rights reserved.
+    </span>
 
-  <!-- AVAILABILITY ENQUIRY SCRIPT -->
-  <script>
-    (function () {
-      "use strict";
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
 
-      const modal = document.getElementById("availabilityModal");
-      const dialog = modal.querySelector(".availability-dialog");
-      const closeButton = document.getElementById("availabilityClose");
-      const form = document.getElementById("availabilityForm");
-      const dateInput = document.getElementById("enquiryDate");
-      const locationInput = document.getElementById("enquiryLocation");
-      const nameInput = document.getElementById("enquiryName");
+<!-- FLOATING CONTACT -->
+<div class="floating-contact" aria-label="Quick contact options">
 
-      const businessWhatsApp = "919008203206";
-      let previousFocus = null;
+  <a
+    class="float-call"
+    href="tel:+919008203206"
+    aria-label="Call Avyukta Photography"
+  >
+    ☎ <span>Call Now</span>
+  </a>
 
-      // Use the local calendar date, not UTC.
-      function getTodayLocal() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, "0");
-        const day = String(now.getDate()).padStart(2, "0");
-        return year + "-" + month + "-" + day;
-      }
+  <a
+    class="float-whatsapp"
+    href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20enquire%20about%20a%20photoshoot."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact Avyukta Photography on WhatsApp"
+  >
+    ✆ <span>WhatsApp</span>
+  </a>
 
-      function updateMinimumDate() {
-        const today = getTodayLocal();
-        dateInput.min = today;
+</div>
 
-        if (dateInput.value && dateInput.value < today) {
-          dateInput.value = "";
+<!-- AVAILABILITY ENQUIRY MODAL -->
+<div
+  class="availability-overlay"
+  id="availabilityModal"
+  aria-hidden="true"
+>
+  <div
+    class="availability-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="availabilityTitle"
+    aria-describedby="availabilityDescription"
+    tabindex="-1"
+  >
+
+    <button
+      class="availability-close"
+      id="availabilityClose"
+      type="button"
+      aria-label="Close availability enquiry"
+    >&times;</button>
+
+    <span class="availability-eyebrow">
+      AVYUKTA PHOTOGRAPHY · BENGALURU
+    </span>
+
+    <h2 id="availabilityTitle">
+      Let's find your<br>
+      <em>perfect moment.</em>
+    </h2>
+
+    <p
+      class="availability-description"
+      id="availabilityDescription"
+    >
+      Tell us your preferred session details. We'll review
+      your enquiry and confirm availability personally.
+    </p>
+
+    <form id="availabilityForm">
+
+      <div class="availability-fields">
+
+        <div class="availability-field">
+          <label for="enquiryName">Your Name *</label>
+          <input
+            type="text"
+            id="enquiryName"
+            name="customerName"
+            placeholder="Full name"
+            autocomplete="name"
+            maxlength="100"
+            required
+          >
+        </div>
+
+        <div class="availability-field">
+          <label for="enquiryPhone">WhatsApp Number *</label>
+          <input
+            type="tel"
+            id="enquiryPhone"
+            name="phone"
+            placeholder="10-digit mobile number"
+            autocomplete="tel"
+            inputmode="tel"
+            pattern="[6-9][0-9]{9}"
+            title="Enter a valid 10-digit Indian mobile number"
+            maxlength="10"
+            required
+          >
+        </div>
+
+        <div class="availability-field full-width">
+          <label for="enquiryCategory">
+            Photography Category *
+          </label>
+
+          <select
+            id="enquiryCategory"
+            name="category"
+            required
+          >
+            <option value="">Select photography category</option>
+            <option value="Newborn Photography (0–30 Days)">
+              Newborn Photography (0–30 Days)
+            </option>
+            <option value="3 Months to 6 Months">
+              3 Months to 6 Months
+            </option>
+            <option value="7 Months to 1 Year">
+              7 Months to 1 Year
+            </option>
+            <option value="1 Year and Above">
+              1 Year and Above
+            </option>
+            <option value="Outdoor Photography">
+              Outdoor Photography
+            </option>
+            <option value="Cake Smash Photography">
+              Cake Smash Photography
+            </option>
+            <option value="Maternity Photography">
+              Maternity Photography
+            </option>
+            <option value="Family Photography">
+              Family Photography
+            </option>
+            <option value="Event Photography">
+              Event Photography
+            </option>
+          </select>
+        </div>
+
+        <div class="availability-field">
+          <label for="enquiryDate">Preferred Date *</label>
+          <input
+            type="date"
+            id="enquiryDate"
+            name="preferredDate"
+            required
+          >
+        </div>
+
+        <div class="availability-field">
+          <label for="enquiryTime">Preferred Time Slot *</label>
+
+          <select
+            id="enquiryTime"
+            name="preferredTime"
+            required
+          >
+            <option value="">Select a time slot</option>
+            <option value="07:00 AM">07:00 AM</option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="01:00 PM">01:00 PM</option>
+            <option value="04:00 PM">04:00 PM</option>
+            <option value="07:00 PM">07:00 PM</option>
+          </select>
+
+          <span class="availability-slot-note">
+            All slots are subject to confirmation.
+          </span>
+        </div>
+
+        <div class="availability-field full-width">
+          <label for="enquiryLocation">
+            Photoshoot Location *
+          </label>
+
+          <select
+            id="enquiryLocation"
+            name="location"
+            required
+          >
+            <option value="">Select location</option>
+            <option value="Studio">Indoor Studio</option>
+            <option value="Home / Outdoor">Home / Outdoor</option>
+          </select>
+        </div>
+
+        <div class="availability-field full-width">
+          <label for="enquiryAddon">
+            Video Add-On (Optional)
+          </label>
+
+          <select id="enquiryAddon" name="videoAddon">
+            <option value="None">No video add-on</option>
+            <option value="Instagram Reel - ₹3,000 additional">
+              Instagram Reel — ₹3,000 additional
+            </option>
+            <option value="3–4 Minute Cinematic Video - ₹15,000 additional">
+              3–4 Minute Cinematic Video — ₹15,000 additional
+            </option>
+            <option value="Both Reel and Cinematic Video">
+              Both Reel and Cinematic Video
+            </option>
+          </select>
+        </div>
+
+        <div class="availability-field full-width">
+          <label for="enquiryNotes">
+            Special Requests (Optional)
+          </label>
+
+          <textarea
+            id="enquiryNotes"
+            name="notes"
+            maxlength="500"
+            placeholder="Tell us about your preferred themes, location or any special requirements..."
+          ></textarea>
+        </div>
+
+      </div>
+
+      <button
+        class="availability-submit"
+        type="submit"
+      >
+        Submit Enquiry via WhatsApp ↗
+      </button>
+
+      <p class="availability-disclaimer">
+        Your enquiry will open in WhatsApp for you to send.
+        This does not reserve or confirm a photoshoot slot.
+      </p>
+
+    </form>
+
+    <div class="availability-help">
+      Prefer to speak with us?
+      <a href="tel:+919008203206">
+        Call +91 9008203206
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- EXISTING WEBSITE SCRIPT -->
+<script src="indexscript.js"></script>
+
+<!-- NEW HERO SLIDESHOW SCRIPT -->
+<script>
+(function () {
+  "use strict";
+
+  /*
+    HERO IMAGE CONFIGURATION
+
+    Repository: AvyuktaPackageBuilder
+    Branch: website-v2
+    Folder: GalleryForImages/MainPageHero
+
+    Accepted names:
+      Hero 1.jpg
+      Hero 2.jpeg
+      Hero 3.png
+      ...
+      Hero 10.webp
+
+    The extension and filename case are detected automatically.
+  */
+
+  const OWNER = "avyuktaphotography-sys";
+  const REPO = "AvyuktaPackageBuilder";
+  const BRANCH = "website-v2";
+  const HERO_FOLDER = "GalleryForImages/MainPageHero";
+
+  const AUTO_SLIDE_INTERVAL = 5000;
+
+  const slideshow = document.getElementById("heroSlideshow");
+  const previousButton = document.getElementById("heroPrevious");
+  const nextButton = document.getElementById("heroNext");
+  const pagination = document.getElementById("heroPagination");
+  const counter = document.getElementById("heroCounter");
+  const bottomNumber = document.getElementById("heroBottomNumber");
+  const navigation = document.getElementById("heroNavigation");
+
+  let slides = [];
+  let dots = [];
+  let currentIndex = 0;
+  let timer = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let pausedByUser = false;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  const apiURL =
+    "https://api.github.com/repos/" +
+    OWNER + "/" + REPO +
+    "/contents/" +
+    HERO_FOLDER.split("/").map(encodeURIComponent).join("/") +
+    "?ref=" + encodeURIComponent(BRANCH);
+
+  function pad(number) {
+    return String(number).padStart(2, "0");
+  }
+
+  function imageURL(filename) {
+    return HERO_FOLDER.split("/").map(encodeURIComponent).join("/") +
+      "/" + encodeURIComponent(filename);
+  }
+
+  function updateCounter() {
+    const text =
+      pad(currentIndex + 1) + " / " + pad(slides.length);
+
+    counter.textContent = text;
+    bottomNumber.textContent = text;
+  }
+
+  function showSlide(index) {
+    if (!slides.length) return;
+
+    currentIndex =
+      (index + slides.length) % slides.length;
+
+    slides.forEach(function (slide, i) {
+      const active = i === currentIndex;
+
+      slide.classList.toggle("is-active", active);
+      slide.setAttribute("aria-hidden", String(!active));
+    });
+
+    dots.forEach(function (dot, i) {
+      const active = i === currentIndex;
+
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-current", active ? "true" : "false");
+    });
+
+    updateCounter();
+  }
+
+  function stopAutoSlide() {
+    if (timer !== null) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+
+    if (
+      slides.length < 2 ||
+      pausedByUser ||
+      reduceMotion.matches ||
+      document.hidden
+    ) {
+      return;
+    }
+
+    timer = window.setInterval(function () {
+      showSlide(currentIndex + 1);
+    }, AUTO_SLIDE_INTERVAL);
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+    startAutoSlide();
+  }
+
+  function previousSlide() {
+    showSlide(currentIndex - 1);
+    startAutoSlide();
+  }
+
+  function createSlide(filename, index) {
+    const slide = document.createElement("div");
+    slide.className = "hero-slide";
+    slide.setAttribute("aria-roledescription", "slide");
+    slide.setAttribute(
+      "aria-label",
+      "Photograph " + (index + 1)
+    );
+
+    const image = document.createElement("img");
+
+    image.src = imageURL(filename);
+    image.alt = "Avyukta Photography featured portrait " + (index + 1);
+    image.decoding = "async";
+    image.loading = index === 0 ? "eager" : "lazy";
+
+    if (index === 0) {
+      image.fetchPriority = "high";
+    }
+
+    slide.appendChild(image);
+    slideshow.appendChild(slide);
+
+    return slide;
+  }
+
+  function createDot(index) {
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = "hero-dot";
+    dot.setAttribute(
+      "aria-label",
+      "Go to photograph " + (index + 1)
+    );
+
+    dot.addEventListener("click", function () {
+      showSlide(index);
+      startAutoSlide();
+    });
+
+    pagination.appendChild(dot);
+
+    return dot;
+  }
+
+  function renderSlideshow(filenames) {
+    stopAutoSlide();
+
+    slideshow.replaceChildren();
+    pagination.replaceChildren();
+
+    slides = [];
+    dots = [];
+    currentIndex = 0;
+
+    filenames.forEach(function (filename, index) {
+      slides.push(createSlide(filename, index));
+      dots.push(createDot(index));
+    });
+
+    if (!slides.length) {
+      console.warn("No valid hero images found.");
+      navigation.hidden = true;
+      pagination.hidden = true;
+      counter.hidden = true;
+      return;
+    }
+
+    const multiple = slides.length > 1;
+
+    slideshow.classList.toggle("is-single", !multiple);
+    navigation.hidden = !multiple;
+    pagination.hidden = !multiple;
+    counter.hidden = !multiple;
+
+    showSlide(0);
+    startAutoSlide();
+  }
+
+  async function loadHeroImages() {
+    try {
+      const response = await fetch(apiURL, {
+        headers: {
+          "Accept": "application/vnd.github+json"
         }
-      }
-
-      function openAvailability(preferredLocation) {
-        previousFocus = document.activeElement;
-
-        updateMinimumDate();
-
-        if (preferredLocation) {
-          locationInput.value = preferredLocation;
-        }
-
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("availability-open");
-
-        window.requestAnimationFrame(function () {
-          nameInput.focus();
-        });
-      }
-
-      function closeAvailability() {
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("availability-open");
-
-        if (previousFocus && typeof previousFocus.focus === "function") {
-          previousFocus.focus();
-        }
-      }
-
-      // All homepage availability buttons open the same form.
-      document.querySelectorAll("[data-availability]").forEach(function (link) {
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
-
-          const preferredLocation = link.getAttribute("data-location");
-          openAvailability(preferredLocation);
-        });
       });
 
-      closeButton.addEventListener("click", closeAvailability);
-
-      // Close when clicking outside the form.
-      modal.addEventListener("click", function (event) {
-        if (event.target === modal) {
-          closeAvailability();
-        }
-      });
-
-      // Escape closes the modal; Tab remains inside the dialog.
-      document.addEventListener("keydown", function (event) {
-        if (!modal.classList.contains("is-open")) {
-          return;
-        }
-
-        if (event.key === "Escape") {
-          closeAvailability();
-          return;
-        }
-
-        if (event.key !== "Tab") {
-          return;
-        }
-
-        const focusable = Array.from(
-          dialog.querySelectorAll(
-            'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]'
-          )
-        ).filter(function (element) {
-          return element.getClientRects().length > 0;
-        });
-
-        if (!focusable.length) {
-          event.preventDefault();
-          dialog.focus();
-          return;
-        }
-
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (
-          !event.shiftKey &&
-          document.activeElement === last
-        ) {
-          event.preventDefault();
-          first.focus();
-        }
-      });
-
-      // Build the WhatsApp enquiry from the completed form.
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        updateMinimumDate();
-
-        if (!form.reportValidity()) {
-          return;
-        }
-
-        const customerName =
-          document.getElementById("enquiryName").value.trim();
-
-        const phone =
-          document.getElementById("enquiryPhone").value.trim();
-
-        const category =
-          document.getElementById("enquiryCategory").value;
-
-        const preferredDate = dateInput.value;
-
-        const preferredTime =
-          document.getElementById("enquiryTime").value;
-
-        const location = locationInput.value;
-
-        const videoAddon =
-          document.getElementById("enquiryAddon").value;
-
-        const notes =
-          document.getElementById("enquiryNotes").value.trim();
-
-        const phonePattern = /^[6-9][0-9]{9}$/;
-
-        if (!phonePattern.test(phone)) {
-          alert("Please enter a valid 10-digit Indian mobile number.");
-          document.getElementById("enquiryPhone").focus();
-          return;
-        }
-
-        if (preferredDate < getTodayLocal()) {
-          alert("Please select today or a future date.");
-          dateInput.focus();
-          return;
-        }
-
-        const dateParts = preferredDate.split("-");
-        const formattedDate =
-          dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
-
-        const messageLines = [
-          "Hello Avyukta Photography!",
-          "",
-          "*PHOTOSHOOT AVAILABILITY ENQUIRY*",
-          "",
-          "*Customer Name:* " + customerName,
-          "*WhatsApp Number:* +91 " + phone,
-          "*Photography Category:* " + category,
-          "*Preferred Date:* " + formattedDate,
-          "*Preferred Time:* " + preferredTime,
-          "*Photoshoot Location:* " + location,
-          "*Video Add-On:* " + videoAddon,
-          "*Special Requests:* " + (notes || "None"),
-          "",
-          "Please let me know whether my preferred date and time are available.",
-          "",
-          "I understand that this is an enquiry and not a confirmed booking.",
-          "",
-          "Thank you!"
-        ];
-
-        const message = messageLines.join("\n");
-
-        const whatsappUrl =
-          "https://wa.me/" +
-          businessWhatsApp +
-          "?text=" +
-          encodeURIComponent(message);
-
-        // Opens WhatsApp with the enquiry prefilled.
-        // The customer must still press Send in WhatsApp.
-        const opened = window.open(
-          whatsappUrl,
-          "_blank",
-          "noopener,noreferrer"
+      if (!response.ok) {
+        throw new Error(
+          "GitHub image listing failed: " + response.status
         );
-
-        if (!opened) {
-          // Fallback for browsers that block new tabs.
-          window.location.href = whatsappUrl;
-        }
-      });
-
-      // Optional support for links directly to #availability.
-      if (window.location.hash === "#availability") {
-        openAvailability(null);
       }
 
-      updateMinimumDate();
-    })();
-  </script>
+      const files = await response.json();
+
+      if (!Array.isArray(files)) {
+        throw new Error("Unexpected gallery folder response.");
+      }
+
+      const validImages = files
+        .filter(function (file) {
+          if (file.type !== "file") return false;
+
+          return /^Hero\s*(10|[1-9])\.(jpg|jpeg|png|webp|avif)$/i
+            .test(file.name);
+        })
+        .sort(function (a, b) {
+          const numberA = Number(
+            a.name.match(/^Hero\s*(\d+)/i)[1]
+          );
+
+          const numberB = Number(
+            b.name.match(/^Hero\s*(\d+)/i)[1]
+          );
+
+          return numberA - numberB;
+        })
+        .map(function (file) {
+          return file.name;
+        });
+
+      if (!validImages.length) {
+        throw new Error(
+          "No Hero 1 to Hero 10 images found in " + HERO_FOLDER
+        );
+      }
+
+      renderSlideshow(validImages);
+
+    } catch (error) {
+      console.error("Hero slideshow:", error.message);
+
+      /*
+        Fallback:
+        Keeps the hero usable if GitHub API is temporarily
+        unavailable. Uses the existing homepage image.
+        If your previous hero image was CSS-only, its
+        background will remain behind the slideshow.
+      */
+
+      slideshow.replaceChildren();
+      slideshow.style.background =
+        "linear-gradient(120deg,#30382f,#5c6655)";
+
+      navigation.hidden = true;
+      pagination.hidden = true;
+      counter.hidden = true;
+
+      bottomNumber.textContent = "AVYUKTA PHOTOGRAPHY";
+    }
+  }
+
+  previousButton.addEventListener("click", previousSlide);
+  nextButton.addEventListener("click", nextSlide);
+
+  slideshow.addEventListener("touchstart", function (event) {
+    if (!event.touches.length) return;
+
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+    touchStartTime = Date.now();
+  }, { passive: true });
+
+  slideshow.addEventListener("touchend", function (event) {
+    if (!event.changedTouches.length) return;
+
+    const deltaX =
+      event.changedTouches[0].clientX - touchStartX;
+
+    const deltaY =
+      event.changedTouches[0].clientY - touchStartY;
+
+    const elapsed = Date.now() - touchStartTime;
+
+    // Only respond to horizontal swipes.
+    if (
+      Math.abs(deltaX) > 45 &&
+      Math.abs(deltaX) > Math.abs(deltaY) * 1.3 &&
+      elapsed < 1200
+    ) {
+      if (deltaX < 0) {
+        nextSlide();
+      } else {
+        previousSlide();
+      }
+    }
+  }, { passive: true });
+
+  // Pause automatic rotation while hovering.
+  slideshow.addEventListener("mouseenter", stopAutoSlide);
+  slideshow.addEventListener("mouseleave", startAutoSlide);
+
+  // Pause while interacting with slideshow controls.
+  [previousButton, nextButton, pagination].forEach(function (element) {
+    element.addEventListener("mouseenter", stopAutoSlide);
+    element.addEventListener("mouseleave", startAutoSlide);
+
+    element.addEventListener("focusin", stopAutoSlide);
+    element.addEventListener("focusout", startAutoSlide);
+  });
+
+  // Pause when browser tab is not visible.
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      stopAutoSlide();
+    } else {
+      startAutoSlide();
+    }
+  });
+
+  reduceMotion.addEventListener("change", startAutoSlide);
+
+  loadHeroImages();
+})();
+</script>
+
+<!-- AVAILABILITY ENQUIRY SCRIPT -->
+<script>
+(function () {
+  "use strict";
+
+  const modal = document.getElementById("availabilityModal");
+  const dialog = modal.querySelector(".availability-dialog");
+  const closeButton = document.getElementById("availabilityClose");
+  const form = document.getElementById("availabilityForm");
+  const dateInput = document.getElementById("enquiryDate");
+  const locationInput = document.getElementById("enquiryLocation");
+  const nameInput = document.getElementById("enquiryName");
+
+  const businessWhatsApp = "919008203206";
+  let previousFocus = null;
+
+  function getTodayLocal() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+
+    return year + "-" + month + "-" + day;
+  }
+
+  function updateMinimumDate() {
+    const today = getTodayLocal();
+    dateInput.min = today;
+
+    if (dateInput.value && dateInput.value < today) {
+      dateInput.value = "";
+    }
+  }
+
+  function openAvailability(preferredLocation) {
+    previousFocus = document.activeElement;
+
+    updateMinimumDate();
+
+    if (preferredLocation) {
+      locationInput.value = preferredLocation;
+    }
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("availability-open");
+
+    window.requestAnimationFrame(function () {
+      nameInput.focus();
+    });
+  }
+
+  function closeAvailability() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("availability-open");
+
+    if (
+      previousFocus &&
+      typeof previousFocus.focus === "function"
+    ) {
+      previousFocus.focus();
+    }
+  }
+
+  document.querySelectorAll("[data-availability]").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const preferredLocation =
+        link.getAttribute("data-location");
+
+      openAvailability(preferredLocation);
+    });
+  });
+
+  closeButton.addEventListener("click", closeAvailability);
+
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      closeAvailability();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (!modal.classList.contains("is-open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeAvailability();
+      return;
+    }
+
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    const focusable = Array.from(
+      dialog.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]'
+      )
+    ).filter(function (element) {
+      return element.getClientRects().length > 0;
+    });
+
+    if (!focusable.length) {
+      event.preventDefault();
+      dialog.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (
+      event.shiftKey &&
+      document.activeElement === first
+    ) {
+      event.preventDefault();
+      last.focus();
+    } else if (
+      !event.shiftKey &&
+      document.activeElement === last
+    ) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    updateMinimumDate();
+
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    const customerName =
+      document.getElementById("enquiryName").value.trim();
+
+    const phone =
+      document.getElementById("enquiryPhone").value.trim();
+
+    const category =
+      document.getElementById("enquiryCategory").value;
+
+    const preferredDate = dateInput.value;
+
+    const preferredTime =
+      document.getElementById("enquiryTime").value;
+
+    const location = locationInput.value;
+
+    const videoAddon =
+      document.getElementById("enquiryAddon").value;
+
+    const notes =
+      document.getElementById("enquiryNotes").value.trim();
+
+    const phonePattern = /^[6-9][0-9]{9}$/;
+
+    if (!phonePattern.test(phone)) {
+      alert("Please enter a valid 10-digit Indian mobile number.");
+      document.getElementById("enquiryPhone").focus();
+      return;
+    }
+
+    if (preferredDate < getTodayLocal()) {
+      alert("Please select today or a future date.");
+      dateInput.focus();
+      return;
+    }
+
+    const dateParts = preferredDate.split("-");
+
+    const formattedDate =
+      dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+
+    const messageLines = [
+      "Hello Avyukta Photography!",
+      "",
+      "*PHOTOSHOOT AVAILABILITY ENQUIRY*",
+      "",
+      "*Customer Name:* " + customerName,
+      "*WhatsApp Number:* +91 " + phone,
+      "*Photography Category:* " + category,
+      "*Preferred Date:* " + formattedDate,
+      "*Preferred Time:* " + preferredTime,
+      "*Photoshoot Location:* " + location,
+      "*Video Add-On:* " + videoAddon,
+      "*Special Requests:* " + (notes || "None"),
+      "",
+      "Please let me know whether my preferred date and time are available.",
+      "",
+      "I understand that this is an enquiry and not a confirmed booking.",
+      "",
+      "Thank you!"
+    ];
+
+    const message = messageLines.join("\n");
+
+    const whatsappUrl =
+      "https://wa.me/" +
+      businessWhatsApp +
+      "?text=" +
+      encodeURIComponent(message);
+
+    const opened = window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    if (!opened) {
+      window.location.href = whatsappUrl;
+    }
+  });
+
+  if (window.location.hash === "#availability") {
+    openAvailability(null);
+  }
+
+  updateMinimumDate();
+})();
+</script>
 
 </body>
 </html>
