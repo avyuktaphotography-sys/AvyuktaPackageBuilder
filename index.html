@@ -6,21 +6,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f7f3ee">
 
-<title>Avyukta Photography | Premium Baby, Newborn & Maternity Photography in Bengaluru</title>
-<meta name="description" content="Avyukta Photography offers newborn, baby, maternity, family and event photography in Bengaluru. Check photoshoot availability and enquire via WhatsApp.">
+<title>Avyukta Photography | Luxury Newborn, Baby & Maternity Photography in Bengaluru</title>
+<meta name="description" content="Discover timeless newborn, baby, maternity and family photography at Avyukta Photography, Bengaluru. Explore our collections, packages and availability.">
 <link rel="canonical" href="https://avyuktaphotography.com/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- PRESERVE YOUR EXISTING WEBSITE STYLES -->
 <link rel="stylesheet" href="indexstyle.css">
 
 <style>
+/* ==================================================
+   AVYUKTA PHOTOGRAPHY — HOMEPAGE V4
+   Luxury editorial design
+   All additions are scoped to the homepage.
+================================================== */
+
+:root {
+  --v4-cream: #f7f3ee;
+  --v4-paper: #fffdf9;
+  --v4-sage: #30382f;
+  --v4-gold: #a18460;
+  --v4-muted: #77766f;
+  --v4-border: #e7dfd4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
 /* HERO SLIDESHOW */
+
 .hero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  min-height: min(850px, 94svh);
+  background: var(--v4-sage);
 }
 
 .hero-slideshow {
@@ -35,11 +63,9 @@
 .hero-slide {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1.1s ease, visibility 1.1s;
+  transition: opacity 1.15s ease, visibility 1.15s;
 }
 
 .hero-slide.is-active {
@@ -56,27 +82,19 @@
   object-position: center;
 }
 
-.hero .hero-image {
-  display: none !important;
-}
-
 .hero .hero-shade {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
   background:
-    linear-gradient(
-      90deg,
-      rgba(12, 20, 15, .72) 0%,
-      rgba(12, 20, 15, .42) 48%,
-      rgba(12, 20, 15, .12) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(12, 20, 15, .40),
-      transparent 35%
-    );
+    linear-gradient(90deg,
+      rgba(13,22,17,.74),
+      rgba(13,22,17,.39) 55%,
+      rgba(13,22,17,.16)),
+    linear-gradient(0deg,
+      rgba(13,22,17,.49),
+      transparent 35%);
 }
 
 .hero .hero-inner {
@@ -90,6 +108,43 @@
   pointer-events: auto;
 }
 
+.hero-copy {
+  max-width: 730px;
+}
+
+.hero-copy h1 {
+  text-wrap: balance;
+}
+
+.hero-copy h1 em {
+  color: #e7d1b4;
+}
+
+.hero-v4-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: #f3e9dc;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.hero-v4-kicker::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: #d6b990;
+}
+
+.hero-v4-note {
+  color: rgba(255,255,255,.78);
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  margin-top: 24px;
+}
+
 .hero-navigation {
   position: absolute;
   z-index: 5;
@@ -97,7 +152,6 @@
   left: 0;
   right: 0;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 0 clamp(12px, 2.5vw, 38px);
   transform: translateY(-50%);
@@ -105,43 +159,35 @@
 }
 
 .hero-arrow {
-  display: grid;
-  place-items: center;
   width: 46px;
   height: 46px;
+  display: grid;
+  place-items: center;
   border: 1px solid rgba(255,255,255,.55);
   border-radius: 50%;
-  background: rgba(25, 30, 25, .28);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(25,30,25,.28);
   color: white;
-  font-size: 28px;
-  font-family: Arial, sans-serif;
+  font: 28px Arial, sans-serif;
   cursor: pointer;
   pointer-events: auto;
+  backdrop-filter: blur(8px);
   transition: background .2s, transform .2s;
 }
 
 .hero-arrow:hover {
-  background: rgba(25, 30, 25, .75);
+  background: rgba(25,30,25,.8);
   transform: scale(1.07);
-}
-
-.hero-arrow:focus-visible,
-.hero-dot:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 4px;
 }
 
 .hero-pagination {
   position: absolute;
   z-index: 5;
   left: 50%;
-  bottom: clamp(22px, 4vw, 42px);
+  bottom: 34px;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 9px;
-  transform: translateX(-50%);
 }
 
 .hero-dot {
@@ -163,67 +209,443 @@
 .hero-slide-counter {
   position: absolute;
   z-index: 5;
-  right: clamp(20px, 5vw, 70px);
-  bottom: clamp(22px, 4vw, 42px);
+  right: clamp(20px,5vw,70px);
+  bottom: 32px;
   color: white;
-  font-family: "DM Sans", Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
 }
 
-.hero-slideshow.is-single ~ .hero-navigation,
-.hero-slideshow.is-single ~ .hero-pagination,
-.hero-slideshow.is-single ~ .hero-slide-counter {
-  display: none;
+.hero-arrow:focus-visible,
+.hero-dot:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
 }
 
-@media (max-width: 768px) {
-  .hero .hero-shade {
-    background:
-      linear-gradient(
-        0deg,
-        rgba(12,20,15,.76) 0%,
-        rgba(12,20,15,.43) 55%,
-        rgba(12,20,15,.15) 100%
-      );
-  }
+/* EDITORIAL INTRO */
 
-  .hero-slide img {
-    object-position: center;
-  }
-
-  .hero-navigation {
-    padding: 0 12px;
-  }
-
-  .hero-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 23px;
-  }
-
-  .hero-pagination {
-    bottom: 23px;
-  }
-
-  .hero-slide-counter {
-    right: 15px;
-    bottom: 20px;
-    font-size: 10px;
-  }
-
-  .hero .hero-bottom {
-    padding-bottom: 50px;
-  }
+.v4-intro {
+  background: var(--v4-paper);
+  padding: clamp(75px,10vw,135px) 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-slide {
-    transition: none;
-  }
+.v4-intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(35px,7vw,110px);
+  align-items: center;
 }
 
-/* AVAILABILITY ENQUIRY */
+.v4-overline {
+  display: inline-block;
+  color: var(--v4-gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.v4-intro h2,
+.v4-section-title,
+.v4-story h2,
+.v4-review-heading h2,
+.v4-booking-banner h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--v4-sage);
+}
+
+.v4-intro h2 {
+  font-size: clamp(38px,5.2vw,72px);
+  letter-spacing: -.8px;
+}
+
+.v4-intro h2 em,
+.v4-section-title em,
+.v4-story h2 em,
+.v4-review-heading h2 em,
+.v4-booking-banner h2 em {
+  font-weight: 400;
+  color: var(--v4-gold);
+}
+
+.v4-intro-copy p {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--v4-muted);
+  margin-bottom: 20px;
+}
+
+.v4-signature {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--v4-sage);
+  margin-top: 20px;
+}
+
+.v4-stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+  margin-top: 75px;
+  padding-top: 35px;
+  border-top: 1px solid var(--v4-border);
+}
+
+.v4-stat {
+  text-align: center;
+}
+
+.v4-stat strong {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(28px,3.5vw,45px);
+  font-weight: 400;
+  color: var(--v4-sage);
+  margin-bottom: 8px;
+}
+
+.v4-stat span {
+  color: var(--v4-muted);
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+
+/* EDITORIAL GALLERY */
+
+.v4-portfolio {
+  padding: clamp(75px,9vw,125px) 0;
+  background: var(--v4-cream);
+}
+
+.v4-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 35px;
+  margin-bottom: 45px;
+}
+
+.v4-section-title {
+  font-size: clamp(37px,5vw,65px);
+}
+
+.v4-section-description {
+  max-width: 390px;
+  color: var(--v4-muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.v4-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 18px;
+}
+
+.v4-gallery-card {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  background: #d7d0c6;
+  color: white;
+  text-decoration: none;
+  aspect-ratio: 3 / 4;
+}
+
+.v4-gallery-card:nth-child(1),
+.v4-gallery-card:nth-child(6) {
+  grid-column: span 2;
+  aspect-ratio: 1.55 / 1;
+}
+
+.v4-gallery-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .9s cubic-bezier(.2,.7,.2,1);
+}
+
+.v4-gallery-card:hover img {
+  transform: scale(1.055);
+}
+
+.v4-gallery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(15,21,17,.83),
+    rgba(15,21,17,.06) 62%
+  );
+  pointer-events: none;
+}
+
+.v4-gallery-caption {
+  position: absolute;
+  z-index: 1;
+  left: clamp(16px,2.5vw,30px);
+  right: clamp(16px,2.5vw,30px);
+  bottom: clamp(18px,2.5vw,30px);
+}
+
+.v4-gallery-caption small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #e8d1af;
+  margin-bottom: 8px;
+}
+
+.v4-gallery-caption h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(21px,2.2vw,31px);
+  color: white;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.v4-gallery-arrow {
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  font-size: 24px;
+  color: white;
+}
+
+.v4-gallery-card:focus-visible {
+  outline: 3px solid var(--v4-gold);
+  outline-offset: 3px;
+}
+
+/* WHY AVYUKTA */
+
+.v4-story {
+  padding: clamp(80px,10vw,140px) 0;
+  background: var(--v4-paper);
+}
+
+.v4-story-heading {
+  max-width: 760px;
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.v4-story h2 {
+  font-size: clamp(36px,4.7vw,60px);
+}
+
+.v4-story-heading p {
+  color: var(--v4-muted);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-top: 22px;
+}
+
+.v4-story-grid {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 28px;
+}
+
+.v4-story-card {
+  border-top: 1px solid var(--v4-border);
+  padding-top: 25px;
+}
+
+.v4-story-number {
+  display: block;
+  color: var(--v4-gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.v4-story-card h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  color: var(--v4-sage);
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.v4-story-card p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--v4-muted);
+}
+
+/* BOOKING BANNER */
+
+.v4-booking-banner {
+  background: #e9e2d8;
+  padding: clamp(65px,8vw,105px) 0;
+  text-align: center;
+}
+
+.v4-booking-banner h2 {
+  font-size: clamp(36px,5vw,62px);
+  margin: 0 auto 20px;
+  max-width: 760px;
+}
+
+.v4-booking-banner p {
+  max-width: 590px;
+  margin: 0 auto 30px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #6f6b63;
+}
+
+.v4-booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.v4-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 49px;
+  padding: 14px 25px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-decoration: none;
+  transition: background .2s, color .2s, transform .2s;
+}
+
+.v4-button:hover {
+  transform: translateY(-2px);
+}
+
+.v4-button-dark {
+  background: var(--v4-sage);
+  color: white;
+}
+
+.v4-button-dark:hover {
+  background: #4c5a49;
+  color: white;
+}
+
+.v4-button-outline {
+  border: 1px solid var(--v4-sage);
+  color: var(--v4-sage);
+}
+
+.v4-button-outline:hover {
+  background: var(--v4-sage);
+  color: white;
+}
+
+/* PACKAGES */
+
+.v4-packages {
+  padding: clamp(80px,10vw,135px) 0;
+  background: var(--v4-paper);
+}
+
+.v4-packages-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.v4-packages-heading p {
+  color: var(--v4-muted);
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.v4-packages .package-grid {
+  max-width: 1030px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* REVIEWS */
+
+.v4-reviews {
+  background: var(--v4-cream);
+  padding: clamp(75px,9vw,120px) 0;
+}
+
+.v4-review-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(35px,7vw,100px);
+  align-items: center;
+}
+
+.v4-review-heading h2 {
+  font-size: clamp(37px,4.5vw,59px);
+  margin-bottom: 22px;
+}
+
+.v4-review-heading p {
+  color: var(--v4-muted);
+  line-height: 1.9;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.v4-rating-card {
+  padding: clamp(30px,5vw,60px);
+  background: var(--v4-paper);
+  border: 1px solid var(--v4-border);
+  text-align: center;
+}
+
+.v4-rating-stars {
+  color: var(--v4-gold);
+  font-size: 25px;
+  letter-spacing: 6px;
+}
+
+.v4-rating-number {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(75px,9vw,115px);
+  line-height: 1.2;
+  color: var(--v4-sage);
+  font-weight: 400;
+  margin: 15px 0;
+}
+
+.v4-rating-number span {
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 19px;
+  color: var(--v4-muted);
+}
+
+.v4-rating-card p {
+  color: var(--v4-muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.v4-review-link {
+  display: inline-block;
+  margin-top: 25px;
+  color: var(--v4-sage);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* AVAILABILITY MODAL */
+
 .availability-overlay {
   position: fixed;
   inset: 0;
@@ -234,7 +656,6 @@
   padding: 20px;
   background: rgba(19,24,22,.78);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 .availability-overlay.is-open {
@@ -245,13 +666,13 @@
   position: relative;
   width: 100%;
   max-width: 680px;
-  max-height: min(92vh, 900px);
+  max-height: min(92vh,900px);
   overflow-y: auto;
   background: #faf7f2;
   color: #252925;
   border-radius: 12px;
   box-shadow: 0 30px 100px rgba(0,0,0,.25);
-  padding: clamp(24px, 5vw, 46px);
+  padding: clamp(24px,5vw,46px);
   overscroll-behavior: contain;
 }
 
@@ -263,13 +684,12 @@
   height: 38px;
   border: 1px solid #e5ded4;
   border-radius: 50%;
-  background: #fff;
+  background: white;
   color: #30382f;
   font-size: 25px;
   cursor: pointer;
   display: grid;
   place-items: center;
-  line-height: 1;
 }
 
 .availability-eyebrow {
@@ -284,7 +704,7 @@
 
 .availability-dialog h2 {
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(30px, 5vw, 43px);
+  font-size: clamp(30px,5vw,43px);
   line-height: 1.15;
   font-weight: 400;
   margin: 0 35px 12px 0;
@@ -305,7 +725,7 @@
 
 .availability-fields {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 18px;
 }
 
@@ -334,11 +754,10 @@
   padding: 13px 14px;
   border: 1px solid #ddd7cd;
   border-radius: 5px;
-  background: #fff;
+  background: white;
   color: #252925;
   font: 14px "DM Sans", Arial, sans-serif;
   outline: none;
-  transition: border-color .2s, box-shadow .2s;
 }
 
 .availability-field input:focus,
@@ -353,11 +772,6 @@
   resize: vertical;
 }
 
-.availability-field input::placeholder,
-.availability-field textarea::placeholder {
-  color: #a4a19c;
-}
-
 .availability-slot-note {
   font-size: 11px;
   color: #827d75;
@@ -368,10 +782,10 @@
   width: 100%;
   margin-top: 24px;
   padding: 16px 20px;
-  border: none;
+  border: 0;
   border-radius: 5px;
   background: #30382f;
-  color: #fff;
+  color: white;
   font: 600 14px "DM Sans", Arial, sans-serif;
   cursor: pointer;
 }
@@ -407,7 +821,126 @@ body.availability-open {
   overflow: hidden;
 }
 
-@media (max-width: 600px) {
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .v4-gallery-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .v4-gallery-card:nth-child(1),
+  .v4-gallery-card:nth-child(6) {
+    grid-column: span 1;
+    aspect-ratio: 3 / 4;
+  }
+
+  .v4-story-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 85svh;
+  }
+
+  .hero .hero-shade {
+    background: linear-gradient(
+      0deg,
+      rgba(12,20,15,.78),
+      rgba(12,20,15,.42) 60%,
+      rgba(12,20,15,.2)
+    );
+  }
+
+  .hero-navigation {
+    padding: 0 12px;
+  }
+
+  .hero-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 23px;
+  }
+
+  .hero-pagination {
+    bottom: 22px;
+  }
+
+  .hero-slide-counter {
+    right: 15px;
+    bottom: 20px;
+    font-size: 10px;
+  }
+
+  .hero .hero-bottom {
+    padding-bottom: 45px;
+  }
+
+  .v4-intro-grid,
+  .v4-review-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .v4-section-head {
+    display: block;
+  }
+
+  .v4-section-description {
+    margin-top: 22px;
+  }
+
+  .v4-stats {
+    grid-template-columns: repeat(2,1fr);
+    gap: 35px 15px;
+    margin-top: 50px;
+  }
+
+  .v4-story-grid {
+    gap: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .v4-gallery-grid {
+    gap: 10px;
+  }
+
+  .v4-gallery-card {
+    aspect-ratio: 3 / 4.5;
+  }
+
+  .v4-gallery-caption {
+    left: 12px;
+    right: 12px;
+    bottom: 15px;
+  }
+
+  .v4-gallery-caption small {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .v4-gallery-caption h3 {
+    font-size: 19px;
+  }
+
+  .v4-gallery-arrow {
+    font-size: 18px;
+  }
+
+  .v4-story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .v4-booking-actions {
+    flex-direction: column;
+  }
+
+  .v4-booking-actions .v4-button {
+    width: 100%;
+  }
+
   .availability-overlay {
     padding: 10px;
     align-items: flex-end;
@@ -428,8 +961,20 @@ body.availability-open {
     grid-column: auto;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .v4-gallery-card img {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
 </style>
 
+<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-65JQNK8MX6"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -439,6 +984,7 @@ function gtag() {
 gtag("js", new Date());
 gtag("config", "G-65JQNK8MX6");
 </script>
+
 </head>
 
 <body>
@@ -495,17 +1041,18 @@ gtag("config", "G-65JQNK8MX6");
 
 <main id="main">
 
-<!-- HERO SLIDESHOW -->
+<!-- ========================================
+     HERO — 10 PHOTOGRAPH SLIDESHOW
+======================================== -->
 <section class="hero" id="home">
 
   <div
     class="hero-slideshow"
     id="heroSlideshow"
-    aria-label="Avyukta Photography featured photographs"
+    role="region"
     aria-roledescription="carousel"
-  >
-    <!-- Slides are loaded automatically from GitHub -->
-  </div>
+    aria-label="Avyukta Photography featured photographs"
+  ></div>
 
   <div class="hero-shade"></div>
 
@@ -513,8 +1060,8 @@ gtag("config", "G-65JQNK8MX6");
 
     <div class="hero-copy reveal">
 
-      <span class="eyebrow light">
-        BENGALURU · NEWBORN · BABY · MATERNITY
+      <span class="hero-v4-kicker">
+        A LUXURY PHOTOGRAPHY EXPERIENCE
       </span>
 
       <h1>
@@ -523,9 +1070,8 @@ gtag("config", "G-65JQNK8MX6");
       </h1>
 
       <p>
-        Thoughtfully styled photography for the tiny details,
-        beautiful milestones and extraordinary love that make
-        your story yours.
+        From the tiniest first smiles to life's most beautiful
+        milestones, we turn fleeting moments into timeless art.
       </p>
 
       <div class="hero-actions">
@@ -536,6 +1082,10 @@ gtag("config", "G-65JQNK8MX6");
         <a class="btn btn-outline-light" href="#gallery">
           Explore Our Work <span>↓</span>
         </a>
+      </div>
+
+      <div class="hero-v4-note">
+        NEWBORN · BABY · MATERNITY · FAMILY
       </div>
 
     </div>
@@ -572,7 +1122,7 @@ gtag("config", "G-65JQNK8MX6");
   <div
     class="hero-pagination"
     id="heroPagination"
-    aria-label="Choose slideshow photograph"
+    aria-label="Select a photograph"
   ></div>
 
   <div class="hero-slide-counter" id="heroCounter">
@@ -581,218 +1131,248 @@ gtag("config", "G-65JQNK8MX6");
 
 </section>
 
-<!-- ABOUT -->
-<section class="intro section-space" id="about">
-  <div class="container intro-layout">
+<!-- ========================================
+     INTRODUCTION
+======================================== -->
+<section class="v4-intro" id="about">
+  <div class="container">
 
-    <div class="intro-left reveal">
-      <span class="eyebrow">WELCOME TO AVYUKTA PHOTOGRAPHY</span>
-      <h2>
-        Because every little story deserves to be
-        <em>beautifully told.</em>
-      </h2>
+    <div class="v4-intro-grid">
+
+      <div class="reveal">
+        <span class="v4-overline">
+          WELCOME TO AVYUKTA PHOTOGRAPHY
+        </span>
+
+        <h2>
+          Their childhood is a story.
+          <em>Let us make it timeless.</em>
+        </h2>
+      </div>
+
+      <div class="v4-intro-copy reveal">
+        <p>
+          Some moments are so precious that words can never
+          quite describe them. The way your baby curls their
+          tiny fingers. Their first curious smile. The warmth
+          of being together.
+        </p>
+
+        <p>
+          At Avyukta Photography, Bengaluru, we create
+          thoughtfully styled portraits that preserve
+          the beauty of these moments for years to come.
+        </p>
+
+        <p>
+          Every session is designed with care, creativity
+          and an appreciation for your family's unique story.
+        </p>
+
+        <div class="v4-signature">
+          Beautifully yours, Avyukta.
+        </div>
+
+        <a class="text-link" href="#gallery">
+          Discover our collections <span>↗</span>
+        </a>
+      </div>
+
     </div>
 
-    <div class="intro-right reveal">
-      <p>
-        From your baby's first sleepy expressions to the wonder
-        of growing up, we create heartfelt portraits that feel
-        just as special years from now.
-      </p>
+    <div class="v4-stats reveal">
+      <div class="v4-stat">
+        <strong>8+</strong>
+        <span>Years of experience</span>
+      </div>
 
-      <p>
-        Based in Bengaluru, our studio combines thoughtful
-        styling, gentle guidance and a relaxed photography
-        experience for the whole family.
-      </p>
+      <div class="v4-stat">
+        <strong>5,500+</strong>
+        <span>Photoshoots captured</span>
+      </div>
 
-      <a class="text-link" href="#gallery">
-        Discover our photography <span>↗</span>
-      </a>
+      <div class="v4-stat">
+        <strong>60+</strong>
+        <span>Creative themes</span>
+      </div>
+
+      <div class="v4-stat">
+        <strong>4.6 ★</strong>
+        <span>Google rating</span>
+      </div>
     </div>
 
-  </div>
-
-  <div class="container stats">
-    <div><strong>8+</strong><span>Years of experience</span></div>
-    <div><strong>5,500+</strong><span>Photoshoots captured</span></div>
-    <div><strong>60+</strong><span>Creative themes</span></div>
-    <div><strong>4.6 ★</strong><span>Google rating</span></div>
   </div>
 </section>
 
-<!-- PHOTOGRAPHY GALLERY -->
-<section class="portfolio section-space" id="gallery">
+<!-- ========================================
+     EIGHT PHOTOGRAPHY GALLERIES
+======================================== -->
+<section class="v4-portfolio" id="gallery">
   <div class="container">
 
-    <div class="section-head reveal">
+    <div class="v4-section-head reveal">
       <div>
-        <span class="eyebrow">OUR PHOTOGRAPHY GALLERY</span>
-        <h2>
+        <span class="v4-overline">
+          THE AVYUKTA COLLECTIONS
+        </span>
+
+        <h2 class="v4-section-title">
           Every chapter,<br>
           <em>a work of art.</em>
         </h2>
       </div>
 
-      <p>
-        From your newborn's first days to growing milestones,
-        beautiful maternity portraits, family memories and
-        unforgettable celebrations — explore our collections.
+      <p class="v4-section-description">
+        Eight beautiful collections, each created to
+        celebrate a different chapter of your family's story.
+        Explore the moments that speak to your heart.
       </p>
     </div>
 
-    <div class="gallery-grid">
+    <div class="v4-gallery-grid">
 
+      <!-- NEWBORN -->
       <a
-        class="gallery-card gallery-feature reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-newborn.html"
-        aria-label="Explore Newborn Photography, 0 to 30 days"
+        aria-label="Explore Newborn Photography"
       >
         <img
           src="images/gallery/newborn.jpg.jpeg"
-          alt="Newborn Photography in Bengaluru, 0 to 30 days"
+          alt="Newborn photography in Bengaluru"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>01 / 0 – 30 DAYS</span>
+        <div class="v4-gallery-caption">
+          <small>01 / 0–30 DAYS</small>
           <h3>Newborn Photography</h3>
-          <span class="gallery-arrow">↗</span>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
+      <!-- 3–6 MONTHS -->
       <a
-        class="gallery-card reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-baby-3to6.html"
-        aria-label="Explore Baby Photography, 3 months to 6 months"
+        aria-label="Explore Baby Photography, 3 to 6 months"
       >
         <img
           src="images/gallery/3 to 6 Months.jpeg"
-          alt="Baby Photography in Bengaluru, 3 to 6 months"
+          alt="Baby photography 3 to 6 months"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>02 / BABY PHOTOGRAPHY</span>
-          <h3>3 Months to 6 Months</h3>
-          <span class="gallery-arrow">↗</span>
+        <div class="v4-gallery-caption">
+          <small>02 / EARLY MILESTONES</small>
+          <h3>3–6 Months</h3>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
+      <!-- 7 MONTHS TO 1 YEAR -->
       <a
-        class="gallery-card reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-baby-7to12.html"
         aria-label="Explore Baby Photography, 7 months to 1 year"
       >
         <img
           src="images/gallery/BabyGallery.JPG"
-          alt="Baby Photography in Bengaluru, 7 months to 1 year"
+          alt="Baby photography 7 months to 1 year"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>03 / BABY MILESTONES</span>
-          <h3>7 Months to 1 Year</h3>
-          <span class="gallery-arrow">↗</span>
+        <div class="v4-gallery-caption">
+          <small>03 / GROWING WONDERS</small>
+          <h3>7 Months–1 Year</h3>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
+      <!-- 1 YEAR AND ABOVE -->
       <a
-        class="gallery-card reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-kids-1plus.html"
-        aria-label="Explore Photography for children aged 1 year and above"
+        aria-label="Explore Photography for children 1 year and above"
       >
         <img
           src="images/gallery/Above 1 Year.jpeg"
-          alt="Child Photography in Bengaluru, 1 year and above"
+          alt="Children photography 1 year and above"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>04 / GROWING UP</span>
-          <h3>1 Year and Above</h3>
-          <span class="gallery-arrow">↗</span>
+        <div class="v4-gallery-caption">
+          <small>04 / LITTLE ADVENTURES</small>
+          <h3>1 Year & Above</h3>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
+      <!-- OUTDOOR -->
       <a
-        class="gallery-card reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-outdoor.html"
-        aria-label="Explore Outdoor Baby Photography"
+        aria-label="Explore Outdoor Photography"
       >
         <img
           src="images/gallery/Outdoor Main.jpeg"
-          alt="Outdoor Baby Photography in Bengaluru"
+          alt="Outdoor baby photography in Bengaluru"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>05 / NATURAL & WILD</span>
+        <div class="v4-gallery-caption">
+          <small>05 / NATURAL BEAUTY</small>
           <h3>Outdoor Photography</h3>
-          <span class="gallery-arrow">↗</span>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
+      <!-- CAKE SMASH -->
       <a
-        class="gallery-card reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-cakesmash.html"
         aria-label="Explore Cake Smash Photography"
       >
         <img
           src="images/gallery/Cake Smash Photoshoot In Bangalore.jpg"
-          alt="Premium Cake Smash Photography in Bengaluru"
+          alt="Cake smash photography in Bengaluru"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>06 / BIRTHDAY CELEBRATIONS</span>
-          <h3>Cake Smash Photography</h3>
-          <span class="gallery-arrow">↗</span>
+        <div class="v4-gallery-caption">
+          <small>06 / SWEET CELEBRATIONS</small>
+          <h3>Cake Smash</h3>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
+      <!-- MATERNITY -->
       <a
-        class="gallery-card reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-maternity.html"
         aria-label="Explore Maternity Photography"
       >
         <img
           src="images/gallery/maternity.JPG"
-          alt="Premium Maternity Photography in Bengaluru"
+          alt="Maternity photography in Bengaluru"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>07 / A NEW BEGINNING</span>
+        <div class="v4-gallery-caption">
+          <small>07 / BEAUTIFUL BEGINNINGS</small>
           <h3>Maternity Photography</h3>
-          <span class="gallery-arrow">↗</span>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
+      <!-- FAMILY -->
       <a
-        class="gallery-card reveal"
+        class="v4-gallery-card reveal"
         href="avyukta-family.html"
         aria-label="Explore Family Photography"
       >
         <img
           src="images/gallery/Family.jpg.jpeg"
-          alt="Family Photography in Bengaluru"
+          alt="Family photography in Bengaluru"
           loading="lazy"
         >
-        <div class="gallery-caption">
-          <span>08 / TOGETHER FOREVER</span>
+        <div class="v4-gallery-caption">
+          <small>08 / TOGETHER FOREVER</small>
           <h3>Family Photography</h3>
-          <span class="gallery-arrow">↗</span>
-        </div>
-      </a>
-
-      <a
-        class="gallery-card reveal"
-        href="avyukta-events.html"
-        aria-label="Explore Event Photography"
-      >
-        <img
-          src="images/gallery/Outdoor.jpg.jpeg"
-          alt="Event Photography in Bengaluru"
-          loading="lazy"
-        >
-        <div class="gallery-caption">
-          <span>09 / SPECIAL CELEBRATIONS</span>
-          <h3>Event Photography</h3>
-          <span class="gallery-arrow">↗</span>
+          <span class="v4-gallery-arrow">↗</span>
         </div>
       </a>
 
@@ -800,61 +1380,64 @@ gtag("config", "G-65JQNK8MX6");
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="experience section-space">
+<!-- ========================================
+     WHY FAMILIES CHOOSE AVYUKTA
+======================================== -->
+<section class="v4-story">
   <div class="container">
 
-    <div class="section-head centered reveal">
-      <span class="eyebrow">THE AVYUKTA EXPERIENCE</span>
+    <div class="v4-story-heading reveal">
+      <span class="v4-overline">
+        THE AVYUKTA EXPERIENCE
+      </span>
+
       <h2>
         More than photographs.<br>
         <em>A beautiful experience.</em>
       </h2>
+
       <p>
-        Every detail is considered, so you can simply
-        enjoy the moment.
+        Every little detail matters. We make space for
+        laughter, connection and genuine moments while
+        creating photographs you'll treasure.
       </p>
     </div>
 
-    <div class="experience-grid">
+    <div class="v4-story-grid">
 
-      <article class="experience-card reveal">
-        <span class="feature-number">01</span>
-        <div class="feature-icon">♡</div>
+      <article class="v4-story-card reveal">
+        <span class="v4-story-number">01 —</span>
         <h3>Baby-First Comfort</h3>
         <p>
-          Gentle, patient sessions thoughtfully planned
-          around your baby's comfort and routine.
+          Gentle, patient photography sessions thoughtfully
+          planned around your baby's comfort and routine.
         </p>
       </article>
 
-      <article class="experience-card reveal">
-        <span class="feature-number">02</span>
-        <div class="feature-icon">✳</div>
-        <h3>Beautifully Styled Themes</h3>
+      <article class="v4-story-card reveal">
+        <span class="v4-story-number">02 —</span>
+        <h3>Beautifully Styled</h3>
         <p>
-          Creative settings, carefully selected props
-          and timeless visual storytelling.
+          Carefully selected themes, creative settings and
+          timeless styling that make every portrait special.
         </p>
       </article>
 
-      <article class="experience-card reveal">
-        <span class="feature-number">03</span>
-        <div class="feature-icon">✧</div>
+      <article class="v4-story-card reveal">
+        <span class="v4-story-number">03 —</span>
         <h3>Thoughtful Editing</h3>
         <p>
-          Beautifully finished portraits with a natural,
-          elegant and enduring feel.
+          Professionally finished photographs that preserve
+          natural expressions, emotion and beautiful details.
         </p>
       </article>
 
-      <article class="experience-card reveal">
-        <span class="feature-number">04</span>
-        <div class="feature-icon">∞</div>
-        <h3>Family Moments</h3>
+      <article class="v4-story-card reveal">
+        <span class="v4-story-number">04 —</span>
+        <h3>Family Memories</h3>
         <p>
           Because the love surrounding your little one
-          deserves a place in the story too.
+          deserves to be part of the story too.
         </p>
       </article>
 
@@ -862,32 +1445,65 @@ gtag("config", "G-65JQNK8MX6");
   </div>
 </section>
 
-<!-- QUOTE -->
-<section class="quote-section">
-  <div class="container quote-content reveal">
-    <span class="eyebrow light">THE MOMENTS THAT MATTER</span>
+<!-- ========================================
+     BOOKING CTA
+======================================== -->
+<section class="v4-booking-banner">
+  <div class="container reveal">
+
+    <span class="v4-overline">
+      LET'S CREATE SOMETHING BEAUTIFUL
+    </span>
+
+    <h2>
+      The days are long.<br>
+      <em>The years are beautifully short.</em>
+    </h2>
 
     <p>
-      “The smallest moments often become our
-      <em>most treasured memories.</em>”
+      Celebrate the little moments before they become
+      your most treasured memories. Tell us about your
+      preferred session and we'll help you plan it.
     </p>
 
-    <a href="#availability" data-availability class="btn btn-cream">
-      Check Availability <span>↗</span>
-    </a>
+    <div class="v4-booking-actions">
+      <a
+        class="v4-button v4-button-dark"
+        href="#availability"
+        data-availability
+      >
+        Check Photoshoot Availability ↗
+      </a>
+
+      <a
+        class="v4-button v4-button-outline"
+        href="https://wa.me/919008203206?text=Hello%20Avyukta%20Photography%2C%20I%20would%20like%20to%20know%20more%20about%20your%20photoshoots."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Enquire on WhatsApp ↗
+      </a>
+    </div>
+
   </div>
 </section>
 
-<!-- PACKAGES -->
-<section class="packages section-space" id="packages">
+<!-- ========================================
+     PACKAGES
+======================================== -->
+<section class="v4-packages" id="packages">
   <div class="container">
 
-    <div class="section-head centered reveal">
-      <span class="eyebrow">OUR SESSIONS</span>
-      <h2>
+    <div class="v4-packages-heading reveal">
+      <span class="v4-overline">
+        OUR PHOTOGRAPHY SESSIONS
+      </span>
+
+      <h2 class="v4-section-title">
         Beautiful memories,<br>
         <em>thoughtfully packaged.</em>
       </h2>
+
       <p>
         Choose the photography experience that suits your family.
       </p>
@@ -897,6 +1513,7 @@ gtag("config", "G-65JQNK8MX6");
 
       <article class="package-card reveal">
         <span class="package-tag">STUDIO EXPERIENCE</span>
+
         <h3>Indoor Studio Shoot</h3>
         <p class="package-price">₹7,000</p>
 
@@ -925,6 +1542,7 @@ gtag("config", "G-65JQNK8MX6");
 
       <article class="package-card featured reveal">
         <span class="package-tag">AT YOUR LOCATION</span>
+
         <h3>Home / Outdoor Shoot</h3>
         <p class="package-price">₹10,000</p>
 
@@ -954,12 +1572,12 @@ gtag("config", "G-65JQNK8MX6");
     </div>
 
     <!-- VIDEO ADD-ONS -->
-    <div class="reveal" style="max-width:1000px;margin:50px auto 0;">
+    <div class="reveal" style="max-width:1000px;margin:55px auto 0;">
 
       <div style="text-align:center;margin-bottom:30px;">
-        <span class="eyebrow">OPTIONAL VIDEO ADD-ONS</span>
+        <span class="v4-overline">OPTIONAL VIDEO ADD-ONS</span>
 
-        <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,3.5vw,42px);font-weight:400;margin:15px 0;">
+        <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,3.5vw,42px);font-weight:400;margin:15px 0;color:#30382f;">
           Bring Your Memories to Life
         </h3>
 
@@ -971,11 +1589,9 @@ gtag("config", "G-65JQNK8MX6");
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
 
         <article style="background:#f7f3ee;border:1px solid #e6ded3;padding:30px;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#a98c65;">
-            VIDEO ADD-ON 01
-          </span>
+          <span class="v4-overline">VIDEO ADD-ON 01</span>
 
-          <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:27px;font-weight:400;margin:18px 0 10px;">
+          <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:27px;font-weight:400;margin:12px 0;">
             Instagram Reel
           </h4>
 
@@ -983,7 +1599,7 @@ gtag("config", "G-65JQNK8MX6");
             ₹3,000
           </p>
 
-          <p style="font-size:13px;color:#77746d;margin:12px 0 22px;">
+          <p style="font-size:13px;color:#77746d;margin:12px 0 22px;line-height:1.8;">
             Additional charge for a professionally edited reel
             highlighting beautiful moments from your photoshoot.
           </p>
@@ -999,11 +1615,9 @@ gtag("config", "G-65JQNK8MX6");
         </article>
 
         <article style="background:#f7f3ee;border:1px solid #e6ded3;padding:30px;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#a98c65;">
-            VIDEO ADD-ON 02
-          </span>
+          <span class="v4-overline">VIDEO ADD-ON 02</span>
 
-          <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:27px;font-weight:400;margin:18px 0 10px;">
+          <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:27px;font-weight:400;margin:12px 0;">
             Cinematic Video
           </h4>
 
@@ -1011,7 +1625,7 @@ gtag("config", "G-65JQNK8MX6");
             ₹15,000
           </p>
 
-          <p style="font-size:13px;color:#77746d;margin:12px 0 22px;">
+          <p style="font-size:13px;color:#77746d;margin:12px 0 22px;line-height:1.8;">
             Additional charge for a beautifully crafted
             3–4 minute cinematic video of your special moments.
           </p>
@@ -1032,71 +1646,97 @@ gtag("config", "G-65JQNK8MX6");
         Video services are optional and charged additionally
         to the photography package.
       </p>
-
     </div>
 
     <p class="package-note">
-      For maternity, event or customised sessions,
+      For maternity or customised sessions,
       contact us for package details.
     </p>
 
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section class="reviews section-space" id="reviews">
-  <div class="container review-layout">
+<!-- ========================================
+     GOOGLE REVIEWS
+======================================== -->
+<section class="v4-reviews" id="reviews">
+  <div class="container v4-review-layout">
 
-    <div class="reveal">
-      <span class="eyebrow">KIND WORDS & TRUST</span>
+    <div class="v4-review-heading reveal">
+      <span class="v4-overline">
+        KIND WORDS & TRUST
+      </span>
+
       <h2>
-        Memories made.<br>
-        <em>Love shared.</em>
+        The photographs are beautiful.<br>
+        <em>The memories mean everything.</em>
       </h2>
 
       <p>
-        We're grateful to the families who have trusted
-        us with their most precious milestones.
+        Every family who walks through our doors becomes
+        part of the Avyukta story. We're grateful for the
+        trust our clients place in us to capture their
+        most precious moments.
       </p>
 
       <a
-        class="text-link"
+        class="v4-button v4-button-dark"
         href="https://maps.app.goo.gl/S65dgdg1oW84fshK6"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Read our Google reviews <span>↗</span>
+        Read Our Google Reviews ↗
       </a>
     </div>
 
-    <div class="rating-panel reveal">
-      <span class="rating-stars">★★★★★</span>
-      <strong>4.6<span>/5</span></strong>
-      <p>Google rating · 120+ reviews</p>
+    <div class="v4-rating-card reveal">
+      <div class="v4-rating-stars" aria-label="Five decorative stars">
+        ★★★★★
+      </div>
+
+      <strong class="v4-rating-number">
+        4.6<span>/5</span>
+      </strong>
+
+      <p>
+        Google rating · 120+ reviews
+      </p>
+
+      <p>
+        Explore the experiences shared by families
+        who chose Avyukta Photography.
+      </p>
 
       <a
+        class="v4-review-link"
         href="https://maps.app.goo.gl/S65dgdg1oW84fshK6"
         target="_blank"
         rel="noopener noreferrer"
       >
-        View reviews on Google ↗
+        View Verified Reviews on Google ↗
       </a>
     </div>
 
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ========================================
+     FAQ
+======================================== -->
 <section class="faq section-space">
   <div class="container faq-layout">
 
     <div class="reveal">
       <span class="eyebrow">GOOD TO KNOW</span>
+
       <h2>
         Your questions,<br>
         <em>answered.</em>
       </h2>
-      <p>Everything you need to know before your session.</p>
+
+      <p>
+        Everything you need to know before your session.
+      </p>
     </div>
 
     <div class="faq-list reveal">
@@ -1165,7 +1805,9 @@ gtag("config", "G-65JQNK8MX6");
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ========================================
+     CONTACT
+======================================== -->
 <section class="contact section-space" id="contact">
   <div class="container contact-content reveal">
 
@@ -1184,7 +1826,6 @@ gtag("config", "G-65JQNK8MX6");
     </p>
 
     <div class="contact-actions">
-
       <a
         class="btn btn-cream"
         href="#availability"
@@ -1201,7 +1842,6 @@ gtag("config", "G-65JQNK8MX6");
       >
         WhatsApp Us <span>↗</span>
       </a>
-
     </div>
 
     <a class="contact-phone" href="tel:+919008203206">
@@ -1213,7 +1853,9 @@ gtag("config", "G-65JQNK8MX6");
 
 </main>
 
-<!-- FOOTER -->
+<!-- ========================================
+     FOOTER
+======================================== -->
 <footer class="footer">
   <div class="container footer-main">
 
@@ -1222,8 +1864,13 @@ gtag("config", "G-65JQNK8MX6");
         AVYUKTA <span>PHOTOGRAPHY</span>
       </a>
 
-      <p>Preserving the little moments that mean everything.</p>
-      <p>Bengaluru, Karnataka, India</p>
+      <p>
+        Preserving the little moments that mean everything.
+      </p>
+
+      <p>
+        Bengaluru, Karnataka, India
+      </p>
     </div>
 
     <div class="footer-links">
@@ -1245,7 +1892,9 @@ gtag("config", "G-65JQNK8MX6");
           href="https://wa.me/919008203206"
           target="_blank"
           rel="noopener noreferrer"
-        >WhatsApp</a>
+        >
+          WhatsApp
+        </a>
       </div>
 
     </div>
@@ -1261,7 +1910,7 @@ gtag("config", "G-65JQNK8MX6");
   </div>
 </footer>
 
-<!-- FLOATING CONTACT -->
+<!-- FLOATING CONTACT BUTTONS -->
 <div class="floating-contact" aria-label="Quick contact options">
 
   <a
@@ -1284,7 +1933,9 @@ gtag("config", "G-65JQNK8MX6");
 
 </div>
 
-<!-- AVAILABILITY ENQUIRY MODAL -->
+<!-- ========================================
+     AVAILABILITY ENQUIRY FORM
+======================================== -->
 <div
   class="availability-overlay"
   id="availabilityModal"
@@ -1327,8 +1978,10 @@ gtag("config", "G-65JQNK8MX6");
 
       <div class="availability-fields">
 
+        <!-- NAME -->
         <div class="availability-field">
           <label for="enquiryName">Your Name *</label>
+
           <input
             type="text"
             id="enquiryName"
@@ -1340,8 +1993,10 @@ gtag("config", "G-65JQNK8MX6");
           >
         </div>
 
+        <!-- PHONE -->
         <div class="availability-field">
           <label for="enquiryPhone">WhatsApp Number *</label>
+
           <input
             type="tel"
             id="enquiryPhone"
@@ -1356,6 +2011,7 @@ gtag("config", "G-65JQNK8MX6");
           >
         </div>
 
+        <!-- CATEGORY — EVENTS REMOVED -->
         <div class="availability-field full-width">
           <label for="enquiryCategory">
             Photography Category *
@@ -1367,38 +2023,45 @@ gtag("config", "G-65JQNK8MX6");
             required
           >
             <option value="">Select photography category</option>
+
             <option value="Newborn Photography (0–30 Days)">
               Newborn Photography (0–30 Days)
             </option>
+
             <option value="3 Months to 6 Months">
               3 Months to 6 Months
             </option>
+
             <option value="7 Months to 1 Year">
               7 Months to 1 Year
             </option>
+
             <option value="1 Year and Above">
               1 Year and Above
             </option>
+
             <option value="Outdoor Photography">
               Outdoor Photography
             </option>
+
             <option value="Cake Smash Photography">
               Cake Smash Photography
             </option>
+
             <option value="Maternity Photography">
               Maternity Photography
             </option>
+
             <option value="Family Photography">
               Family Photography
-            </option>
-            <option value="Event Photography">
-              Event Photography
             </option>
           </select>
         </div>
 
+        <!-- DATE -->
         <div class="availability-field">
           <label for="enquiryDate">Preferred Date *</label>
+
           <input
             type="date"
             id="enquiryDate"
@@ -1407,6 +2070,7 @@ gtag("config", "G-65JQNK8MX6");
           >
         </div>
 
+        <!-- TIME -->
         <div class="availability-field">
           <label for="enquiryTime">Preferred Time Slot *</label>
 
@@ -1428,6 +2092,7 @@ gtag("config", "G-65JQNK8MX6");
           </span>
         </div>
 
+        <!-- LOCATION -->
         <div class="availability-field full-width">
           <label for="enquiryLocation">
             Photoshoot Location *
@@ -1444,6 +2109,7 @@ gtag("config", "G-65JQNK8MX6");
           </select>
         </div>
 
+        <!-- ADD-ON -->
         <div class="availability-field full-width">
           <label for="enquiryAddon">
             Video Add-On (Optional)
@@ -1451,18 +2117,22 @@ gtag("config", "G-65JQNK8MX6");
 
           <select id="enquiryAddon" name="videoAddon">
             <option value="None">No video add-on</option>
+
             <option value="Instagram Reel - ₹3,000 additional">
               Instagram Reel — ₹3,000 additional
             </option>
+
             <option value="3–4 Minute Cinematic Video - ₹15,000 additional">
               3–4 Minute Cinematic Video — ₹15,000 additional
             </option>
+
             <option value="Both Reel and Cinematic Video">
               Both Reel and Cinematic Video
             </option>
           </select>
         </div>
 
+        <!-- NOTES -->
         <div class="availability-field full-width">
           <label for="enquiryNotes">
             Special Requests (Optional)
@@ -1478,10 +2148,7 @@ gtag("config", "G-65JQNK8MX6");
 
       </div>
 
-      <button
-        class="availability-submit"
-        type="submit"
-      >
+      <button class="availability-submit" type="submit">
         Submit Enquiry via WhatsApp ↗
       </button>
 
@@ -1505,78 +2172,58 @@ gtag("config", "G-65JQNK8MX6");
 <!-- EXISTING WEBSITE SCRIPT -->
 <script src="indexscript.js"></script>
 
-<!-- NEW HERO SLIDESHOW SCRIPT -->
+<!-- ========================================
+     HERO SLIDESHOW SCRIPT
+======================================== -->
 <script>
 (function () {
   "use strict";
 
-  /*
-    HERO IMAGE CONFIGURATION
-
-    Repository: AvyuktaPackageBuilder
-    Branch: website-v2
-    Folder: GalleryForImages/MainPageHero
-
-    Accepted names:
-      Hero 1.jpg
-      Hero 2.jpeg
-      Hero 3.png
-      ...
-      Hero 10.webp
-
-    The extension and filename case are detected automatically.
-  */
-
   const OWNER = "avyuktaphotography-sys";
   const REPO = "AvyuktaPackageBuilder";
   const BRANCH = "website-v2";
+
+  // EXACT FOLDER NAME — GalleryForImages (plural)
   const HERO_FOLDER = "GalleryForImages/MainPageHero";
 
-  const AUTO_SLIDE_INTERVAL = 5000;
+  const SLIDE_INTERVAL = 5000;
 
   const slideshow = document.getElementById("heroSlideshow");
   const previousButton = document.getElementById("heroPrevious");
   const nextButton = document.getElementById("heroNext");
   const pagination = document.getElementById("heroPagination");
+  const navigation = document.getElementById("heroNavigation");
   const counter = document.getElementById("heroCounter");
   const bottomNumber = document.getElementById("heroBottomNumber");
-  const navigation = document.getElementById("heroNavigation");
-
-  let slides = [];
-  let dots = [];
-  let currentIndex = 0;
-  let timer = null;
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let touchStartTime = 0;
-  let pausedByUser = false;
 
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   );
 
-  const apiURL =
-    "https://api.github.com/repos/" +
-    OWNER + "/" + REPO +
-    "/contents/" +
-    HERO_FOLDER.split("/").map(encodeURIComponent).join("/") +
-    "?ref=" + encodeURIComponent(BRANCH);
+  let slides = [];
+  let dots = [];
+  let currentIndex = 0;
+  let timer = null;
+  let startX = 0;
+  let startY = 0;
+  let startTime = 0;
 
   function pad(number) {
     return String(number).padStart(2, "0");
   }
 
-  function imageURL(filename) {
-    return HERO_FOLDER.split("/").map(encodeURIComponent).join("/") +
-      "/" + encodeURIComponent(filename);
+  function getImagePath(filename) {
+    return HERO_FOLDER.split("/")
+      .map(encodeURIComponent)
+      .join("/") + "/" + encodeURIComponent(filename);
   }
 
   function updateCounter() {
-    const text =
+    const label =
       pad(currentIndex + 1) + " / " + pad(slides.length);
 
-    counter.textContent = text;
-    bottomNumber.textContent = text;
+    counter.textContent = label;
+    bottomNumber.textContent = label;
   }
 
   function showSlide(index) {
@@ -1596,94 +2243,48 @@ gtag("config", "G-65JQNK8MX6");
       const active = i === currentIndex;
 
       dot.classList.toggle("is-active", active);
-      dot.setAttribute("aria-current", active ? "true" : "false");
+      dot.setAttribute(
+        "aria-current",
+        active ? "true" : "false"
+      );
     });
 
     updateCounter();
   }
 
-  function stopAutoSlide() {
+  function stopTimer() {
     if (timer !== null) {
-      window.clearInterval(timer);
+      clearInterval(timer);
       timer = null;
     }
   }
 
-  function startAutoSlide() {
-    stopAutoSlide();
+  function startTimer() {
+    stopTimer();
 
     if (
       slides.length < 2 ||
-      pausedByUser ||
-      reduceMotion.matches ||
-      document.hidden
-    ) {
-      return;
-    }
+      document.hidden ||
+      reduceMotion.matches
+    ) return;
 
-    timer = window.setInterval(function () {
+    timer = setInterval(function () {
       showSlide(currentIndex + 1);
-    }, AUTO_SLIDE_INTERVAL);
+    }, SLIDE_INTERVAL);
   }
 
   function nextSlide() {
     showSlide(currentIndex + 1);
-    startAutoSlide();
+    startTimer();
   }
 
   function previousSlide() {
     showSlide(currentIndex - 1);
-    startAutoSlide();
+    startTimer();
   }
 
-  function createSlide(filename, index) {
-    const slide = document.createElement("div");
-    slide.className = "hero-slide";
-    slide.setAttribute("aria-roledescription", "slide");
-    slide.setAttribute(
-      "aria-label",
-      "Photograph " + (index + 1)
-    );
-
-    const image = document.createElement("img");
-
-    image.src = imageURL(filename);
-    image.alt = "Avyukta Photography featured portrait " + (index + 1);
-    image.decoding = "async";
-    image.loading = index === 0 ? "eager" : "lazy";
-
-    if (index === 0) {
-      image.fetchPriority = "high";
-    }
-
-    slide.appendChild(image);
-    slideshow.appendChild(slide);
-
-    return slide;
-  }
-
-  function createDot(index) {
-    const dot = document.createElement("button");
-
-    dot.type = "button";
-    dot.className = "hero-dot";
-    dot.setAttribute(
-      "aria-label",
-      "Go to photograph " + (index + 1)
-    );
-
-    dot.addEventListener("click", function () {
-      showSlide(index);
-      startAutoSlide();
-    });
-
-    pagination.appendChild(dot);
-
-    return dot;
-  }
-
-  function renderSlideshow(filenames) {
-    stopAutoSlide();
+  function renderSlides(files) {
+    stopTimer();
 
     slideshow.replaceChildren();
     pagination.replaceChildren();
@@ -1692,33 +2293,71 @@ gtag("config", "G-65JQNK8MX6");
     dots = [];
     currentIndex = 0;
 
-    filenames.forEach(function (filename, index) {
-      slides.push(createSlide(filename, index));
-      dots.push(createDot(index));
-    });
+    files.forEach(function (filename, index) {
+      const slide = document.createElement("div");
+      slide.className = "hero-slide";
+      slide.setAttribute("aria-roledescription", "slide");
+      slide.setAttribute(
+        "aria-label",
+        "Photograph " + (index + 1) + " of " + files.length
+      );
 
-    if (!slides.length) {
-      console.warn("No valid hero images found.");
-      navigation.hidden = true;
-      pagination.hidden = true;
-      counter.hidden = true;
-      return;
-    }
+      const img = document.createElement("img");
+
+      img.src = getImagePath(filename);
+      img.alt =
+        "Avyukta Photography featured portrait " + (index + 1);
+      img.decoding = "async";
+      img.loading = index === 0 ? "eager" : "lazy";
+
+      if (index === 0) {
+        img.fetchPriority = "high";
+      }
+
+      slide.appendChild(img);
+      slideshow.appendChild(slide);
+      slides.push(slide);
+
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "hero-dot";
+      dot.setAttribute(
+        "aria-label",
+        "Go to photograph " + (index + 1)
+      );
+
+      dot.addEventListener("click", function () {
+        showSlide(index);
+        startTimer();
+      });
+
+      pagination.appendChild(dot);
+      dots.push(dot);
+    });
 
     const multiple = slides.length > 1;
 
-    slideshow.classList.toggle("is-single", !multiple);
     navigation.hidden = !multiple;
     pagination.hidden = !multiple;
     counter.hidden = !multiple;
 
     showSlide(0);
-    startAutoSlide();
+    startTimer();
   }
 
-  async function loadHeroImages() {
+  async function loadImages() {
+    const folderPath = HERO_FOLDER.split("/")
+      .map(encodeURIComponent)
+      .join("/");
+
+    const url =
+      "https://api.github.com/repos/" +
+      OWNER + "/" + REPO +
+      "/contents/" + folderPath +
+      "?ref=" + encodeURIComponent(BRANCH);
+
     try {
-      const response = await fetch(apiURL, {
+      const response = await fetch(url, {
         headers: {
           "Accept": "application/vnd.github+json"
         }
@@ -1726,65 +2365,59 @@ gtag("config", "G-65JQNK8MX6");
 
       if (!response.ok) {
         throw new Error(
-          "GitHub image listing failed: " + response.status
+          "Unable to list hero images: HTTP " + response.status
         );
       }
 
-      const files = await response.json();
+      const result = await response.json();
 
-      if (!Array.isArray(files)) {
-        throw new Error("Unexpected gallery folder response.");
+      if (!Array.isArray(result)) {
+        throw new Error("Unexpected image listing response.");
       }
 
-      const validImages = files
+      const files = result
         .filter(function (file) {
-          if (file.type !== "file") return false;
-
-          return /^Hero\s*(10|[1-9])\.(jpg|jpeg|png|webp|avif)$/i
-            .test(file.name);
+          return file.type === "file" &&
+            /^Hero\s*(10|[1-9])\.(jpg|jpeg|png|webp|avif)$/i
+              .test(file.name);
         })
         .sort(function (a, b) {
-          const numberA = Number(
+          const aNumber = Number(
             a.name.match(/^Hero\s*(\d+)/i)[1]
           );
-
-          const numberB = Number(
+          const bNumber = Number(
             b.name.match(/^Hero\s*(\d+)/i)[1]
           );
 
-          return numberA - numberB;
+          return aNumber - bNumber;
         })
         .map(function (file) {
           return file.name;
         });
 
-      if (!validImages.length) {
-        throw new Error(
-          "No Hero 1 to Hero 10 images found in " + HERO_FOLDER
-        );
+      if (!files.length) {
+        throw new Error("No matching Hero images found.");
       }
 
-      renderSlideshow(validImages);
+      renderSlides(files);
 
     } catch (error) {
-      console.error("Hero slideshow:", error.message);
+      console.error("Homepage slideshow:", error);
 
-      /*
-        Fallback:
-        Keeps the hero usable if GitHub API is temporarily
-        unavailable. Uses the existing homepage image.
-        If your previous hero image was CSS-only, its
-        background will remain behind the slideshow.
-      */
+      // Display the existing hero image as a fallback.
+      const fallback = document.createElement("div");
+      fallback.className = "hero-slide is-active";
 
-      slideshow.replaceChildren();
-      slideshow.style.background =
-        "linear-gradient(120deg,#30382f,#5c6655)";
+      const image = document.createElement("img");
+      image.src = "images/gallery/newborn.jpg.jpeg";
+      image.alt = "Avyukta Photography newborn portrait";
+
+      fallback.appendChild(image);
+      slideshow.replaceChildren(fallback);
 
       navigation.hidden = true;
       pagination.hidden = true;
       counter.hidden = true;
-
       bottomNumber.textContent = "AVYUKTA PHOTOGRAPHY";
     }
   }
@@ -1792,30 +2425,28 @@ gtag("config", "G-65JQNK8MX6");
   previousButton.addEventListener("click", previousSlide);
   nextButton.addEventListener("click", nextSlide);
 
+  // MOBILE SWIPE
   slideshow.addEventListener("touchstart", function (event) {
     if (!event.touches.length) return;
 
-    touchStartX = event.touches[0].clientX;
-    touchStartY = event.touches[0].clientY;
-    touchStartTime = Date.now();
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+    startTime = Date.now();
   }, { passive: true });
 
   slideshow.addEventListener("touchend", function (event) {
     if (!event.changedTouches.length) return;
 
     const deltaX =
-      event.changedTouches[0].clientX - touchStartX;
+      event.changedTouches[0].clientX - startX;
 
     const deltaY =
-      event.changedTouches[0].clientY - touchStartY;
+      event.changedTouches[0].clientY - startY;
 
-    const elapsed = Date.now() - touchStartTime;
-
-    // Only respond to horizontal swipes.
     if (
       Math.abs(deltaX) > 45 &&
       Math.abs(deltaX) > Math.abs(deltaY) * 1.3 &&
-      elapsed < 1200
+      Date.now() - startTime < 1200
     ) {
       if (deltaX < 0) {
         nextSlide();
@@ -1825,35 +2456,35 @@ gtag("config", "G-65JQNK8MX6");
     }
   }, { passive: true });
 
-  // Pause automatic rotation while hovering.
-  slideshow.addEventListener("mouseenter", stopAutoSlide);
-  slideshow.addEventListener("mouseleave", startAutoSlide);
+  slideshow.addEventListener("mouseenter", stopTimer);
+  slideshow.addEventListener("mouseleave", startTimer);
 
-  // Pause while interacting with slideshow controls.
   [previousButton, nextButton, pagination].forEach(function (element) {
-    element.addEventListener("mouseenter", stopAutoSlide);
-    element.addEventListener("mouseleave", startAutoSlide);
-
-    element.addEventListener("focusin", stopAutoSlide);
-    element.addEventListener("focusout", startAutoSlide);
+    element.addEventListener("mouseenter", stopTimer);
+    element.addEventListener("mouseleave", startTimer);
+    element.addEventListener("focusin", stopTimer);
+    element.addEventListener("focusout", startTimer);
   });
 
-  // Pause when browser tab is not visible.
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
-      stopAutoSlide();
+      stopTimer();
     } else {
-      startAutoSlide();
+      startTimer();
     }
   });
 
-  reduceMotion.addEventListener("change", startAutoSlide);
+  if (reduceMotion.addEventListener) {
+    reduceMotion.addEventListener("change", startTimer);
+  }
 
-  loadHeroImages();
+  loadImages();
 })();
 </script>
 
-<!-- AVAILABILITY ENQUIRY SCRIPT -->
+<!-- ========================================
+     WHATSAPP AVAILABILITY SCRIPT
+======================================== -->
 <script>
 (function () {
   "use strict";
@@ -1867,10 +2498,12 @@ gtag("config", "G-65JQNK8MX6");
   const nameInput = document.getElementById("enquiryName");
 
   const businessWhatsApp = "919008203206";
+
   let previousFocus = null;
 
   function getTodayLocal() {
     const now = new Date();
+
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, "0");
     const day = String(now.getDate()).padStart(2, "0");
@@ -1880,6 +2513,7 @@ gtag("config", "G-65JQNK8MX6");
 
   function updateMinimumDate() {
     const today = getTodayLocal();
+
     dateInput.min = today;
 
     if (dateInput.value && dateInput.value < today) {
@@ -1900,7 +2534,7 @@ gtag("config", "G-65JQNK8MX6");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("availability-open");
 
-    window.requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
       nameInput.focus();
     });
   }
@@ -1937,19 +2571,16 @@ gtag("config", "G-65JQNK8MX6");
     }
   });
 
+  // ESCAPE TO CLOSE + FOCUS TRAP
   document.addEventListener("keydown", function (event) {
-    if (!modal.classList.contains("is-open")) {
-      return;
-    }
+    if (!modal.classList.contains("is-open")) return;
 
     if (event.key === "Escape") {
       closeAvailability();
       return;
     }
 
-    if (event.key !== "Tab") {
-      return;
-    }
+    if (event.key !== "Tab") return;
 
     const focusable = Array.from(
       dialog.querySelectorAll(
@@ -1988,9 +2619,7 @@ gtag("config", "G-65JQNK8MX6");
 
     updateMinimumDate();
 
-    if (!form.reportValidity()) {
-      return;
-    }
+    if (!form.reportValidity()) return;
 
     const customerName =
       document.getElementById("enquiryName").value.trim();
