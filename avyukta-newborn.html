@@ -455,6 +455,181 @@
         transition: none;
       }
     }
+
+
+/* ==========================================
+   NEWBORN EDITORIAL COLLAGE — V2
+   Full photographs, no cropping
+========================================== */
+
+.newborn-gallery-section {
+  max-width: 1420px;
+  padding: 85px 28px 115px;
+}
+
+.newborn-gallery-heading {
+  max-width: 750px;
+  margin: 0 auto 52px;
+}
+
+/* Natural-height columns create an organic collage */
+
+.newborn-gallery-grid {
+  display: block;
+  columns: 4;
+  column-gap: 17px;
+}
+
+/* Remove the old fixed image dimensions */
+
+.newborn-photo {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  margin: 0 0 17px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  background: #eee8df;
+  cursor: zoom-in;
+  box-shadow: 0 5px 20px rgba(40, 35, 25, .06);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+/* IMPORTANT: preserve the entire photograph */
+
+.newborn-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  transition: none;
+}
+
+/* Soft movement without zooming or cropping the photo */
+
+.newborn-photo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(40, 35, 25, .13);
+}
+
+.newborn-photo:hover img {
+  transform: none;
+}
+
+/* Subtle overlay */
+
+.newborn-photo::after {
+  content: "VIEW FULL PHOTO ↗";
+  position: absolute;
+  inset: auto 0 0;
+  padding: 35px 13px 13px;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, .48)
+  );
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-align: right;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.newborn-photo:hover::after,
+.newborn-photo:focus-visible::after {
+  opacity: 1;
+}
+
+/* Irregular collage rhythm, without cutting photos */
+
+.newborn-photo:nth-child(7n + 2) {
+  margin-bottom: 27px;
+}
+
+.newborn-photo:nth-child(9n + 5) {
+  margin-bottom: 11px;
+}
+
+.newborn-photo:nth-child(11n + 4) {
+  margin-bottom: 23px;
+}
+
+/* Full-screen viewer */
+
+.newborn-lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Tablet */
+
+@media (max-width: 1050px) {
+  .newborn-gallery-grid {
+    columns: 3;
+    column-gap: 14px;
+  }
+
+  .newborn-photo {
+    margin-bottom: 14px;
+  }
+}
+
+/* Small tablet */
+
+@media (max-width: 700px) {
+  .newborn-gallery-section {
+    padding: 65px 16px 85px;
+  }
+
+  .newborn-gallery-grid {
+    columns: 2;
+    column-gap: 11px;
+  }
+
+  .newborn-photo {
+    margin-bottom: 11px;
+  }
+
+  .newborn-photo:nth-child(n) {
+    margin-bottom: 11px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 380px) {
+  .newborn-gallery-grid {
+    columns: 2;
+    column-gap: 8px;
+  }
+
+  .newborn-photo {
+    margin-bottom: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newborn-photo {
+    transition: none;
+  }
+}
+
   </style>
 </head>
 
